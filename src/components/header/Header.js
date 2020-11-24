@@ -33,7 +33,7 @@ import {
 //   } from "react-router-dom";
 const useStyles = makeStyles({
     appbar: {
-      backgroundImage: `url(${process.env.PUBLIC_URL + "/images/background.jpeg"})`,
+      backgroundImage: `url(${process.env.PUBLIC_URL + "/images/background.jpeg"})`,width: '550px', height: '350px'
    
      },
      root:{

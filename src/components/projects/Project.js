@@ -13,7 +13,7 @@ const WhiteTextTypography = withStyles({
 export default function Groups() {
   return (
       <div>
-    <div className="App" style={{ backgroundImage:`url(${process.env.PUBLIC_URL + "/images/cantact.jpeg"})`,height:450}}>
+    <div className="App" style={{ backgroundImage:`url(${process.env.PUBLIC_URL + "/images/cantact.jpeg"})`,width: '1280px', height: '350px'}}>
       <WhiteTextTypography variant="h3">
       Get in touch with us
       </WhiteTextTypography>
