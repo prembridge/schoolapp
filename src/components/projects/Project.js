@@ -16,7 +16,8 @@ const WhiteTextTypography = withStyles({
 export default function Groups() {
   return (
       <div>
-    <div className="App" style={{ backgroundImage: `url(${require("../assets/cantact.jpeg")})` , height: '450px'}}>
+    <div className="App" style={{ backgroundImage:`url(${require("../assets/ca.jpg")})` , height: '450px',backgroundSize: 'cover',
+            overflow: 'hidden'}}>
       <WhiteTextTypography variant="h3">
       Get in touch with us
       </WhiteTextTypography>
