@@ -4,6 +4,8 @@ import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBInput } from 'mdbreact';
 import { useHistory } from "react-router-dom";
+import car from '../assets/cantact.jpeg'
+import { Height } from "@material-ui/icons";
 const WhiteTextTypography = withStyles({
   root: {
     color: "#FFFFFF"
@@ -13,7 +15,7 @@ const WhiteTextTypography = withStyles({
 export default function Groups() {
   return (
       <div>
-    <div className="App" style={{ backgroundImage:`url(${process.env.PUBLIC_URL + "/images/cantact.jpeg"})`,width: '1280px', height: '350px'}}>
+    <div className="App" style={{ backgroundImage:`url(${car})` , height: '450px'}}>
       <WhiteTextTypography variant="h3">
       Get in touch with us
       </WhiteTextTypography>
