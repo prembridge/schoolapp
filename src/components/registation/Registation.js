@@ -112,14 +112,11 @@ export default class Registation extends Component {
                 var resultdata = result.response.token
                 var savetoken =localStorage.setItem("token" ,resultdata)
                 var tokenvalue = localStorage.getItem("token")
-                console.log("wht is in it"+tokenvalue)
+                console.log("wht is in it....."+tokenvalue)
               })
               .catch(error => console.log('error', error));
               
-           
-          
-    
-      var myHeaders = new Headers();
+       var myHeaders = new Headers();
     myHeaders.append("Authorization", `Bearer ${localStorage.getItem("token")}`);
     myHeaders.append("Content-Type", "application/json");
     var raw = JSON.stringify({"fieldData":{"Title":"Mr","First_name":this.state.firstName,"Last_name":this.state.lastName,"Mobile_number":this.state.mobileNo,"Email":this.state.email,"D_o_b":"02-02-2020","Address_1":"pluto","Country":"plutonia","State":"plutoki","City":"pluf","Pancard":"7567546756769","Pin_code":"226025","Username":this.state.UserName,"Password":this.state.password}});
