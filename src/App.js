@@ -8,10 +8,10 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 
 const useStyles = makeStyles({
   root: {
-    // minHeight :'100vh',
-    // backgroundImage: `url(${process.env.PUBLIC_URL + "/images/background.jpeg"})`,
-    // backgroundRepeat:'no-repeat',
-    // backgroundSize:'cover'
+    minHeight :'100vh',
+    backgroundImage: `url(${process.env.PUBLIC_URL + "/images/ind.jpeg"})`,
+    backgroundRepeat:'no-repeat',
+    backgroundSize:'cover'
     
   },
 });

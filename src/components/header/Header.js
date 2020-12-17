@@ -22,6 +22,7 @@ import Login from '../login/Login'
 import Donation from '../donation/Donation'
 import Registation from '../registation/Registation'
 import Groups from '../groups/Groups'
+import Forgotpassword from '../forgotpassword/Forgotpassword'
 import {
   BrowserRouter as Router,
   Switch, Route, Link
@@ -100,9 +101,12 @@ function Header() {
          <Route 
        path="/Registation" component={Registation}></Route>
        <Route 
+       path="/Forgotpassword" component={Forgotpassword}></Route>
+       <Route 
        path="/Groups" component={Groups}></Route>
         <Route 
        path="/" component={Home}></Route>
+        
        </Switch>
          
 <div>

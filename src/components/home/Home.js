@@ -64,7 +64,7 @@ const Home = () => {
   <Carousel.Item interval={1000}>
     <img style={{width: '550px', height: '450px'}}
       className="d-block w-100"
-      src={require("../assets/sc.jpg")}
+      src={require("../assets/DSC_0501.JPG")}
       alt="First slide"
     />
     <Carousel.Caption>
@@ -75,7 +75,7 @@ const Home = () => {
   <Carousel.Item interval={500}>
     <img style={{width: '550px', height: '450px'}}
       className="d-block w-100"
-      src={require("../assets/sch.jpg")}
+      src={require("../assets/DSC_0503.JPG")}
       alt="Third slide"
     />
     <Carousel.Caption>
@@ -86,7 +86,7 @@ const Home = () => {
   <Carousel.Item>
     <img style={{width: '550px', height: '450px'}}
       className="d-block w-100"
-      src={require("../assets/sch.jpg")}
+      src={require("../assets/dsc.JPG")}
       alt="Third slide"
     />
     <Carousel.Caption>
