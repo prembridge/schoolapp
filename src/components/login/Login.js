@@ -127,6 +127,9 @@ const formValid = ({ formErrors, ...rest }) => {
   sayHello =()=> {
     this.props.history.push("./Registation");
   }
+  saypay =()=> {
+    this.props.history.push("./Donation");
+  }
   forgotpassword =()=> {
     this.props.history.push("./Forgotpassword");
   }
@@ -173,23 +176,28 @@ getdata =()=>{
     
 
     return (
-      <MDBContainer>
+      <MDBContainer >
+       
+        
          <MDBRow>
            
          
-         <MDBCard style={{ backgroundColor:'#8cb6fa'} } > 
-         <div className="header pt-3 grey lighten-2">
-             <MDBRow className="d-flex justify-content-start">
+         <MDBCard style={{ maxWidth :'800',borderColor:"#fcba03",} } > 
+        
+         <div className="header pt-3 grey lighten-2" style={{  paddingRight :400} } >
+            
+            <MDBCol  className="d-flex justify-content-start">
                 <h3 className="deep-grey-text mt-3 mb-4 pb-1 mx-5">
-                 Log in
+                  Guest Login
                </h3>
-             </MDBRow>
+             </MDBCol>
             </div>
+           
         
         {/* <img style={{position:"center", top:100 , width:150,height:150}}  src={process.env.PUBLIC_URL + '/images/login.svg'} /> */}
         
       
-        <MDBCardBody className="mx-4 mt-4">
+        <MDBCardBody className="mx-4 mt-4" style={{ maxWidth :'400'} }>
         <form onSubmit={this.handleSubmit} noValidate>
           
           <div className="UserName">
@@ -206,9 +214,22 @@ getdata =()=>{
               <span className="errorMessage">{formErrors.UserName}</span>
             )}
           </div>
-         
+          <div className="Email">
+            <  label htmlFor="Email ID">Email ID</label>
+            <MDBInput
+              className={formErrors.UserName.length > 0 ? "error" : null}
+              placeholder="Email"
+              type="text"
+              name="Email ID"
+              noValidate
+              onChange={this.handleChange}
+            />
+            {formErrors.UserName.length > 0 && (
+              <span className="errorMessage">{formErrors.UserName}</span>
+            )}
+          </div>
           <div className="password">
-            < label htmlFor="password">Password</label>
+            < label htmlFor="password">Phone</label>
             <MDBInput
               className={formErrors.password.length > 0 ? "error" : null}
               placeholder="Password"
@@ -221,7 +242,7 @@ getdata =()=>{
               <span className="errorMessage">{formErrors.password}</span>
             )}
           </div>
-          <p className="font-small grey-text d-flex justify-content-end">
+          {/* <p className="font-small grey-text d-flex justify-content-end">
                 Forgot
                <a  onClick={this.forgotpassword}
                    href="#!"
@@ -229,25 +250,25 @@ getdata =()=>{
                 >
                   Password?
                </a>        
-                </p>
+                </p> */}
               <div className="text-center mb-4 mt-5">
                <MDBBtn
                   color="danger"
                 type="button"
                 className="btn-block z-depth-2"
-                             >
+                onClick={this.saypay}       >
                  Log in
                 </MDBBtn>
               </div>
-            <p className="font-small grey-text d-flex justify-content-center">
-               Don't have an account?
+            {/* <p className="font-small grey-text d-flex justify-content-center">
+               New User Register.
                  <a onClick={this.sayHello}
                   href="#!"
                   className="dark-grey-text font-weight-bold ml-1"
                > Click
-                 Sign up
+                 Register
             </a>
-          </p>
+          </p> */}
           </form>
          </MDBCardBody>
          </MDBCard>

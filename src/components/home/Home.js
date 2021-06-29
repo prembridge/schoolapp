@@ -14,7 +14,12 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Carousel from 'react-bootstrap/Carousel'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Users from '../users/Users'
+import Newuser from '../newuser/Newuser';
+import Login from '../login/Login'
 import Aboutus from '../aboutus/Aboutus'
+import { useHistory } from 'react-router-dom';
+import video from '../assets/title sketch.mp4'
+
 const useStyles = makeStyles({
   root: {
     
@@ -39,9 +44,20 @@ const useStyles = makeStyles({
   }
   
 });
+const STYLE = {
+  infoColor: {
+      color: 'green'
+  },
+  warningColor: {
+      color: 'orange'
+  },
+  errorColor: {
+      color: 'red'
+  }
+};
 const Home = () => {
   const classes = useStyles();
-
+  const history = useHistory();
   const params = {
     spaceBetween: 30,
     centeredSlides: true,
@@ -59,8 +75,32 @@ const Home = () => {
     }
   }
   return (
-      <div>
-    <Carousel>
+      <div style={{paddingLeft:100,paddingTop:1}}>
+        <video controls autostart autoPlay src={video} type="video/mp4" />
+
+        <div style={{width:1000,
+      height: 70,
+      backgroundColor:'black',
+      position:'absolute',
+      bottom:-90,
+      
+      right:350,
+      left:100}}>
+        <h1 style={{color:'white',letterSpacing: 4,marginLeft: 10,marginTop:10}}>   FOR A BETTER FUTURE   </h1>
+        </div>
+        <div style={{
+      height:50,
+      position:'absolute',
+      bottom:-80,
+      right:30,
+      
+      left:800}}>
+        <Button   style={{height: '50px', width : '300px',fontSize:22,marginLeft:-10, backgroundColor:"#F7EB00"}}variant="contained" color="#F7EB00" size="lg" onClick={() => history.push('/Newuser')}>
+        I want Support
+      </Button>
+        </div>
+        
+    {/* <Carousel>
   <Carousel.Item interval={1000}>
     <img style={{width: '550px', height: '450px'}}
       className="d-block w-100"
@@ -68,8 +108,8 @@ const Home = () => {
       alt="First slide"
     />
     <Carousel.Caption>
-      <h3>First slide label</h3>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1>
+    
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item interval={500}>
@@ -78,9 +118,9 @@ const Home = () => {
       src={require("../assets/DSC_0503.JPG")}
       alt="Third slide"
     />
-    <Carousel.Caption>
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+     <Carousel.Caption>
+      <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1>
+    
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
@@ -90,11 +130,13 @@ const Home = () => {
       alt="Third slide"
     />
     <Carousel.Caption>
-      <h3>Third slide label</h3>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+    <Carousel.Caption>
+      <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1>
+    
+    </Carousel.Caption>
     </Carousel.Caption>
   </Carousel.Item>
-</Carousel>
+</Carousel> */}
     <br/>
     <div>
     <Aboutus/>

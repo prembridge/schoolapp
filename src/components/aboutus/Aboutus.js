@@ -9,10 +9,11 @@ const useStyles = makeStyles((theme) => ({
       flexGrow: 1,
     },
     paper: {
-        backgroundColor:"#c9b3c8",
-      padding: theme.spacing(1),
-      textAlign: 'center',
+        backgroundColor:"#808080",
+      padding: theme.spacing(4),
+      textAlign: 'justify',
       color: theme.palette.text.secondary,
+     
     },
   }));
   export default function Aboutus() {
@@ -34,22 +35,18 @@ const useStyles = makeStyles((theme) => ({
           >
             <FrontSide
               style={{
-                backgroundColor: '#c9b3c8',
+                backgroundColor: '#F7EB00',
               }}
             >
-              <h1>Abouts us</h1>
-              <img  style={{width: '150px', height: '150px'}}src={process.env.PUBLIC_URL + '/images/chi.jpg'}/>
+              <h1>Our Story</h1>
+              <img  style={{width: '90px', height: '90px'}}src={process.env.PUBLIC_URL + '/images/announce.png'}/> 
             <p> 
-            World Vision India is one of the country’s largest child-focused humanitarian organisations. With over six decades of grassroot experience, we employ proven, effective development, public engagement and relief practices empowering vulnerable children
-find more...</p>
+            The story of how APS Society came into existance
+</p>
             </FrontSide>
             <BackSide
-              style={{ backgroundColor: '#beedd9'}}>
-              <p>World Vision India is one of the country’s largest child-focused humanitarian organisations. With over six decades of grassroot experience, we employ proven, effective development, public engagement and relief practices empowering vulnerable children and communities living in contexts of poverty and injustice to become self-sufficient and bring lasting change. We serve all children regardless of religion, race, ethnicity or gender as a demonstration of Christ’s unconditional love for all people.
-
-World Vision India works in 123 districts impacting around 26 lakh children and their families in over 6200 communities spread across 24 states and the National Capital Region to address issues affecting children in partnership with governments, civil societies, donors and corporates.
-
-With you, we can build a nation fit for children. Join us. Together for children. For change. For life.</p>
+              style={{ backgroundColor: '#F7EB00'}}>
+              <p>The story of how APS Society came into existance.</p>
             </BackSide>
           </Flippy>
             </Paper>
@@ -67,22 +64,19 @@ With you, we can build a nation fit for children. Join us. Together for children
           >
             <FrontSide
               style={{
-                backgroundColor: '#c9b3c8',
+                backgroundColor: '#ffffff',
               }}
             >
-              <h1>Our Team.</h1>
-              <img  style={{width: '150px', height: '150px'}}src={process.env.PUBLIC_URL + '/images/chi.jpg'}/>
+              <h1>Our Vision.</h1>
+               <img  style={{width: '75px', height: '75px'}}src={process.env.PUBLIC_URL + '/images/target.png'}/> 
             <p> 
-            World Vision India is one of the country’s largest child-focused humanitarian organisations. With over six decades of grassroot experience, we employ proven, effective development, public engagement and relief practices empowering vulnerable children
-find more...</p>
+            The Vision statement of APS Society will appear here
+</p>
             </FrontSide>
             <BackSide
-              style={{ backgroundColor: '#beedd9'}}>
-              <p>World Vision India is one of the country’s largest child-focused humanitarian organisations. With over six decades of grassroot experience, we employ proven, effective development, public engagement and relief practices empowering vulnerable children and communities living in contexts of poverty and injustice to become self-sufficient and bring lasting change. We serve all children regardless of religion, race, ethnicity or gender as a demonstration of Christ’s unconditional love for all people.
-
-World Vision India works in 123 districts impacting around 26 lakh children and their families in over 6200 communities spread across 24 states and the National Capital Region to address issues affecting children in partnership with governments, civil societies, donors and corporates.
-
-With you, we can build a nation fit for children. Join us. Together for children. For change. For life.</p>
+              style={{ backgroundColor: '#ffffff'}}>
+              <p>The Vision statement of APS Society will appear here
+</p>
             </BackSide>
           </Flippy>
             </Paper>
@@ -100,22 +94,19 @@ With you, we can build a nation fit for children. Join us. Together for children
           >
             <FrontSide
               style={{
-                backgroundColor: '#c9b3c8',
+                backgroundColor: '#fcba03',
               }}
             >
-              <h1>Our VISION </h1>
-              <img  style={{width: '150px', height: '150px'}}src={process.env.PUBLIC_URL + '/images/chi.jpg'}/>
+              <h1>Projects</h1>
+               <img  style={{width: '75px', height: '75px'}}src={process.env.PUBLIC_URL + '/images/project.png'}/> 
             <p> 
-            World Vision India is one of the country’s largest child-focused humanitarian organisations. With over six decades of grassroot experience, we employ proven, effective development, public engagement and relief practices empowering vulnerable children
-find more...</p>
+            All about how Project Panaah
+</p>
             </FrontSide>
             <BackSide
-              style={{ backgroundColor: '#beedd9'}}>
-              <p>World Vision India is one of the country’s largest child-focused humanitarian organisations. With over six decades of grassroot experience, we employ proven, effective development, public engagement and relief practices empowering vulnerable children and communities living in contexts of poverty and injustice to become self-sufficient and bring lasting change. We serve all children regardless of religion, race, ethnicity or gender as a demonstration of Christ’s unconditional love for all people.
-
-World Vision India works in 123 districts impacting around 26 lakh children and their families in over 6200 communities spread across 24 states and the National Capital Region to address issues affecting children in partnership with governments, civil societies, donors and corporates.
-
-With you, we can build a nation fit for children. Join us. Together for children. For change. For life.</p>
+              style={{ backgroundColor: '#fcba03'}}>
+              <p>All about how Project Panaah
+</p>
             </BackSide>
           </Flippy>
             </Paper>

@@ -47,9 +47,11 @@ export default class Registation extends Component {
     
   constructor(props) {
     super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.sayHello = this.sayHello.bind(this);
     this.state = {
         showComponent: false,
+        redirect: false,
       // username: "",
       // password: "",
       message: "",
@@ -60,15 +62,32 @@ export default class Registation extends Component {
       email: null,
       password: null,
      mobileNo:null,
+     Address:null,
+     Pincode:null,
+     City:null,
+     State:null,
+     Country:null,
+     Pincode:null,
+     panid:null,
       formErrors: {
         firstName: "",
         lastName: "",
         UserName:"",
         email: "",
         password: "",
-       mobileNo:""
+       mobileNo:"",
+       Address:"",
+       Pincode:"",
+       City:"",
+       State:"",
+       Country:"",
+       Pincode:"",
+       panid:""
       }
     };
+  }
+  saypay =()=> {
+    this.props.history.push("./Donation");
   }
   handleSubmit = e => {
     e.preventDefault();
@@ -97,39 +116,35 @@ export default class Registation extends Component {
       });
     }
     var myHeaders = new Headers();
-            myHeaders.append("Authorization", "Basic c3VzaGlsOkphY29iNw==");
-            myHeaders.append("Content-Type", "application/json");
-            var raw = "";
-            var requestOptions = {
-              method: 'POST',
-              headers: myHeaders,
-              body: raw,
-              redirect: 'follow'
-            };
-            fetch("https://oacloud.fmi.filemaker-cloud.com/fmi/data/vLatest/databases/OA_Master/sessions", requestOptions)
-              .then(response => response.json())
-              .then(result => {
-                var resultdata = result.response.token
-                var savetoken =localStorage.setItem("token" ,resultdata)
-                var tokenvalue = localStorage.getItem("token")
-                console.log("wht is in it....."+tokenvalue)
-              })
-              .catch(error => console.log('error', error));
-              
-       var myHeaders = new Headers();
-    myHeaders.append("Authorization", `Bearer ${localStorage.getItem("token")}`);
     myHeaders.append("Content-Type", "application/json");
-    var raw = JSON.stringify({"fieldData":{"Title":"Mr","First_name":this.state.firstName,"Last_name":this.state.lastName,"Mobile_number":this.state.mobileNo,"Email":this.state.email,"D_o_b":"02-02-2020","Address_1":"pluto","Country":"plutonia","State":"plutoki","City":"pluf","Pancard":"7567546756769","Pin_code":"226025","Username":this.state.UserName,"Password":this.state.password}});
+    var raw = JSON.stringify({
+      "FirstName":this.state.firstName,
+      "LastName":this.state.lastName,
+      "EmailID":this.state.email,
+      "Phonenumber":this.state.mobileNo,
+      "password":this.state.password,
+      "Address":this.state.Address,
+      "Pincode":this.state.Pincode,
+      "City":this.state.City,
+      "State":this.state.State,
+      "Country":this.state.Country,
+      "panid":this.state.panid
+    });
     var requestOptions = {
       method: 'POST',
       headers: myHeaders,
       body: raw,
       redirect: 'follow'
     };
-    fetch("https://oacloud.fmi.filemaker-cloud.com/fmi/data/vLatest/databases/OA_Master/layouts/Aps_users/records", requestOptions)
-      .then(response => response.text())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
+    fetch("https://gzacors.herokuapp.com/http://122.185.13.164:3013/register", requestOptions).then(response => response.text())
+    .then(result => {
+      console.log('result', result)
+        this.props.history.push('/Donation');
+         
+      }).catch(error => console.log('error', error));
+    
+      
+      
   
     
   };
@@ -204,7 +219,7 @@ export default class Registation extends Component {
    // let history = useHistory();
 
     return (
-      <MDBContainer>
+      <MDBContainer style={{ maxWidth :'800'} }>
       <MDBRow>
         <MDBCol md="6">
           <MDBCard>
@@ -255,14 +270,14 @@ export default class Registation extends Component {
       alignItems="center"
       justify="center"
       style={{ minHeight: '110vh' }}>
-      <MDBCard variant="outlined" className={styles.card}  style={{ backgroundColor:'#8cb6fa'} }>
+      <MDBCard variant="outlined" className={styles.card}  style={{ maxWidth :'800',borderColor:"#fcba03",} }>
         <CardContent align-items-center>
       <div className="wrapper">
       <div className="form-wrapper">
-        <h3> Create Account</h3>
+        <h3 style={{paddingLeft:400}}> Registration</h3>
 
         <form onSubmit={this.handleSubmit} noValidate>
-          <div className="firstName">
+          <div className="firstName"  style={{  paddingRight :800} } >
            < label htmlFor="firstName">First Name* </ label>
             </div>
             <div>
@@ -296,24 +311,9 @@ export default class Registation extends Component {
               <span className="errorMessage">{formErrors.lastName}</span>
             )}
           </div>
-          <div className="UserName">
-            <label htmlFor="UserName">User Name*</label>
-            </div>
-            <div>
-            <MDBInput
-              className={formErrors.UserName.length > 0 ? "error" : null}
-              placeholder=" UserName"
-              type="text"
-              name="UserName"
-              noValidate
-              onChange={this.handleChange}
-            />
-            {formErrors.UserName.length > 0 && (
-              <span className="errorMessage">{formErrors.UserName}</span>
-            )}
-          </div>
+        
           <div className="email">
-            <label htmlFor="email">Email ID *</label>
+            <label htmlFor="email">UserName/Email ID *</label>
             </div>
             <div>
             <MDBInput
@@ -360,101 +360,102 @@ export default class Registation extends Component {
               <span className="errorMessage">{formErrors.mobileNo}</span>
             )}
           </div>
-          <div className="password">
-            <label htmlFor="password">Date of Birth *</label>
+       
+          <div className="Address">
+            <label htmlFor="Address">Address *</label>
             </div>
             <div>
             <MDBInput
-              className={formErrors.password.length > 0 ? "error" : null}
-              placeholder="Date of Birth"
-              type="password"
-              name="password"
-              noValidate
-              onChange={this.handleChange}
-            />
-            {formErrors.password.length > 0 && (
-              <span className="errorMessage">{formErrors.password}</span>
-            )}
-          </div>
-          <div className="password">
-            <label htmlFor="password">Address *</label>
-            </div>
-            <div>
-            <MDBInput
-              className={formErrors.password.length > 0 ? "error" : null}
+              className={formErrors.Address.length > 0 ? "error" : null}
               placeholder="Address"
-              type="password"
-              name="password"
+              type="Address"
+              name="Address"
               noValidate
               onChange={this.handleChange}
             />
-            {formErrors.password.length > 0 && (
-              <span className="errorMessage">{formErrors.password}</span>
+            {formErrors.Address.length > 0 && (
+              <span className="errorMessage">{formErrors.Address}</span>
             )}
           </div>
-          <div className="password">
-            <label htmlFor="password">Country *</label>
+          <div className="Pincode">
+            <label htmlFor="Pincode">Pincode *</label>
             </div>
             <div>
             <MDBInput
-              className={formErrors.password.length > 0 ? "error" : null}
-              placeholder="Country"
-              type="password"
-              name="password"
+              className={formErrors.Pincode.length > 0 ? "error" : null}
+              placeholder="Pincode"
+              type="Pincode"
+              name="Pincode"
               noValidate
               onChange={this.handleChange}
             />
-            {formErrors.password.length > 0 && (
-              <span className="errorMessage">{formErrors.password}</span>
+            {formErrors.Pincode.length > 0 && (
+              <span className="errorMessage">{formErrors.Pincode}</span>
             )}
           </div>
-          <div className="password">
+          <div className="Country">
+            <label htmlFor="Country">Country *</label>
+            </div>
+            <div>
+            <MDBInput
+              className={formErrors.Country.length > 0 ? "error" : null}
+              placeholder="Country"
+              type="Country"
+              name="Country"
+              noValidate
+              onChange={this.handleChange}
+            />
+            {formErrors.Country.length > 0 && (
+              <span className="errorMessage">{formErrors.Country}</span>
+            )}
+          </div>
+          <div className="State">
             <label htmlFor="password">State *</label>
             </div>
             <div>
             <MDBInput
-              className={formErrors.password.length > 0 ? "error" : null}
+              className={formErrors.State.length > 0 ? "error" : null}
               placeholder="State"
-              type="password"
-              name="password"
+              type="State"
+              name="State"
               noValidate
               onChange={this.handleChange}
             />
-            {formErrors.password.length > 0 && (
-              <span className="errorMessage">{formErrors.password}</span>
+            {formErrors.State.length > 0 && (
+              <span className="errorMessage">{formErrors.State}</span>
             )}
           </div>
           
-          <div className="password">
+          <div className="City">
             <label htmlFor="password">City *</label>
             <MDBInput
-              className={formErrors.password.length > 0 ? "error" : null}
+              className={formErrors.City.length > 0 ? "error" : null}
               placeholder="City"
-              type="password"
-              name="password"
+              type="City"
+              name="City"
               noValidate
               onChange={this.handleChange}
             />
-            {formErrors.password.length > 0 && (
-              <span className="errorMessage">{formErrors.password}</span>
+            {formErrors.City.length > 0 && (
+              <span className="errorMessage">{formErrors.City}</span>
             )}
           </div>
-          <div className="password">
+          <div className="panid">
             <label htmlFor="password">PAN Card No *</label>
             <MDBInput
-              className={formErrors.password.length > 0 ? "error" : null}
+              className={formErrors.panid.length > 0 ? "error" : null}
               placeholder="PAN Card No."
-              type="password"
-              name="password"
+              type="panid"
+              name="panid"
               noValidate
               onChange={this.handleChange}
             />
-            {formErrors.password.length > 0 && (
-              <span className="errorMessage">{formErrors.password}</span>
+            {formErrors.panid.length > 0 && (
+              <span className="errorMessage">{formErrors.panid}</span>
             )}
           </div>
           <div className="createAccount">
-            <button  onClick={this.handleSubmit} type="submit">Create Account</button>
+            <button  onClick={this.handleSubmit} type="submit">Submit</button>
             <button onClick={this.sayHello} type = "submit">Already Have an Account?</button>
             {/* {this.state.showComponent ?
            <Groups/> :
