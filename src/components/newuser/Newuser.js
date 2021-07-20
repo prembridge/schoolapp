@@ -14,6 +14,7 @@ import image from '../assets/ca.jpg'
 import { useHistory } from "react-router-dom"
 import Carousel from 'react-bootstrap/Carousel'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { BorderAllSharp } from '@material-ui/icons';
 export default function Newuser() {
   const classes = useStyles();
   const history = useHistory();
@@ -76,6 +77,14 @@ export default function Newuser() {
   </Card>
   </Paper>
   
+  <br></br>
+  <div style={{alignItems:'center'}}>
+    <h2>IMPORTANT</h2>
+    <h6>
+- To be a regular partner to sponsor a child, please click SIGN UP
+- Sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Utwisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip 
+ </h6>
+  </div>
          </Grid>
         {/* <Grid item xs={6} sm={3}>
           <Paper className={classes.paper}>xs=6 sm=3</Paper>
@@ -154,6 +163,8 @@ const useStyles = makeStyles((theme) => ({
   },
   root1: {
     maxWidth: 2050,
+    borderColor:"#0A0A09",
+    BorderAllSharp:'2px'
   },
   media: {
     height: 150,

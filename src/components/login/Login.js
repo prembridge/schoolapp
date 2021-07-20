@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBInput } from 'mdbreact';
 import Grid from '@material-ui/core/Grid';
 import { useHistory } from "react-router-dom";
-
+import Swal from 'sweetalert2'
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 );
@@ -30,10 +30,12 @@ const formValid = ({ formErrors, ...rest }) => {
 
 
  export default class Login extends Component {
+   
   constructor(props) {
     super(props);
     this.state = {
       items:'',
+      token:'',
       isLoaded:false,
       username: "",
       password: "",
@@ -43,12 +45,16 @@ const formValid = ({ formErrors, ...rest }) => {
       lastName: null,
       email: null,
       password: null,
+      panid:null,
+      mobileNo:null,
       formErrors: {
         firstName: "",
         lastName: "",
         UserName:"",
         email: "",
-        password: ""
+        password: "",
+        panid:"",
+        mobileNo:"",
       }
     };
   }
@@ -66,7 +72,9 @@ const formValid = ({ formErrors, ...rest }) => {
     } else {
       console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
     }
+    this.getdata();
   };
+  // this.getdata()
   // getdata =()=>{
 
   // }
@@ -94,9 +102,9 @@ const formValid = ({ formErrors, ...rest }) => {
           ? ""
           : "invalid email address";
         break;
-      case "password":
-        formErrors.password =
-          value.length < 6 ? "minimum 6 characaters required" : "";
+        case "mobileNo":
+          formErrors.mobileNo =
+            value.length < 10 ? "minimum 10 characaters required" : "";
         break;
       default:
         break;
@@ -105,15 +113,7 @@ const formValid = ({ formErrors, ...rest }) => {
     this.setState({ formErrors, [name]: value }, () => console.log(this.state));
   };
 
-
-
-
-
-
-
-
-
-  setUsername = event => {
+ setUsername = event => {
     this.setState({
       username: event.target.value
     });
@@ -128,36 +128,85 @@ const formValid = ({ formErrors, ...rest }) => {
     this.props.history.push("./Registation");
   }
   saypay =()=> {
-    this.props.history.push("./Donation");
+    this.props.history.push("./guestprofile");
   }
   forgotpassword =()=> {
     this.props.history.push("./Forgotpassword");
   }
 componentDidMount(){
   // For initial data
-  this.getdata();
+ // this.getdata();
 }
 getdata =()=>{
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer e34257487ca30d74ca27c54a65148c981f1c013ea94a12a5829d");
-    var requestOptions = {
-      method: 'GET',
-      headers: myHeaders,
-      redirect: 'follow'
-    };
-    fetch("fmi/data/v1/databases/DUE/layouts/Users_management/records", requestOptions)
-    .then(response => response.json())
-    .then(json =>{
-    //  console.log("json"+ JSON.stringify(json))
-        this.setState({
-         isLoaded:true,
-         items:json.response.data.map(item=>{ 
-         return  item.fieldData.User_name
-         })
+  var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+var raw = JSON.stringify({
+  "FirstName": this.state.firstName,
+  "LastName": this.state.lastName,
+  "EmailID": this.state.email,
+  "Phonenumber": this.state.mobileNo,
+  "panid": this.state.panid
+});
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/guest", requestOptions)
+.then(response => response.json())
+.then(json =>{ 
+  var resdata =  json.otp;
+  console.log("resdara",resdata)
+  var savetoken =localStorage.setItem("otp" ,resdata)
+  var tokenvalue = localStorage.getItem("otp")
+  console.log("wht is in it"+tokenvalue)
+  if(tokenvalue == "undefined"){
+// return null;
+  }else{
+      {
+    Swal.fire({
+      title: 'Enter vaild OTP',
+  input: 'text',
+  showCancelButton: true,
+  confirmButtonText: 'Submit',
+  showLoaderOnConfirm: true,
+  preConfirm: function (email) {
+    return new Promise(function (resolve, reject) {
+      setTimeout(function() {
+        if (email === tokenvalue) {
+         
+          window.location = "./guestprofile";
+          reject('This email is already taken.')
+        } else {
+         
+         resolve()
+         alert("Enter Valid OTP..");
+        }
+      }, 2000)
+    })
+  },
+  allowOutsideClick: false
+    }).then(function() {
+     
+     // window.location = "./guestprofile";
+  })
+  }
 
-      })
-      })
-    
+
+
+  }
+   
+  
+})
+.then(result => console.log(result))
+.catch(error => console.log('error', error));
+
+
+ 
+  
+ 
+
 
 }
 
@@ -180,9 +229,13 @@ getdata =()=>{
        
         
          <MDBRow>
-           
+         <Grid container
+      spacing={0}
+      alignItems="center"
+      justify="center"
+      style={{ minHeight: '110vh' }}>
          
-         <MDBCard style={{ maxWidth :'800',borderColor:"#fcba03",} } > 
+         <MDBCard style={{ maxWidth :'100',borderColor:"#1c1a14",} } > 
         
          <div className="header pt-3 grey lighten-2" style={{  paddingRight :400} } >
             
@@ -200,46 +253,86 @@ getdata =()=>{
         <MDBCardBody className="mx-4 mt-4" style={{ maxWidth :'400'} }>
         <form onSubmit={this.handleSubmit} noValidate>
           
-          <div className="UserName">
-            <  label htmlFor="UserName">User Name</label>
-            <MDBInput
-              className={formErrors.UserName.length > 0 ? "error" : null}
-              placeholder=" UserName"
+        <div className="firstName"  style={{  paddingRight :800} } >
+           < label htmlFor="firstName">First Name* </ label>
+            </div>
+            <div>
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
+              className={formErrors.firstName.length > 0 ? "error" : null}
+              placeholder="First Name"
               type="text"
-              name="UserName"
+              name="firstName"
+              noValidate
+              
+              onChange={this.handleChange}
+            />
+            {formErrors.firstName.length > 0 && (
+              <span style={{ color: 'red' }} className="errorMessage">{formErrors.firstName}</span>
+            )}
+          </div>
+          <div >
+          <label htmlFor="lastName">Last Name* </label>
+            </div>
+            <div>
+
+            <MDBInput  style={{borderColor: 'gray', borderWidth: 1 }}
+              className={formErrors.lastName.length > 0 ? "error" : null}
+              placeholder="Last Name"
+              type="text"
+              name="lastName"
               noValidate
               onChange={this.handleChange}
             />
-            {formErrors.UserName.length > 0 && (
-              <span className="errorMessage">{formErrors.UserName}</span>
+            {formErrors.lastName.length > 0 && (
+              <span   style={{ color: 'red' }}className="errorMessage">{formErrors.lastName}</span>
             )}
           </div>
-          <div className="Email">
-            <  label htmlFor="Email ID">Email ID</label>
-            <MDBInput
-              className={formErrors.UserName.length > 0 ? "error" : null}
+        
+          <div className="email">
+            <label htmlFor="email">Email ID *</label>
+            </div>
+            <div>
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
+              className={formErrors.email.length > 0 ? "error" : null}
               placeholder="Email"
-              type="text"
-              name="Email ID"
+              type="email"
+              name="email"
               noValidate
               onChange={this.handleChange}
             />
-            {formErrors.UserName.length > 0 && (
-              <span className="errorMessage">{formErrors.UserName}</span>
+            {formErrors.email.length > 0 && (
+              <span   style={{ color: 'red' }} className="errorMessage">{formErrors.email}</span>
             )}
           </div>
-          <div className="password">
-            < label htmlFor="password">Phone</label>
-            <MDBInput
-              className={formErrors.password.length > 0 ? "error" : null}
-              placeholder="Password"
-              type="password"
-              name="password"
+          <div className="mobileNo">
+            <label htmlFor="mobileNo">Mobile No *</label>
+            </div>
+            <div>
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
+              className={formErrors.mobileNo.length > 0 ? "error" : null}
+              placeholder="MobileNo"
+              type="mobileNo"
+              name="mobileNo"
               noValidate
               onChange={this.handleChange}
             />
-            {formErrors.password.length > 0 && (
-              <span className="errorMessage">{formErrors.password}</span>
+            {formErrors.mobileNo.length > 0 && (
+              <span   style={{ color: 'red' }} className="errorMessage">{formErrors.mobileNo}</span>
+            )}
+          </div>
+       
+          <div className="panid">
+            <label htmlFor="password">PAN Card No *</label>
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
+              className={formErrors.panid.length > 0 ? "error" : null}
+              placeholder="PAN Card No."
+              type="panid"
+              name="panid"
+              noValidate
+              onChange={this.handleChange}
+            />
+            {formErrors.panid.length > 0 && (
+              <span  style={{ color: 'red' }}className="errorMessage">{formErrors.panid}</span>
             )}
           </div>
           {/* <p className="font-small grey-text d-flex justify-content-end">
@@ -256,7 +349,7 @@ getdata =()=>{
                   color="danger"
                 type="button"
                 className="btn-block z-depth-2"
-                onClick={this.saypay}       >
+                onClick={this.handleSubmit}     >
                  Log in
                 </MDBBtn>
               </div>
@@ -272,7 +365,7 @@ getdata =()=>{
           </form>
          </MDBCardBody>
          </MDBCard>
-         
+         </Grid>
       </MDBRow>
     </MDBContainer>
     );
@@ -303,72 +396,3 @@ const styles =
  
    };
 
-
-// import React from "react";
-// import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBInput } from 'mdbreact';
-// import { useHistory } from "react-router-dom";
-// const Login = () => {
-  
-//   const history = useHistory()
-//   const nextPage = () => {
-       
-//     history.push("./Registation");
-   
-//    }
-//   return (
-//     <MDBContainer>
-//       <MDBRow>
-//         <MDBCol md="6">
-//           <MDBCard style={{ backgroundColor:'#8cb6fa'} } > 
-//             <div className="header pt-3 grey lighten-2">
-//               <MDBRow className="d-flex justify-content-start">
-//                 <h3 className="deep-grey-text mt-3 mb-4 pb-1 mx-5">
-//                   Log in
-//                 </h3>
-//               </MDBRow>
-//             </div>
-//             <MDBCardBody className="mx-4 mt-4">
-//               <MDBInput label="Your email" group type="text" validate />
-//               <MDBInput
-//                 label="Your password"
-//                 group
-//                 type="password"
-//                 validate
-//                 containerClass="mb-0"
-//               />
-//               <p className="font-small grey-text d-flex justify-content-end">
-//                 Forgot
-//                 <a
-//                   href="#!"
-//                   className="dark-grey-text font-weight-bold ml-1"
-//                 >
-//                   Password?
-//                 </a>
-//               </p>
-//               <div className="text-center mb-4 mt-5">
-//                 <MDBBtn
-//                   color="danger"
-//                   type="button"
-//                   className="btn-block z-depth-2"
-//                 >
-//                   Log in
-//                 </MDBBtn>
-//               </div>
-//               <p className="font-small grey-text d-flex justify-content-center">
-//                 Don't have an account?
-//                 <a onClick={nextPage}
-//                   href="#!"
-//                   className="dark-grey-text font-weight-bold ml-1"
-//                 > Click
-//                   Sign up
-//                 </a>
-//               </p>
-//             </MDBCardBody>
-//           </MDBCard>
-//         </MDBCol>
-//       </MDBRow>
-//     </MDBContainer>
-//   );
-// };
-
-//export default Login;

@@ -16,12 +16,17 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import Grid from '@material-ui/core/Grid';
+import Swal from 'sweetalert2'
+import { useHistory } from "react-router-dom";
 //import Login, { Groups } from './Campaigns'
 import { withRouter } from "react-router-dom";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBInput } from 'mdbreact';
 
 const emailRegex = RegExp(
-  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+  RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i)
+);
+const PanRegex = RegExp(
+  RegExp(/^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/)
 );
 
 const formValid = ({ formErrors, ...rest }) => {
@@ -44,7 +49,7 @@ const formValid = ({ formErrors, ...rest }) => {
 
 
 export default class Registation extends Component {
-    
+   // const useHistory = history;
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -55,12 +60,14 @@ export default class Registation extends Component {
       // username: "",
       // password: "",
       message: "",
+      input: {},
       open: false,
       UserName: null,
       firstName: null,
       lastName: null,
       email: null,
       password: null,
+      confirmpassword:null,
      mobileNo:null,
      Address:null,
      Pincode:null,
@@ -69,12 +76,14 @@ export default class Registation extends Component {
      Country:null,
      Pincode:null,
      panid:null,
+     disable: true,
       formErrors: {
         firstName: "",
         lastName: "",
         UserName:"",
         email: "",
         password: "",
+        confirmpassword:"",
        mobileNo:"",
        Address:"",
        Pincode:"",
@@ -89,10 +98,27 @@ export default class Registation extends Component {
   saypay =()=> {
     this.props.history.push("./Donation");
   }
+// checkvaild=()=>{
+//   var password = this.state.password;
+//   var confirmpassword = this .state.confirmpassword
+//   if(password===confirmpassword){
+//     console.log("ok")
+//   }else{
+//     console.log('invaild')
+//   }
+//  console.log(this.state.password,"ccccccccccccccccccc")
+// }
+ 
   handleSubmit = e => {
+  
+    // this.setState({disable: e.target.value === ''})
+    // this.setState({disable: e.target.value === ''})
+
     e.preventDefault();
-//console.log(this.state.MobileNo ,"checking")
-    // if (formValid(this.state)) {
+
+     if (formValid(this.state)) {
+       
+      // ( this.state.firstName);
     //   // console.log(JSON.stringify(`
     //   //   --SUBMITTING--
     //   //   userName:${this.state.UserName}
@@ -100,10 +126,10 @@ export default class Registation extends Component {
     //   //   Last Name: ${this.state.lastName}
     //   //   Email: ${this.state.email}
     //   //   Password: ${this.state.password}
-    //   // `));
-    // } else {
-    //   console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
-    // }
+    //`));
+     } else {
+      // alert("FORM INVALID - DISPLAY ERROR MESSAGE");
+     }
     if (this.state.username === this.state.username && this.state.password === this.state.password) {
       this.setState({
         open: true,
@@ -136,23 +162,67 @@ export default class Registation extends Component {
       body: raw,
       redirect: 'follow'
     };
-    fetch("https://gzacors.herokuapp.com/http://122.185.13.164:3013/register", requestOptions).then(response => response.text())
-    .then(result => {
-      console.log('result', result)
-        this.props.history.push('/Donation');
+    fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/register", requestOptions).then(response => response.text())
+    .then(result => { var text = JSON.parse(result)
+      alert(result)
+      console.log('result', text.message)
+      console.log("otp",text.otp)
+      localStorage.setItem("otp",text.otp)
+      var tokenvalue = localStorage.getItem("otp")
+      console.log(text.message);
+      if(text.message === 'The E-mail already in use')
+      {
+        this.props.history.push('/Registation');
+      } 
+      else {
+        Swal.fire({
+          title: 'Enter vaild OTP',
+      input: 'text',
+      showCancelButton: true,
+      confirmButtonText: 'Submit',
+      showLoaderOnConfirm: true,
+      preConfirm: function (email) {
+        return new Promise(function (resolve, reject) {
+          setTimeout(function() {
+            if (email === tokenvalue) {
+              window.location ="./Newuserlogin"
+              //reject('This email is already taken.')
+            } else {
+             
+             resolve()
+             alert("Enter Valid OTP..");
+            }
+          }, 2000)
+        })
+      },
+      allowOutsideClick: false
+        }).then(function() {
+       //  {"data":"Succesfully registered.","otp":5972}
+         // window.location = "./guestprofile";
+      })
+      }
+      
+
+      
+      
+      // alert(result)
+        // this.props.history.push('/Newuserlogin');
          
       }).catch(error => console.log('error', error));
     
       
-      
+   
   
     
   };
 
   handleChange = e => {
+    //this.setState({disable: e.target.value === ''})
     e.preventDefault();
     const { name, value } = e.target;
     let formErrors = { ...this.state.formErrors };
+
+    //console.log("formerror=",formErrors.firstName)
 
     switch (name) {
       case "firstName":
@@ -176,6 +246,14 @@ export default class Registation extends Component {
         formErrors.password =
           value.length < 6 ? "minimum 6 characaters required" : "";
         break;
+        case "confirmpassword":
+          formErrors.confirmpassword = this.state.password !== this.state.confirmpassword ? " ": "Passwords don't match";
+        break;
+        case "panid":
+          formErrors.panid =PanRegex.test(value)
+            ? ""
+            : "invalid PAN ";
+          break;
         case "mobileNo":
           formErrors.mobileNo =
             value.length < 10 ? "minimum 10 characaters required" : "";
@@ -185,6 +263,7 @@ export default class Registation extends Component {
     }
 
     this.setState({ formErrors, [name]: value }, () => console.log(this.state));
+    console.log("formerror in state",this.state.formErrors)
   };
 
 
@@ -205,7 +284,7 @@ export default class Registation extends Component {
   };
 
   sayHello =()=> {
-    this.props.history.push("./Login");
+    this.props.history.push("./Newuserlogin");
    // history.push("/Login");
   }
  handleClose = () => {
@@ -270,206 +349,252 @@ export default class Registation extends Component {
       alignItems="center"
       justify="center"
       style={{ minHeight: '110vh' }}>
-      <MDBCard variant="outlined" className={styles.card}  style={{ maxWidth :'800',borderColor:"#fcba03",} }>
+      <MDBCard variant="outlined" className={styles.card}  style={{ maxWidth :'800',borderColor:"#1c1a14",} }>
         <CardContent align-items-center>
       <div className="wrapper">
       <div className="form-wrapper">
         <h3 style={{paddingLeft:400}}> Registration</h3>
 
         <form onSubmit={this.handleSubmit} noValidate>
-          <div className="firstName"  style={{  paddingRight :800} } >
+        <div class="form-row">
+        <div class=" col-md-6">
+          <div className="firstName"   >
            < label htmlFor="firstName">First Name* </ label>
             </div>
             <div>
-            <MDBInput
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
               className={formErrors.firstName.length > 0 ? "error" : null}
-              placeholder="First Name"
+              hint="First Name"
               type="text"
               name="firstName"
               noValidate
+              
               onChange={this.handleChange}
             />
             {formErrors.firstName.length > 0 && (
-              <span className="errorMessage">{formErrors.firstName}</span>
+              <span style={{ color: 'red' }} className="errorMessage">{formErrors.firstName}</span>
             )}
           </div>
+          </div>
           
-          <div >
+          <div class=" col-md-6">
           <label htmlFor="lastName">Last Name* </label>
-            </div>
-            <div>
-
-            <MDBInput  style={{borderColor: 'gray', borderWidth: 1 }}
+           <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
               className={formErrors.lastName.length > 0 ? "error" : null}
-              placeholder="Last Name"
+              hint="Last Name"
               type="text"
               name="lastName"
               noValidate
               onChange={this.handleChange}
             />
             {formErrors.lastName.length > 0 && (
-              <span className="errorMessage">{formErrors.lastName}</span>
+              <span   style={{ color: 'red' }}className="errorMessage">{formErrors.lastName}</span>
             )}
-          </div>
+           </div>
         
+        <div class="col-md-6">
           <div className="email">
             <label htmlFor="email">UserName/Email ID *</label>
             </div>
             <div>
-            <MDBInput
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
               className={formErrors.email.length > 0 ? "error" : null}
-              placeholder="Email"
+              hint="UserName/Email"
               type="email"
               name="email"
               noValidate
               onChange={this.handleChange}
             />
             {formErrors.email.length > 0 && (
-              <span className="errorMessage">{formErrors.email}</span>
+              <span   style={{ color: 'red' }} className="errorMessage">{formErrors.email}</span>
             )}
           </div>
+          </div>
+          <div class="col-md-6">
           <div className="password">
             <label htmlFor="password">Password *</label>
             </div>
             <div>
-            <MDBInput
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
               className={formErrors.password.length > 0 ? "error" : null}
-              placeholder="Password"
+              hint="Password"
               type="password"
               name="password"
               noValidate
               onChange={this.handleChange}
             />
             {formErrors.password.length > 0 && (
-              <span className="errorMessage">{formErrors.password}</span>
+              <span  style={{ color: 'red' }} className="errorMessage">{formErrors.password}</span>
             )}
           </div>
+          </div>
+          <div class="col-md-6">
+          <div className="password">
+            <label htmlFor="password">ConfirmPassword *</label>
+            </div>
+            <div>
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
+              className={formErrors.confirmpassword.length > 0 ? "error" : null}
+              hint="confirmpassword"
+              type="confirmpassword"
+              name="confirmpassword"
+              noValidate
+              onChange={this.handleChange}
+            />
+            {formErrors.confirmpassword.length > 0 && (
+              <span  style={{ color: 'red' }} className="errorMessage">{formErrors.confirmpassword}</span>
+            )}
+          </div>
+          </div>
+          <div class="col-md-6">
           <div className="mobileNo">
             <label htmlFor="mobileNo">Mobile No *</label>
             </div>
             <div>
-            <MDBInput
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
               className={formErrors.mobileNo.length > 0 ? "error" : null}
-              placeholder="MobileNo"
+              hint="MobileNo"
               type="mobileNo"
               name="mobileNo"
               noValidate
               onChange={this.handleChange}
             />
             {formErrors.mobileNo.length > 0 && (
-              <span className="errorMessage">{formErrors.mobileNo}</span>
+              <span   style={{ color: 'red' }} className="errorMessage">{formErrors.mobileNo}</span>
             )}
           </div>
+       </div>
        
+       <div class="col-md-6">
           <div className="Address">
             <label htmlFor="Address">Address *</label>
             </div>
             <div>
-            <MDBInput
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
               className={formErrors.Address.length > 0 ? "error" : null}
-              placeholder="Address"
+              hint="Address"
               type="Address"
               name="Address"
               noValidate
               onChange={this.handleChange}
             />
             {formErrors.Address.length > 0 && (
-              <span className="errorMessage">{formErrors.Address}</span>
+              <span   style={{ color: 'red' }} className="errorMessage">{formErrors.Address}</span>
             )}
           </div>
-          <div className="Pincode">
-            <label htmlFor="Pincode">Pincode *</label>
-            </div>
-            <div>
-            <MDBInput
-              className={formErrors.Pincode.length > 0 ? "error" : null}
-              placeholder="Pincode"
-              type="Pincode"
-              name="Pincode"
-              noValidate
-              onChange={this.handleChange}
-            />
-            {formErrors.Pincode.length > 0 && (
-              <span className="errorMessage">{formErrors.Pincode}</span>
-            )}
           </div>
-          <div className="Country">
-            <label htmlFor="Country">Country *</label>
-            </div>
-            <div>
-            <MDBInput
-              className={formErrors.Country.length > 0 ? "error" : null}
-              placeholder="Country"
-              type="Country"
-              name="Country"
-              noValidate
-              onChange={this.handleChange}
-            />
-            {formErrors.Country.length > 0 && (
-              <span className="errorMessage">{formErrors.Country}</span>
-            )}
-          </div>
+         
+          <div class=" col-md-6">
           <div className="State">
             <label htmlFor="password">State *</label>
             </div>
             <div>
-            <MDBInput
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
               className={formErrors.State.length > 0 ? "error" : null}
-              placeholder="State"
+              hint="State"
               type="State"
               name="State"
               noValidate
               onChange={this.handleChange}
             />
             {formErrors.State.length > 0 && (
-              <span className="errorMessage">{formErrors.State}</span>
+              <span   style={{ color: 'red' }}className="errorMessage">{formErrors.State}</span>
             )}
           </div>
-          
+          </div>
+          <div class=" col-md-6">
           <div className="City">
             <label htmlFor="password">City *</label>
-            <MDBInput
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
               className={formErrors.City.length > 0 ? "error" : null}
-              placeholder="City"
+              hint="City"
               type="City"
               name="City"
               noValidate
               onChange={this.handleChange}
             />
             {formErrors.City.length > 0 && (
-              <span className="errorMessage">{formErrors.City}</span>
+              <span  style={{ color: 'red' }} className="errorMessage">{formErrors.City}</span>
             )}
           </div>
+          </div>
+          <div class="col-md-6">
+          <div className="Pincode">
+            <label htmlFor="Pincode">Pincode *</label>
+            </div>
+            <div>
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
+              className={formErrors.Pincode.length > 0 ? "error" : null}
+              hint="Pincode"
+              type="Pincode"
+              name="Pincode"
+              noValidate
+              onChange={this.handleChange}
+            />
+            {formErrors.Pincode.length > 0 && (
+              <span  style={{ color: 'red' }} className="errorMessage">{formErrors.Pincode}</span>
+            )}
+          </div>
+          </div>
+          <div class="col-md-6">
+          <div className="Country">
+            <label htmlFor="Country">Country *</label>
+            </div>
+            <div>
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
+              className={formErrors.Country.length > 0 ? "error" : null}
+              hint="Country"
+              type="Country"
+              name="Country"
+              noValidate
+              onChange={this.handleChange}
+            />
+            {formErrors.Country.length > 0 && (
+              <span   style={{ color: 'red' }}className="errorMessage">{formErrors.Country}</span>
+            )}
+          </div>
+          </div>
+          <div class=" col-md-6">
           <div className="panid">
             <label htmlFor="password">PAN Card No *</label>
-            <MDBInput
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
               className={formErrors.panid.length > 0 ? "error" : null}
-              placeholder="PAN Card No."
+              hint="PAN Card No."
               type="panid"
               name="panid"
               noValidate
               onChange={this.handleChange}
             />
             {formErrors.panid.length > 0 && (
-              <span className="errorMessage">{formErrors.panid}</span>
+              <span  style={{ color: 'red' }}className="errorMessage">{formErrors.panid}</span>
             )}
           </div>
-          <div className="createAccount">
+          </div>
+          {/* <div className="createAccount">
             <button  onClick={this.handleSubmit} type="submit">Submit</button>
-            <button onClick={this.sayHello} type = "submit">Already Have an Account?</button>
+            <button onClick={this.sayHello} type = "submit">Already Have an Account?</button> */}
             {/* {this.state.showComponent ?
            <Groups/> :
            null
         } */}
+          
           </div>
+         
         </form>
+        <div  style={{   display: "flex",
+          justifyContent: "center",
+          alignItems: "center"}} className="createAccount">
+            <button disabled={!this.state.firstName|| !this.state.lastName ||!this.state.password|| !this.state.confirmpassword ||!this.state.panid||!this.state.email } style={{backgroundColor:'#f2dea0',paddingRight:40 }} onClick={this.handleSubmit} type="submit">Submit</button>
+            {/* disabled={!this.state.firstName|| !this.state.lastName ||!this.state.password|| !this.state.confirmpassword ||!this.state.panid||!this.state.email } */}
+            {/* <h5 onClick={this.sayHello} type = "submit">Already Have an Account?</h5> */}
+            </div>
       </div>
     </div>
     </CardContent>
     </MDBCard>
     </Grid>
     );
-  }
+  } 
 }
 const styles = 
  {

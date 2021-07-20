@@ -24,6 +24,10 @@ import Registation from '../registation/Registation'
 import Groups from '../groups/Groups'
 import Forgotpassword from '../forgotpassword/Forgotpassword'
 import Newuser from '../newuser/Newuser';
+import Guestprofile from '../Guestprofile/guestprofile'
+import Newuserlogin from '../newuserlogin/Newuserlogin'
+import Userprofile from '../userprofile/Userprofile'
+
 import {
   BrowserRouter as Router,
   Switch, Route, Link
@@ -107,6 +111,13 @@ function Header() {
        path="/Groups" component={Groups}></Route>
         <Route 
        path="/Newuser" component={Newuser}></Route>
+         <Route 
+       path="/Newuserlogin" component={Newuserlogin}></Route>
+        <Route 
+       path="/Guestprofile" component={Guestprofile}></Route>
+        <Route 
+       path="/Userprofile" component={Userprofile}></Route>
+
         <Route 
        path="/" component={Home}></Route>
         

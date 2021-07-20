@@ -51,81 +51,74 @@ export default function Users() {
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>
-         
-          <iframe width="600" height="315" src="https://www.youtube.com/embed/aQnR53coZmg"  frameBorder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowFullScreen></iframe>
-          </Paper>
-        </Grid>
+        <div style={{backgroundColor:"#FFEDD9",height:400,width:'1530px',paddingTop:100}}>
+          <h1 style={{fontFamily: 'Montserrat, sans-serif',fontWeight:'bold',paddingLeft:"65px",paddingLeft:600,}}>OUR VISION</h1>
+          <div style={{paddingTop:50, fontFamily:'Raleway,sans-serif',fontSize:'130px',}} >
+          <h6 style={{fontFamily: 'Raleway,sans-serif',fontSize:'40px',color:"#757575",fontStyle: 'italic',width:"1100px",textAlign:'center',paddingLeft:350}}>Reaching the last, the least and the lost 
+          for a better tomorrow </h6>
+            {/* <h6 style={{fontFamily: 'Raleway,sans-serif',fontSize:'30px',color:"#757575",fontStyle: 'italic'}}>for a better tomorrow</h6> */}
+</div>
+        </div>
+      
         <div>
              <Carousel>
   <Carousel.Item interval={1000}>
-    <img style={{width: '550px', height: '450px'}}
-      className="d-block w-100"
-      src={require("../assets/pc4.jpg")}
+    <img style={{ height: '550px',width:'1530px'}}
+      className="d-block w-0"
+      src={require("../assets/Testimony.jpg")}
       alt="First slide"
     />
     <Carousel.Caption>
       {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
-    
+      <h6 style={{paddingLeft:'790px',fontFamily: 'Montserrat, sans-serif',fontWeight:'bold',fontSize:'50px',paddingTop:'50px'}}>My Story</h6>
+      <p style={{paddingLeft:'790px',paddingTop:"90px",fontFamily: 'Raleway,sans-serif',fontSize:'20px',color:"white",fontStyle: 'italic',textAlign:'center',width:'1250px',paddingLeft:'575px'}}>
+This is a great place to add a tagline.
+
+Tell customers more about you. Add a few words and a stunning pic to grab their attention and get them to click.
+
+​This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</p>
     </Carousel.Caption>
   </Carousel.Item>
-  <Carousel.Item interval={500}>
-    <img style={{width: '550px', height: '450px'}}
+  
+  {/* <Carousel.Item interval={500}> */}
+    {/* <img style={{ height: '550px'}}
       className="d-block w-100"
-      src={require("../assets/pc1.jpg")}
+      src={require("../assets/Testimony.jpg")}
       alt="Third slide"
-    />
-     <Carousel.Caption>
+    /> */}
+     {/* <Carousel.Caption> */}
       {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
-    
-    </Carousel.Caption>
-  </Carousel.Item>
-  <Carousel.Item>
-    <img style={{width: '550px', height: '450px'}}
+      {/* <h5>My Story</h5>
+      <p style={{width:500,paddingLeft:700}}>
+This is a great place to add a tagline.
+
+Tell customers more about you. Add a few words and a stunning pic to grab their attention and get them to click.
+
+​This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</p> */}
+    {/* </Carousel.Caption> */}
+  {/* </Carousel.Item> */}
+  {/* <Carousel.Item> */}
+    {/* <img style={{height: '550px'}}
       className="d-block w-100"
-      src={require("../assets/pc2.jpg")}
+      src={require("../assets/Testimony.jpg")}
       alt="Third slide"
-    />
-    <Carousel.Caption>
-    <Carousel.Caption>
+    /> */}
+    {/* <Carousel.Caption> */}
+    {/* <Carousel.Caption> */}
       {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
-    
-    </Carousel.Caption>
-    </Carousel.Caption>
-  </Carousel.Item>
+      {/* <h5>My Story</h5>
+      <p style={{width:500,paddingRight:100}}>
+This is a great place to add a tagline.
+
+Tell customers more about you. Add a few words and a stunning pic to grab their attention and get them to click.
+
+​This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</p> */}
+    {/* </Carousel.Caption>
+    </Carousel.Caption> */}
+  {/* </Carousel.Item> */}
 </Carousel> 
         </div>
-        {/* <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}><h1>Grass Root-Based</h1>
-              <p>The relief and development work by World Vision India is community-based. Our staff reside with the communities at the grassroots - live with them, learn from them, listen to them and work alongside them to find solutions to their problems. An independent board exercises overall governance leadership, 
-                  managing risks and ensuring compliance to statutory requirements.</p></Paper>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-        <Paper className={classes.paper}><h1>Grass Root-Based</h1>
-              <p>The relief and development work by World Vision India is community-based. Our staff reside with the communities at the grassroots - live with them, learn from them, listen to them and work alongside them to find solutions to their problems. An independent board exercises overall governance leadership, 
-                  managing risks and ensuring compliance to statutory requirements.</p></Paper>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}>
-              <h1>Focus on Children</h1>
-              <p>All development work that we perform focus on children - the bright young minds of tomorrow.</p>
-          </Paper>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}><h1>Focus on Children</h1>
-              <p>All development work that we perform focus on children - the bright young minds of tomorrow.</p></Paper>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}><h1>Focus on Children</h1>
-              <p>All development work that we perform focus on children - the bright young minds of tomorrow.</p></Paper>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}><h1>Focus on Children</h1>
-              <p>All development work that we perform focus on children - the bright young minds of tomorrow.</p></Paper>
-        </Grid> */}
+      
       </Grid>
     </div>
   );

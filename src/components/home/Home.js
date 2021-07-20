@@ -19,7 +19,13 @@ import Login from '../login/Login'
 import Aboutus from '../aboutus/Aboutus'
 import { useHistory } from 'react-router-dom';
 import video from '../assets/title sketch.mp4'
-
+import TextTransition, { presets } from "react-text-transition";
+//import GradientText from "react-gradient-text"
+const TEXTS = [
+  "An initiative",
+  "For a better tomorrow",
+  
+];
 const useStyles = makeStyles({
   root: {
     
@@ -56,6 +62,16 @@ const STYLE = {
   }
 };
 const Home = () => {
+  
+  const [index, setIndex] = React.useState(0);
+
+  React.useEffect(() => {
+    const intervalId = setInterval(() =>
+      setIndex(index => index + 1),
+      3000 // every 3 seconds
+    );
+    return () => clearTimeout(intervalId);
+  }, []);
   const classes = useStyles();
   const history = useHistory();
   const params = {
@@ -74,21 +90,37 @@ const Home = () => {
       prevEl: '.swiper-button-prev'
     }
   }
+  
   return (
-      <div style={{paddingLeft:100,paddingTop:1}}>
-        <video controls autostart autoPlay src={video} type="video/mp4" />
-
-        <div style={{width:1000,
-      height: 70,
-      backgroundColor:'black',
-      position:'absolute',
-      bottom:-90,
-      
-      right:350,
-      left:100}}>
-        <h1 style={{color:'white',letterSpacing: 4,marginLeft: 10,marginTop:10}}>   FOR A BETTER FUTURE   </h1>
-        </div>
+      <div >
+        <div >
+          <img  style={{height:'554px'}}src={process.env.PUBLIC_URL + '/images/Panaah.jpg'}/>
+       
+         </div>
         <div style={{
+      height: 20,
+     //backgroundColor:'white',
+      position:'absolute',
+      top:480,
+     // paddingBottom:'1000px',
+     //right:350,
+     left:100
+      }}>
+        <h3 style={{color:'#FFEDD9',letterSpacing: -1, fontFamily:'Fira Sans sans-serif',fontSize:'80px',fontWeight: 'bold',lineHeight:'14px',textShadow:' 1px 1px 2px black'}}>  
+        {/* <TextTransition
+        
+        text={ TEXTS[index % TEXTS.length] }
+        springConfig={ presets.stiff } />  */}
+        An initiative </h3>
+        <h3 style={{color:'#FFEDD9  ',letterSpacing: -1, fontFamily:'Fira Sans sans-serif',fontSize:'80px',fontWeight: 'bold',textShadow:' 1px 1px 2px black'}}>  
+      
+       For a better tomorrow </h3>
+      
+     
+        {/* <h1  style={{color:'#FB9946',letterSpacing: 4,marginLeft: 50,marginTop:10 ,fontFamily:'Sacramento',fontSize:'70px'}}> 
+                        </h1> */}
+        </div>
+        {/* <div style={{
       height:50,
       position:'absolute',
       bottom:-80,
@@ -98,8 +130,8 @@ const Home = () => {
         <Button   style={{height: '50px', width : '300px',fontSize:22,marginLeft:-10, backgroundColor:"#F7EB00"}}variant="contained" color="#F7EB00" size="lg" onClick={() => history.push('/Newuser')}>
         I want Support
       </Button>
-        </div>
-        
+        </div> */}
+         
     {/* <Carousel>
   <Carousel.Item interval={1000}>
     <img style={{width: '550px', height: '450px'}}
@@ -137,11 +169,11 @@ const Home = () => {
     </Carousel.Caption>
   </Carousel.Item>
 </Carousel> */}
-    <br/>
+  
     <div>
     <Aboutus/>
     </div>
-    <br/>
+   
  <div>
  <Users/>
  </div>
