@@ -5,10 +5,23 @@ import Typography from "@material-ui/core/Typography";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBInput } from 'mdbreact';
 import Grid from '@material-ui/core/Grid';
 import { useHistory } from "react-router-dom";
+import styled from "styled-components";
+const Styles = styled.div`
 
-const emailRegex = RegExp(
-  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-);
+.rcorners1 {
+    border-radius: 45px;
+    border: 2px solid #000000;
+    padding-left: 60px;
+    padding-right: 20px;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    width: 550px;
+    height: 500px;
+    margin-left: 30.5rem;
+    margin-top: 8.5rem;
+  }`
+const emailRegex = 
+  RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
 
 const formValid = ({ formErrors, ...rest }) => { 
   let valid = true;
@@ -251,92 +264,183 @@ console.log("newplan",localStorage.getItem("New_plan"))
     console.log(err,"err")
 
     return (
-      <MDBContainer >
+      <Styles>
+<div className="rcorners1">
+<h3>New Donor SignIn</h3>
+<MDBContainer >
        
         
-         <MDBRow>
-         <Grid container
-      spacing={0}
-      alignItems="center"
-      justify="center"
-      style={{ minHeight: '110vh' }}>
+       <MDBRow>
+       {/* <Grid container 
+    spacing={0}
+    alignItems="center"
+    justify="center"
+    style={{ minHeight: '110vh' }}>
+        */}
+      
+      
+       {/* <div className="header pt-3 grey lighten-2" style={{  paddingRight :400} } >
+          
+          <MDBCol  className="d-flex justify-content-start">
+              <h3 className="deep-grey-text mt-3 mb-4 pb-1 mx-5">
+                User Login
+             </h3>
+           </MDBCol>
+          </div> */}
          
-         <MDBCard style={{ maxWidth :'800',borderColor:"#fcba03",} } > 
+      
+      {/* <img style={{position:"center", top:100 , width:150,height:150}}  src={process.env.PUBLIC_URL + '/images/login.svg'} /> */}
+      
+    
+      <MDBCardBody className="mx-4 mt-4" style={{ maxWidth :'400'} }>
+      <form onSubmit={this.handleSubmit} noValidate>
         
-         <div className="header pt-3 grey lighten-2" style={{  paddingRight :400} } >
-            
-            <MDBCol  className="d-flex justify-content-start">
-                <h3 className="deep-grey-text mt-3 mb-4 pb-1 mx-5">
-                  User Login
-               </h3>
-             </MDBCol>
+      <div className="email">
+          <label htmlFor="email">Email ID *</label>
+          </div>
+          <div>
+          <MDBInput
+            className={formErrors.email.length > 0 ? "error" : null}
+            placeholder="Email"
+            type="email"
+            name="email"
+            noValidate
+            onChange={this.handleChange}
+          />
+          {formErrors.email.length > 0 && (
+            <span   style={{ color: 'red' }} className="errorMessage">{formErrors.email}</span>
+          )}
+        </div>
+        <div className="password">
+          <label htmlFor="password">Password *</label>
+          </div>
+          <div>
+          <MDBInput
+            className={formErrors.password.length > 0 ? "error" : null}
+            placeholder="Password"
+            type="password"
+            name="password"
+            noValidate
+            onChange={this.handleChange}
+          />
+          {formErrors.password.length > 0 && (
+            <span  style={{ color: 'red' }} className="errorMessage">{formErrors.password}</span>
+          )}
+        </div>
+     
+            <div className="text-center mb-4 mt-5">
+             <button style={{backgroundColor:"#FFEDD9",width:150,height:50,borderRadius:50}}
+               
+              type="button"
+              className="btn-block z-depth-2"
+              onClick={this.handleSubmit}>
+               SignIn
+              </button>
             </div>
+          {/* <p className="font-small grey-text d-flex justify-content-center">
+             New User Register.
+               <a onClick={this.sayHello}
+                href="#!"
+                className="dark-grey-text font-weight-bold ml-1"
+             > Click
+               Register
+          </a>
+        </p> */}
+        </form>
+        <h1>{err}</h1>
+       </MDBCardBody>
+  
+       {/* </Grid> */}
+    </MDBRow>
+  </MDBContainer>
+</div>
+ </Styles>
+    //   <MDBContainer >
+       
+        
+    //      <MDBRow>
+    //      <Grid container
+    //   spacing={0}
+    //   alignItems="center"
+    //   justify="center"
+    //   style={{ minHeight: '110vh' }}>
+         
+    //      <MDBCard style={{ maxWidth :'800',borderColor:"#fcba03",} } > 
+        
+    //      <div className="header pt-3 grey lighten-2" style={{  paddingRight :400} } >
+            
+    //         <MDBCol  className="d-flex justify-content-start">
+    //             <h3 className="deep-grey-text mt-3 mb-4 pb-1 mx-5">
+    //               User Login
+    //            </h3>
+    //          </MDBCol>
+    //         </div>
            
         
-        {/* <img style={{position:"center", top:100 , width:150,height:150}}  src={process.env.PUBLIC_URL + '/images/login.svg'} /> */}
+    //     {/* <img style={{position:"center", top:100 , width:150,height:150}}  src={process.env.PUBLIC_URL + '/images/login.svg'} /> */}
         
       
-        <MDBCardBody className="mx-4 mt-4" style={{ maxWidth :'400'} }>
-        <form onSubmit={this.handleSubmit} noValidate>
+    //     <MDBCardBody className="mx-4 mt-4" style={{ maxWidth :'400'} }>
+    //     <form onSubmit={this.handleSubmit} noValidate>
           
-        <div className="email">
-            <label htmlFor="email">Email ID *</label>
-            </div>
-            <div>
-            <MDBInput
-              className={formErrors.email.length > 0 ? "error" : null}
-              placeholder="Email"
-              type="email"
-              name="email"
-              noValidate
-              onChange={this.handleChange}
-            />
-            {formErrors.email.length > 0 && (
-              <span   style={{ color: 'red' }} className="errorMessage">{formErrors.email}</span>
-            )}
-          </div>
-          <div className="password">
-            <label htmlFor="password">Password *</label>
-            </div>
-            <div>
-            <MDBInput
-              className={formErrors.password.length > 0 ? "error" : null}
-              placeholder="Password"
-              type="password"
-              name="password"
-              noValidate
-              onChange={this.handleChange}
-            />
-            {formErrors.password.length > 0 && (
-              <span  style={{ color: 'red' }} className="errorMessage">{formErrors.password}</span>
-            )}
-          </div>
+    //     <div className="email">
+    //         <label htmlFor="email">Email ID *</label>
+    //         </div>
+    //         <div>
+    //         <MDBInput
+    //           className={formErrors.email.length > 0 ? "error" : null}
+    //           placeholder="Email"
+    //           type="email"
+    //           name="email"
+    //           noValidate
+    //           onChange={this.handleChange}
+    //         />
+    //         {formErrors.email.length > 0 && (
+    //           <span   style={{ color: 'red' }} className="errorMessage">{formErrors.email}</span>
+    //         )}
+    //       </div>
+    //       <div className="password">
+    //         <label htmlFor="password">Password *</label>
+    //         </div>
+    //         <div>
+    //         <MDBInput
+    //           className={formErrors.password.length > 0 ? "error" : null}
+    //           placeholder="Password"
+    //           type="password"
+    //           name="password"
+    //           noValidate
+    //           onChange={this.handleChange}
+    //         />
+    //         {formErrors.password.length > 0 && (
+    //           <span  style={{ color: 'red' }} className="errorMessage">{formErrors.password}</span>
+    //         )}
+    //       </div>
        
-              <div className="text-center mb-4 mt-5">
-               <MDBBtn
-                  color="danger"
-                type="button"
-                className="btn-block z-depth-2"
-                onClick={this.handleSubmit}>
-                 SignIn
-                </MDBBtn>
-              </div>
-            {/* <p className="font-small grey-text d-flex justify-content-center">
-               New User Register.
-                 <a onClick={this.sayHello}
-                  href="#!"
-                  className="dark-grey-text font-weight-bold ml-1"
-               > Click
-                 Register
-            </a>
-          </p> */}
-          </form>
-          <h1>{err}</h1>
-         </MDBCardBody>
-         </MDBCard>
-         </Grid>
-      </MDBRow>
-    </MDBContainer>
+    //           <div className="text-center mb-4 mt-5">
+    //            <MDBBtn
+    //               color="danger"
+    //             type="button"
+    //             className="btn-block z-depth-2"
+    //             onClick={this.handleSubmit}>
+    //              SignIn
+    //             </MDBBtn>
+    //           </div>
+    //         {/* <p className="font-small grey-text d-flex justify-content-center">
+    //            New User Register.
+    //              <a onClick={this.sayHello}
+    //               href="#!"
+    //               className="dark-grey-text font-weight-bold ml-1"
+    //            > Click
+    //              Register
+    //         </a>
+    //       </p> */}
+    //       </form>
+    //       <h1>{err}</h1>
+    //      </MDBCardBody>
+    //      </MDBCard>
+    //      </Grid>
+    //   </MDBRow>
+    // </MDBContainer>
     );
   }
 }

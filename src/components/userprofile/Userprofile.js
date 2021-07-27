@@ -1,11 +1,52 @@
 import React,{useState,useEffect} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles ,useTheme} from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
-import { Button,Tabs } from 'bootstrap';
+import { Button} from 'bootstrap';
 import { updateTextFields } from 'materialize-css';
 import Component from "@reactions/component";
+import SwipeableViews from 'react-swipeable-views';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import PropTypes from 'prop-types';
+import AppBar from '@material-ui/core/AppBar';
+
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`scrollable-auto-tabpanel-${index}`}
+      aria-labelledby={`scrollable-auto-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box p={3}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.any.isRequired,
+  value: PropTypes.any.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `scrollable-auto-tab-${index}`,
+    'aria-controls': `scrollable-auto-tabpanel-${index}`,
+  };
+}
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -23,7 +64,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Userprofile() {
   const [NMonth, setNMonth] = useState('');
-  
+  const [Nchild, setNchild] =useState('');
+  const [Nyear,setNyear] =useState('');
+  const [Inst, setInst] = useState('');
+  const[PaymentType ,setPaymentType] = useState('');
   useEffect(() => {
   
     var requestOptions = {
@@ -34,12 +78,23 @@ export default function Userprofile() {
       .then(response => response.json())
       .then(json => {
        var Payment_type = json.data.Payment_type
+       var No_of_child = json.data.No_of_child
+       var No_of_year = json.data.No_of_year
+       var Installment = json.data.Total
       //  var pkid =json.data.Pk_id
+      setNchild(No_of_child)
+      setNyear(No_of_year)
+      setInst(Installment)
+      setPaymentType(Payment_type)
        localStorage.setItem("Payment_type",Payment_type)
+      // localStorage.setItem(" No_of_child",)
       //   localStorage.setItem("pkid",pkid)
         var get = localStorage.getItem("Payment_type")
         // console.log("id",Payment_type)
         console.log("json usercurent..",json)
+        console.log("Noofchild",No_of_child)
+        console.log("NoofYear",No_of_year)
+        console.log("installment",Installment)
       }
        )
       .catch(error => console.log('error', error));
@@ -67,6 +122,12 @@ var requestOptions = {
 
 }
   const classes = useStyles();
+  const theme = useTheme();
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
   const [fName, setfName] = useState('');
     const [lName, setlName] = useState('');
     const [Add, setAdd] = useState('');
@@ -152,13 +213,69 @@ fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/putuser/ "+local
                   <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                     <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter mr-2 icon-inline text-info"><path d="M17.388,4.751H2.613c-0.213,0-0.389,0.175-0.389,0.389v9.72c0,0.216,0.175,0.389,0.389,0.389h14.775c0.214,0,0.389-0.173,0.389-0.389v-9.72C17.776,4.926,17.602,4.751,17.388,4.751 M16.448,5.53L10,11.984L3.552,5.53H16.448zM3.002,6.081l3.921,3.925l-3.921,3.925V6.081z M3.56,14.471l3.914-3.916l2.253,2.253c0.153,0.153,0.395,0.153,0.548,0l2.253-2.253l3.913,3.916H3.56z M16.999,13.931l-3.921-3.925l3.921-3.925V13.931z"></path></svg>Current plan</h6>
                     <span class="text-secondary">{localStorage.getItem("Payment_type")}</span>
-                    <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap" style={{marginLeft:'-18px'}}>
                     <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter mr-2 icon-inline text-info"></svg> Update Current plan</h6>
                     <span class="text-secondary">
                    
 							
-								<div style={{paddingLeft:150}}>
-									<input type="button" onClick={updatedrop}  class="btn btn-primary px-4" value="Update"></input>
+								<div style={{width:'305px'}}>
+									{/* <input type="button" onClick={updatedrop}  class="btn btn-primary px-4" value="Update"></input> */}
+                  <AppBar position="static" color="default">
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          indicatorColor="primary"
+          textColor="primary"
+          variant="scrollable"
+          scrollButtons="auto"
+          aria-label="scrollable auto tabs example"
+        >
+          <Tab label="Current plan" {...a11yProps(0)} />
+          <Tab label="Edit plan" {...a11yProps(1)} />
+         
+        </Tabs>
+      </AppBar>
+      <TabPanel value={value} index={0}>
+      <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter mr-2 icon-inline text-info"><path d="M17.388,4.751H2.613c-0.213,0-0.389,0.175-0.389,0.389v9.72c0,0.216,0.175,0.389,0.389,0.389h14.775c0.214,0,0.389-0.173,0.389-0.389v-9.72C17.776,4.926,17.602,4.751,17.388,4.751 M16.448,5.53L10,11.984L3.552,5.53H16.448zM3.002,6.081l3.921,3.925l-3.921,3.925V6.081z M3.56,14.471l3.914-3.916l2.253,2.253c0.153,0.153,0.395,0.153,0.548,0l2.253-2.253l3.913,3.916H3.56z M16.999,13.931l-3.921-3.925l3.921-3.925V13.931z"></path></svg>Number of Children:</h6>
+                    <span class="text-secondary">{Nchild}</span>
+                  </li>
+                 
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter mr-2 icon-inline text-info"><path d="M17.388,4.751H2.613c-0.213,0-0.389,0.175-0.389,0.389v9.72c0,0.216,0.175,0.389,0.389,0.389h14.775c0.214,0,0.389-0.173,0.389-0.389v-9.72C17.776,4.926,17.602,4.751,17.388,4.751 M16.448,5.53L10,11.984L3.552,5.53H16.448zM3.002,6.081l3.921,3.925l-3.921,3.925V6.081z M3.56,14.471l3.914-3.916l2.253,2.253c0.153,0.153,0.395,0.153,0.548,0l2.253-2.253l3.913,3.916H3.56z M16.999,13.931l-3.921-3.925l3.921-3.925V13.931z"></path></svg>Duration:</h6>
+                    <span class="text-secondary">{Nyear +"Years"}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter mr-2 icon-inline text-info"><path d="M17.388,4.751H2.613c-0.213,0-0.389,0.175-0.389,0.389v9.72c0,0.216,0.175,0.389,0.389,0.389h14.775c0.214,0,0.389-0.173,0.389-0.389v-9.72C17.776,4.926,17.602,4.751,17.388,4.751 M16.448,5.53L10,11.984L3.552,5.53H16.448zM3.002,6.081l3.921,3.925l-3.921,3.925V6.081z M3.56,14.471l3.914-3.916l2.253,2.253c0.153,0.153,0.395,0.153,0.548,0l2.253-2.253l3.913,3.916H3.56z M16.999,13.931l-3.921-3.925l3.921-3.925V13.931z"></path></svg>Payment:</h6>
+                    <span class="text-secondary">{PaymentType}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter mr-2 icon-inline text-info"><path d="M17.388,4.751H2.613c-0.213,0-0.389,0.175-0.389,0.389v9.72c0,0.216,0.175,0.389,0.389,0.389h14.775c0.214,0,0.389-0.173,0.389-0.389v-9.72C17.776,4.926,17.602,4.751,17.388,4.751 M16.448,5.53L10,11.984L3.552,5.53H16.448zM3.002,6.081l3.921,3.925l-3.921,3.925V6.081z M3.56,14.471l3.914-3.916l2.253,2.253c0.153,0.153,0.395,0.153,0.548,0l2.253-2.253l3.913,3.916H3.56z M16.999,13.931l-3.921-3.925l3.921-3.925V13.931z"></path></svg>TotalAmount:</h6>
+                    <span class="text-secondary">{Inst}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter mr-2 icon-inline text-info"><path d="M17.388,4.751H2.613c-0.213,0-0.389,0.175-0.389,0.389v9.72c0,0.216,0.175,0.389,0.389,0.389h14.775c0.214,0,0.389-0.173,0.389-0.389v-9.72C17.776,4.926,17.602,4.751,17.388,4.751 M16.448,5.53L10,11.984L3.552,5.53H16.448zM3.002,6.081l3.921,3.925l-3.921,3.925V6.081z M3.56,14.471l3.914-3.916l2.253,2.253c0.153,0.153,0.395,0.153,0.548,0l2.253-2.253l3.913,3.916H3.56z M16.999,13.931l-3.921-3.925l3.921-3.925V13.931z"></path></svg>InstallmentAmt:</h6>
+                    <span class="text-secondary">{Inst}</span>
+                  </li>
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+       	<input type="button" onClick={updatedrop}  class="btn btn-primary px-4" value="Update"></input>
+         <select className="browser-default custom-select"  name="choice"
+
+// onChange={onChange}  
+title="Payment Plan"
+id="dropdown-menu-align-right"
+onChange={e => setNMonth(e.target.value)}>
+    <option disabled>Choose your option</option>
+    <option  value="fullAmount">Full Amount</option>
+    <option  value="annual">Annual</option>
+    <option  value="halfYearly">Half yearly</option>
+    <option  value="quarterly">quarterly</option>
+    <option value="monthly">Monthly</option>
+  </select>
+
+      </TabPanel>
+     
 								</div>
                 
 						<br></br>
@@ -188,7 +305,7 @@ fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/putuser/ "+local
       )}
     </Component>
             </div> */}
-                    <select className="browser-default custom-select"  name="choice"
+                    {/* <select className="browser-default custom-select"  name="choice"
 
 // onChange={onChange}  
 title="Payment Plan"
@@ -200,7 +317,7 @@ onChange={e => setNMonth(e.target.value)}>
     <option  value="halfYearly">Half yearly</option>
     <option  value="quarterly">quarterly</option>
     <option value="monthly">Monthly</option>
-  </select>
+  </select> */}
                     </span>
                   </li>
                   </li>

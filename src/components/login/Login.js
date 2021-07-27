@@ -43,7 +43,7 @@ const formValid = ({ formErrors, ...rest }) => {
       open: false,
       firstName: null,
       lastName: null,
-      email: null,
+      email: localStorage.getItem("GuestuserEmail"),
       password: null,
       panid:null,
       mobileNo:null,
@@ -143,7 +143,7 @@ myHeaders.append("Content-Type", "application/json");
 var raw = JSON.stringify({
   "FirstName": this.state.firstName,
   "LastName": this.state.lastName,
-  "EmailID": this.state.email,
+  "EmailID":localStorage.getItem("GuestuserEmail"),
   "Phonenumber": this.state.mobileNo,
   "panid": this.state.panid
 });
@@ -233,33 +233,34 @@ fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/guest", requestO
       spacing={0}
       alignItems="center"
       justify="center"
-      style={{ minHeight: '110vh' }}>
-         
-         <MDBCard style={{ maxWidth :'100',borderColor:"#1c1a14",} } > 
+      style={{ minHeight: '80vh' }}>
+          <h3 style={{paddingLeft:'200px',paddingTop:'50px'}}>Guest Information Page</h3>
+         <MDBCard style={{maxWidth :'1100px',borderColor:"#1c1a14",paddingLeft:'25px'} } > 
         
-         <div className="header pt-3 grey lighten-2" style={{  paddingRight :400} } >
+         {/* <div className="header pt-3 grey lighten-2" style={{  paddingRight :400} } >
             
             <MDBCol  className="d-flex justify-content-start">
                 <h3 className="deep-grey-text mt-3 mb-4 pb-1 mx-5">
                   Guest Login
                </h3>
              </MDBCol>
-            </div>
+            </div> */}
            
         
         {/* <img style={{position:"center", top:100 , width:150,height:150}}  src={process.env.PUBLIC_URL + '/images/login.svg'} /> */}
         
       
-        <MDBCardBody className="mx-4 mt-4" style={{ maxWidth :'400'} }>
+        <MDBCardBody className="mx-4 mt-4" style={{ maxWidth :'400',paddingTop:"80px"} }>
         <form onSubmit={this.handleSubmit} noValidate>
-          
-        <div className="firstName"  style={{  paddingRight :800} } >
+        <div class="form-row">
+        <div class=" col-md-6">
+        <div className="firstName"> 
            < label htmlFor="firstName">First Name* </ label>
             </div>
             <div>
-            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1,maxWidth:'450px' }}
               className={formErrors.firstName.length > 0 ? "error" : null}
-              placeholder="First Name"
+              hint="First Name"
               type="text"
               name="firstName"
               noValidate
@@ -270,14 +271,13 @@ fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/guest", requestO
               <span style={{ color: 'red' }} className="errorMessage">{formErrors.firstName}</span>
             )}
           </div>
-          <div >
+          </div>
+          
+          <div class=" col-md-6">
           <label htmlFor="lastName">Last Name* </label>
-            </div>
-            <div>
-
-            <MDBInput  style={{borderColor: 'gray', borderWidth: 1 }}
+           <MDBInput style={{borderColor: 'gray', borderWidth: 1,maxWidth:'450px' }}
               className={formErrors.lastName.length > 0 ? "error" : null}
-              placeholder="Last Name"
+              hint="Last Name"
               type="text"
               name="lastName"
               noValidate
@@ -286,31 +286,32 @@ fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/guest", requestO
             {formErrors.lastName.length > 0 && (
               <span   style={{ color: 'red' }}className="errorMessage">{formErrors.lastName}</span>
             )}
-          </div>
-        
-          <div className="email">
-            <label htmlFor="email">Email ID *</label>
-            </div>
-            <div>
-            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
-              className={formErrors.email.length > 0 ? "error" : null}
-              placeholder="Email"
-              type="email"
-              name="email"
+           </div>
+           
+           <div class=" col-md-6">
+          <div className="panid">
+            <label htmlFor="password">PAN Card No *</label>
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1,maxWidth:'450px' }}
+              className={formErrors.panid.length > 0 ? "error" : null}
+              hint="PAN Card No."
+              type="panid"
+              name="panid"
               noValidate
               onChange={this.handleChange}
             />
-            {formErrors.email.length > 0 && (
-              <span   style={{ color: 'red' }} className="errorMessage">{formErrors.email}</span>
+            {formErrors.panid.length > 0 && (
+              <span  style={{ color: 'red' }}className="errorMessage">{formErrors.panid}</span>
             )}
           </div>
+          </div>
+          <div class="col-md-6">
           <div className="mobileNo">
             <label htmlFor="mobileNo">Mobile No *</label>
             </div>
             <div>
-            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1,maxWidth:'450px' }}
               className={formErrors.mobileNo.length > 0 ? "error" : null}
-              placeholder="MobileNo"
+              hint="MobileNo"
               type="mobileNo"
               name="mobileNo"
               noValidate
@@ -320,20 +321,25 @@ fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/guest", requestO
               <span   style={{ color: 'red' }} className="errorMessage">{formErrors.mobileNo}</span>
             )}
           </div>
+       </div>
        
-          <div className="panid">
-            <label htmlFor="password">PAN Card No *</label>
-            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
-              className={formErrors.panid.length > 0 ? "error" : null}
-              placeholder="PAN Card No."
-              type="panid"
-              name="panid"
+       <div class="col-md-6">
+          <div className="email">
+            <label htmlFor="email">UserName/Email ID *</label>
+            </div>
+            <div>
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1,maxWidth:'1050px' }}
+              className={formErrors.email.length > 0 ? "error" : null}
+              hint={localStorage.getItem("GuestuserEmail")}
+              type="email"
+              name="email"
               noValidate
               onChange={this.handleChange}
-            />
-            {formErrors.panid.length > 0 && (
-              <span  style={{ color: 'red' }}className="errorMessage">{formErrors.panid}</span>
+              disabled />
+            {formErrors.email.length > 0 && (
+              <span   style={{ color: 'red' }} className="errorMessage">{formErrors.email}</span>
             )}
+          </div>
           </div>
           {/* <p className="font-small grey-text d-flex justify-content-end">
                 Forgot
@@ -344,15 +350,7 @@ fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/guest", requestO
                   Password?
                </a>        
                 </p> */}
-              <div className="text-center mb-4 mt-5">
-               <MDBBtn
-                  color="danger"
-                type="button"
-                className="btn-block z-depth-2"
-                onClick={this.handleSubmit}     >
-                 Log in
-                </MDBBtn>
-              </div>
+            
             {/* <p className="font-small grey-text d-flex justify-content-center">
                New User Register.
                  <a onClick={this.sayHello}
@@ -362,7 +360,19 @@ fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/guest", requestO
                  Register
             </a>
           </p> */}
+          </div>
           </form>
+          <div style ={{display: "flex",
+          justifyContent: "center",
+          alignItems: "center"}}>
+               <button style={{backgroundColor:"#FFEDD9",width:150,height:50,borderRadius:50}}
+                  color="danger"
+                type="button"
+               
+                onClick={this.handleSubmit}     >
+               Proceed
+                </button>
+              </div>
          </MDBCardBody>
          </MDBCard>
          </Grid>

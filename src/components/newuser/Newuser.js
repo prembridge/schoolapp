@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -14,131 +14,233 @@ import image from '../assets/ca.jpg'
 import { useHistory } from "react-router-dom"
 import Carousel from 'react-bootstrap/Carousel'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BorderAllSharp } from '@material-ui/icons';
+import { BorderAllSharp, Style } from '@material-ui/icons';
+import styled from "styled-components";
+import { Container, Row, Col } from "reactstrap";
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBInput,MDBInputGroup } from 'mdbreact';
+import { light } from '@material-ui/core/styles/createPalette';
+
+const Styles = styled.div`
+
+.rcorners1 {
+    border-radius: 45px;
+    border: 2px solid #000000;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 550px;
+    height: 260px;
+    margin-left: -9.5rem;
+    margin-top: 1.5rem;
+  }   
+  .rcorners2 {
+    border-radius: 45px;
+    border: 2px solid #000000;
+    padding-left: 80px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 550px;
+    height: 260px;
+    margin-top: 1.5rem;
+  }
+  .rcorners3 {
+    border-radius: 45px;
+    border: 2px solid #000000;
+    padding-left: 85px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 900px;
+    height: 200px;
+    margin-left: 12.5rem;
+    margin-top: 1.5rem;
+  }`
 export default function Newuser() {
+  const [NewuserEmail, setFirstName] = useState('');
+  const [GuestuserEmail, setGuestuserEmail] = useState('');
+  const [VolunteerEmail, setVolunteerEmail] = useState('');
   const classes = useStyles();
   const history = useHistory();
+  var NewuserEmaill = NewuserEmail
+  var GuestuserEmaill =GuestuserEmail
+  var VolunteerEmaill =VolunteerEmail
+  localStorage.setItem("Newuseremail",NewuserEmaill)
+  localStorage.setItem("GuestuserEmail",GuestuserEmaill)
+   var getem =localStorage.getItem("Newuseremail")
+   var getgu =localStorage.getItem("GuestuserEmail")
+  console.log("name",getgu)
+  console.log("guest",GuestuserEmaill)
+  console.log("volunteer",VolunteerEmaill)
   return (
-    <div className={classes.root}>
-      <Grid container spacing={3}>
-     
-        <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>
-             <Card className={classes.root1}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={image}
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            New user Registation
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button style={{height: '50px', width : '300px',fontSize:22,marginLeft:20, backgroundColor:"#F7EB00"}} onClick={() => history.push('/Registation')} size="small" color="primary">
-        Click here Registation
-        </Button>
-       
-      </CardActions>
-    </Card></Paper>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>
-    <Card className={classes.root1}>
-    <CardActionArea>
-      <CardMedia
-        className={classes.media}
-        image={image}
-        title="Contemplative Reptile"
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="h2">
-          Guest Login
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-          Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-          across all continents except Antarctica
-        </Typography>
-      </CardContent>
-    </CardActionArea>
-    <CardActions>
-      <Button style={{height: '50px', width : '300px',fontSize:22,marginLeft:50, backgroundColor:"#F7EB00"}} onClick={() => history.push('/Login')} size="small" color="primary">
-        Click here Guest Login 
-      </Button>
-      
-    </CardActions>
-  </Card>
-  </Paper>
+    // <div style={{paddingLeft:'125px'}}>
+    <Styles> 
+      <Container className="container">
+      <div style={{paddingLeft:'70px'}}>
+          <Row>
+           
+            <Col>
+            <div className="rcorners1"> 
+  <h3>New Donor Registation</h3>
   
-  <br></br>
-  <div style={{alignItems:'center'}}>
-    <h2>IMPORTANT</h2>
-    <h6>
-- To be a regular partner to sponsor a child, please click SIGN UP
-- Sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Utwisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip 
- </h6>
+            <div    
+                
+               
+              style={{paddingTop:'40px' ,borderRadius:'40px'}}>
+           
+           <MDBInputGroup  style={{}} containerClassName="mb-3" prepend="Email ID" hint=""   onChange={e => setFirstName(e.target.value)} />
+
+            {/* {formErrors.firstName.length > 0 && (
+              <span style={{ color: 'red' }} className="errorMessage">{formErrors.firstName}</span>
+            )} */}
+          </div>
+          <div style={{paddingLeft:'350px',}}>
+    <button  disabled={!NewuserEmail} onClick={() => history.push('/Registation')}style={{backgroundColor:"#FFEDD9",width:150,height:50,borderRadius:50}}>SIGN UP</button>
+    </div>
+</div>
+
+           </Col>
+           <p style={{paddingTop:'150px',paddingRight:'40px'}}> OR</p>
+           <Col><div className="rcorners2">
+  <h3>Guest Donors</h3>
+  <div    
+           style={{paddingTop:'40px' ,borderRadius:'40px'}}>
+             
+               <MDBInputGroup  style={{}} containerClassName="mb-3" prepend="Email ID" hint=""  onChange={e => setGuestuserEmail(e.target.value)} />
+  
+              {/* {formErrors.firstName.length > 0 && (
+                <span style={{ color: 'red' }} className="errorMessage">{formErrors.firstName}</span>
+              )} */}
+            </div>
+            <div style={{paddingLeft:'300px',}}>
+      <button   disabled={!GuestuserEmail} onClick={() =>history.push('/Login')}style={{backgroundColor:"#FFEDD9",width:150,height:50,borderRadius:50}}> SUBMIT</button>
+      </div>
+</div></Col>
+         </Row>
+         </div>
+</Container>
+      <div style={{paddingTop:'40px',paddingLeft:"450px"}}>
+        <h4>IMPORTANT </h4>
+        <h6>
+- To be a regular partner to sponsor a child, please click SIGN UP</h6>
+<h6>
+- To donate a one time payment as a guest, please click SUBMIT </h6>
+<h6>
+- To join our team as a volunteer, please enter your details and click JOIN </h6>
+      </div>
+
+      <div className="rcorners3">
+        <div style={{paddingLeft:'300px',paddingBottom:'10px'}}>
+  <h3>Volunteer</h3>
   </div>
-         </Grid>
-        {/* <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}>xs=6 sm=3</Paper>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}>xs=6 sm=3</Paper>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}>xs=6 sm=3</Paper>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}>xs=6 sm=3</Paper>
-        </Grid> */}
-      </Grid> 
-      <div>
-      <Carousel>
+            <div    
+                
+               
+              // style={{paddingTop:'0px' , paddingLeft:'150px',borderRadius:'40px',width:'550px'}}>
+              style={{paddingLeft:'150px',borderRadius:'40px',width:'550px'}}>
+             <MDBInputGroup  style={{ backgroundColor:'#FFEDD9'}} containerClassName="mb-3" prepend="Email ID"  hint=""  type="email"  onChange={e => setVolunteerEmail(e.target.value)}
+              name="email" />
+
+            {/* {formErrors.firstName.length > 0 && (
+              <span style={{ color: 'red' }} className="errorMessage">{formErrors.firstName}</span>
+            )} */}
+          </div>
+          <div style={{paddingLeft:'450px'}}>
+    <button   onClick={() => history.push('/Registation')}style={{backgroundColor:"#FFEDD9",width:150,height:50,borderRadius:50}}>JOIN</button>
+    </div>
+    
+</div>
+
+<div style={{paddingTop:'50px'}}>
+  <Carousel>
   <Carousel.Item interval={1000}>
-    <img style={{width: '550px', height: '450px'}}
-      className="d-block w-100"
-      src={require("../assets/pc4.jpg")}
+  <img style={{ height: '550px',width:'2030px'}}
+      className="d-block w-0"
+      src={require("../assets/Testimony.jpg")}
       alt="First slide"
+    
     />
     <Carousel.Caption>
       {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
-    
+      <h6 style={{paddingLeft:'850px',fontFamily: 'Montserrat, sans-serif',fontWeight:'bold',fontSize:'50px',paddingTop:'50px'}}>My Story</h6>
+      <p style={{paddingLeft:'790px',paddingTop:"90px",fontFamily: 'Raleway,sans-serif',fontSize:'20px',color:"white",fontStyle: 'italic',textAlign:'center',width:'1250px',paddingLeft:'875px'}}>
+This is a great place to add a tagline.
+
+Tell customers more about you. Add a few words and a stunning pic to grab their attention and get them to click.
+
+​This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</p>
     </Carousel.Caption>
-  </Carousel.Item>
-  <Carousel.Item interval={500}>
-    <img style={{width: '550px', height: '450px'}}
+    {/* <Carousel.Caption> */}
+      {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
+    
+    {/* </Carousel.Caption> */}
+  {/* </Carousel.Item> */}
+  {/* <Carousel.Item interval={500}> */}
+     {/* <img style={{width: '550px', height: '450px'}}
       className="d-block w-100"
       src={require("../assets/pc1.jpg")}
-      alt="Third slide"
-    />
-     <Carousel.Caption>
-      {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
+     alt="Third slide"
+    /> */}
+     {/* <Carousel.Caption> */}
+       {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
     
-    </Carousel.Caption>
-  </Carousel.Item>
-  <Carousel.Item>
-    <img style={{width: '550px', height: '450px'}}
+    {/* </Carousel.Caption> */}
+   {/* </Carousel.Item> */}
+   {/* <Carousel.Item interval={500}> */}
+     {/* <img style={{width: '550px', height: '450px'}}
       className="d-block w-100"
-      src={require("../assets/pc2.jpg")}
-      alt="Third slide"
-    />
-    <Carousel.Caption>
-    <Carousel.Caption>
-      {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
+      src={require("../assets/pc1.jpg")}
+     alt="Third slide"
+    /> */}
+     {/* <Carousel.Caption> */}
+       {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
     
-    </Carousel.Caption>
-    </Carousel.Caption>
-  </Carousel.Item>
-</Carousel> 
-      </div>
-    </div>
+    {/* </Carousel.Caption> */}
+   </Carousel.Item>
+  </Carousel>
+</div>
+    </Styles>
+// </div>
+//       <Carousel>
+//   <Carousel.Item interval={1000}>
+//     <img style={{width: '550px', height: '450px'}}
+//       className="d-block w-100"
+//       src={require("../assets/pc4.jpg")}
+//       alt="First slide"
+//     />
+//     <Carousel.Caption>
+//       {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
+    
+//     </Carousel.Caption>
+//   </Carousel.Item>
+//   <Carousel.Item interval={500}>
+//     <img style={{width: '550px', height: '450px'}}
+//       className="d-block w-100"
+//       src={require("../assets/pc1.jpg")}
+//       alt="Third slide"
+//     />
+//      <Carousel.Caption>
+//       {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
+    
+//     </Carousel.Caption>
+//   </Carousel.Item>
+//   <Carousel.Item>
+//     <img style={{width: '550px', height: '450px'}}
+//       className="d-block w-100"
+//       src={require("../assets/pc2.jpg")}
+//       alt="Third slide"
+//     />
+//     <Carousel.Caption>
+//     <Carousel.Caption>
+//       {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
+    
+//     </Carousel.Caption>
+//     </Carousel.Caption>
+//   </Carousel.Item>
+// </Carousel> 
+//       </div>
+//     </div>
   );
 }
 const STYLE = {

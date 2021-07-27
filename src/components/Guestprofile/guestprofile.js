@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import {BrowserRouter} from 'react-router-dom';
 import { Route } from 'react-router-dom';
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBIcon,MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBIcon,MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem,MDBInput } from 'mdbreact';
 import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown'
-
+import Carousel from 'react-bootstrap/Carousel'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 700,
@@ -14,6 +16,19 @@ const useStyles = makeStyles((theme) => ({
   },
  
 }));
+function loadScript(src) {
+	return new Promise((resolve) => {
+		const script = document.createElement('script')
+		script.src = src
+		script.onload = () => {
+			resolve(true)
+		}
+		script.onerror = () => {
+			resolve(false)
+		}
+		document.body.appendChild(script)
+	})
+}
 export default function Guestprofile() {
   
   var tot = 0;
@@ -27,23 +42,25 @@ export default function Guestprofile() {
     var children=0;
     var years = 0;
     var total = 0;
+    const [firstName, setFirstName] = useState('');
   const classes = useStyles();
   const [refs] = useState({
     child: React.createRef(),
     second: React.createRef(),
     sum: React.createRef(),
-    cho: React.createRef()
+    // cho: React.createRef()
     });
     
     const [vars] = useState({
     child: 0,
     second: 0,
     sum: 0,
-    cho :0
+    // cho :0,
+    totall:0,
     });
     
     const [value,setValue]=useState('');
-    
+    const [amount, setamount] = useState('');
     const onChange = (e) => {
     const { name, value } = e.target;
     vars[name] = value;
@@ -52,95 +69,103 @@ export default function Guestprofile() {
      second = parseInt(refs.second.current.value, 10);
     // const opt = refs.choice.current.value;
     sum = parseInt(refs.sum.current.value, 10);
-     cho = refs.cho.current.value;
+    //  cho = refs.cho.current.value;
     // const che = parseInt(refs.div.current.value,10);
     console.log(second,"poof");
+    console.log(sum,"summm")
     
     if (name === "child") {children = refs.sum.current.value = child * (second * 7500);
     tot = children;
-    if(cho=="full"){
-      dis = tot ;
-     }
-     if(cho=="anual"){
-       dis = tot/second;
-     }
-     if(cho=='half'){
-       dis = tot/(2*second);
-     }
-     if(cho=='qua'){
-       dis =tot/(4*second);
-     }
-     if(cho=='mon'){
-       dis =tot/(12*second);
-     }} 
+    dis = tot;
+    // if(cho=="full"){
+    //   dis = tot ;
+    //  }
+    //  if(cho=="anual"){
+    //    dis = tot/second;
+    //  }
+    //  if(cho=='half'){
+    //    dis = tot/(2*second);
+    //  }
+    //  if(cho=='qua'){
+    //    dis =tot/(4*second);
+    //  }
+    //  if(cho=='mon'){
+    //    dis =tot/(12*second);
+    //  } 
+    }
     console.log(children,"children..")
     if (name === "second") {years = refs.sum.current.value = child * (second * 7500);
     tot = years;
-    if(cho=="full"){
-      dis = tot ;
-     }
-     if(cho=="anual"){
-       dis = tot/second;
-     }
-     if(cho=='half'){
-       dis = tot/(2*second);
-     }
-     if(cho=='qua'){
-       dis =tot/(4*second);
-     }
-     if(cho=='mon'){
-       dis =tot/(12*second);
-     }}
+    dis = tot;
+    // if(cho=="full"){
+    //   dis = tot ;
+    //  }
+    //  if(cho=="anual"){
+    //    dis = tot/second;
+    //  }
+    //  if(cho=='half'){
+    //    dis = tot/(2*second);
+    //  }
+    //  if(cho=='qua'){
+    //    dis =tot/(4*second);
+    //  }
+    //  if(cho=='mon'){
+    //    dis =tot/(12*second);
+    //  }
+    }
     console.log("years",years)
     if (name === "sum") { total = refs.second.current.value = child * (second * 7500);
     tot = total;
-    if(cho=="full"){
-      dis = tot ;
-     }
-     if(cho=="anual"){
-       dis = tot/second;
-     }
-     if(cho=='half'){
-       dis = tot/(2*second);
-     }
-     if(cho=='qua'){
-       dis =tot/(4*second);
-     }
-     if(cho=='mon'){
-       dis =tot/(12*second);
-     }
+    dis = tot;
+    // if(cho=="full"){
+    //   dis = tot ;
+    //  }
+    //  if(cho=="anual"){
+    //    dis = tot/second;
+    //  }
+    //  if(cho=='half'){
+    //    dis = tot/(2*second);
+    //  }
+    //  if(cho=='qua'){
+    //    dis =tot/(4*second);
+    //  }
+    //  if(cho=='mon'){
+    //    dis =tot/(12*second);
+    //  }
   // tot.toString();
 }
 if (name === "choice") { 
   var tp = refs.sum.current.value = child * (second * 7500)
   tot = tp;
-  if(cho=="full"){
-    dis = tot ;
-   }
-   if(cho=="anual"){
-     dis = tot/second;
-   }
-   if(cho=='half'){
-     dis = tot/(2*second);
-   }
-   if(cho=='qua'){
-     dis =tot/(4*second);
-   }
-   if(cho=='mon'){
-     dis =tot/(12*second);
-   }
+  dis = tot;
+  // if(cho=="full"){
+  //   dis = tot ;
+  //  }
+  //  if(cho=="anual"){
+  //    dis = tot/second;
+  //  }
+  //  if(cho=='half'){
+  //    dis = tot/(2*second);
+  //  }
+  //  if(cho=='qua'){
+  //    dis =tot/(4*second);
+  //  }
+  //  if(cho=='mon'){
+  //    dis =tot/(12*second);
+  //  }
  
 // tot.toString();
 }
 
 tota = tot;
+
 // annual = (tot/second);
 
 
 
 
 setValue(dis)
-    console.log(tot,"t");
+    console.log(tota,"t");
     };
 
     const handleSelect=(e)=>{
@@ -165,27 +190,28 @@ setValue(dis)
        if (name === "sum") { total = refs.second.current.value = child * (second * 7500);
        tot = total;}
 
-        const cho = refs.cho.current.value;
+        // const cho = refs.cho.current.value;
       // onChange(e);
 
       // var choice= refs.tot.current.value;
       // console.log(choice.toString(),"ch");
-      console.log(cho,"poog");
-      if(cho=="full"){
-        dis = tot ;
-       }
-       if(cho=="anual"){
-         dis = tot/second;
-       }
-       if(cho=='half'){
-         dis = tot/(2*second);
-       }
-       if(cho=='qua'){
-         dis =tot/(4*second);
-       }
-       if(cho=='mon'){
-         dis =tot/(12*second);
-       }
+      dis =tot;
+      // console.log(cho,"poog");
+      // if(cho=="full"){
+      //   dis = tot ;
+      //  }
+      //  if(cho=="anual"){
+      //    dis = tot/second;
+      //  }
+      //  if(cho=='half'){
+      //    dis = tot/(2*second);
+      //  }
+      //  if(cho=='qua'){
+      //    dis =tot/(4*second);
+      //  }
+      //  if(cho=='mon'){
+      //    dis =tot/(12*second);
+      //  }
       tota = tot;
       // annual = (tot/second);
 
@@ -194,13 +220,129 @@ setValue(dis)
 
       setValue(dis)
     }
+    async function displayRazorpay() {
+ 
+      const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
     
+      if (!res) {
+        alert('Razorpay SDK failed to load. Are you online?')
+        return
+      }
+    
+      // const data = await fetch('https://gzacors.herokuapp.com/http://122.185.13.163:3013/razorpay', { method: 'POST' }).then((t) =>
+      //   t.json()
+      // )
+    
+      // console.log(data,"data....")
+    
+      var options = {
+        "key": 'rzp_test_rujuPR6IGGzAhW', // Enter the Key ID generated from the Dashboard
+        "amount": value.toString()+"00",// Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "currency": "INR",
+        "name": "PREMKUMAR",
+        "description": "Test Transaction",
+        "image": `${require("../assets/Panaah3.png")}`,
+        // "order_id": "order_HcKdrNdFZuo5Bb", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        // "handler": function (response){
+        //     alert(response.razorpay_payment_id);
+        //     alert(response.razorpay_order_id);
+        //     alert(response.razorpay_signature)
+        // },
+        "prefill": {
+            "name": "Gaurav Kumar",
+            "email": "gaurav.kumar@example.com",
+            "contact": "9999999999"
+        },
+        "notes": {
+            "address": "Razorpay Corporate Office"
+        },
+        "theme": {
+            "color": "#3399cc"
+        }
+    };
+    var rzp1 =new window.Razorpay(options);
+    rzp1.on('payment.failed', function (response){
+            alert(response.error.code);
+            alert(response.error.description);
+            alert(response.error.source);
+            alert(response.error.step);
+            alert(response.error.reason);
+            alert(response.error.metadata.order_id);
+            alert(response.error.metadata.payment_id);
+    });
+    //document.getElementById('rzp-button1').onclick = function(e){
+        rzp1.open();
+        //e.preventDefault();
+    //}
+    }
+    async function amountRazorpay() {
+ 
+      const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
+    
+      if (!res) {
+        alert('Razorpay SDK failed to load. Are you online?')
+        return
+      }
+    
+      // const data = await fetch('https://gzacors.herokuapp.com/http://122.185.13.163:3013/razorpay', { method: 'POST' }).then((t) =>
+      //   t.json()
+      // )
+    
+      // console.log(data,"data....")
+    
+      var options = {
+        "key": 'rzp_test_rujuPR6IGGzAhW', // Enter the Key ID generated from the Dashboard
+        "amount": amount.toString()+"00",// Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "currency": "INR",
+        "name": "PREMKUMAR",
+        "description": "Test Transaction",
+        "image": `${require("../assets/Panaah3.png")}`,
+        // "order_id": "order_HcKdrNdFZuo5Bb", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        // "handler": function (response){
+        //     alert(response.razorpay_payment_id);
+        //     alert(response.razorpay_order_id);
+        //     alert(response.razorpay_signature)
+        // },
+        "prefill": {
+            "name": "Gaurav Kumar",
+            "email": "gaurav.kumar@example.com",
+            "contact": "9999999999"
+        },
+        "notes": {
+            "address": "Razorpay Corporate Office"
+        },
+        "theme": {
+            "color": "#3399cc"
+        }
+    };
+    var rzp1 =new window.Razorpay(options);
+    rzp1.on('payment.failed', function (response){
+            alert(response.error.code);
+            alert(response.error.description);
+            alert(response.error.source);
+            alert(response.error.step);
+            alert(response.error.reason);
+            alert(response.error.metadata.order_id);
+            alert(response.error.metadata.payment_id);
+    });
+    //document.getElementById('rzp-button1').onclick = function(e){
+        rzp1.open();
+        //e.preventDefault();
+    //}
+    }
+
+
     return (
       <div >
      <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + "/images/p.png"})`, backgroundRepeat:'no-repeat',
-     backgroundSize:'cover'}} >
-    
-    <MDBCard  style={{ backgroundColor:'#FFFFFF',borderColor:"#5D6D7E", width: "60rem", borderRadius:'10px',marginLeft:330,} }>
+     backgroundSize:'cover',height:'1150px'}} >
+       <div style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',paddingLeft:'540px',paddingTop:'20px'}}>
+    <h1> Adopt A Child</h1>
+    </div>
+    <div style={{paddingLeft:'300px',paddingTop:"30px",fontFamily: 'Montserrat,sans-serif',fontSize:'20px',paddingBottom:"100px"}}>
+    <h4>Panaah provides you the platform and privilege of contributing / gifting a grant of your convenience without a periodic commitment. A one time gift of any value can still mean a lot to give hope for tomorrow to young lives in hopeless homes today. (Minimum contribution of INR 1000)</h4>
+    </div>
+    {/* <MDBCard  style={{ backgroundColor:'#FFFFFF',borderColor:"#5D6D7E", width: "60rem", borderRadius:'10px',marginLeft:330,} }>
             <MDBCardBody>
               <MDBRow>
                 <h1 className="h4 text-center py-4">Grant Sponsorship</h1>
@@ -218,18 +360,41 @@ setValue(dis)
               
                 </MDBRow>
                 </MDBCardBody>
-                </MDBCard>
-                <div style={{paddingLeft:500}}> <h5> OR </h5></div>
+                </MDBCard> */}
+                <div style={{paddingTop:'10px',paddingLeft:"190px"}}>
+                  <h1>a. General Grant Sponsorship</h1>
                 
- <div>
-      <h5 style={{color:"black",textAlign:'justify', flexDirection: 'column',flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',width:'50%',fontSize:'8'}} >
-
-A person can adopt irrespective of their marital status and whether or not he or she has a biological son or daughter. 3. A single female can adopt a child of any gender but a single male shall not be eligible to adopt a girl child. In case of a married couple, both spouses should give their consent for adoption</h5>
-  
- </div> 
- <div style={{paddingLeft:900,paddingBottom:900 ,display:'flex',flexDirection:'row',}}>
+                </div>
+                <div style={{paddingLeft:'790px',paddingBottom:'0px',marginTop: '-70px'}}>  
+                
+            <label >
+            Sponsorship Amount</label>
+             <MDBInput style={{borderColor: 'gray', borderWidth: 1,maxWidth:'150px' }}
+              hint="1000"
+              type="amount"
+              name="amount"
+              onChange={e => setamount(e.target.value)}
+              />
+<div>
+      <Button  onClick={
+              amountRazorpay
+              // opendata
+              //   window.open(
+              //  ' https://pages.razorpay.com/pl_HRc2yXiFYdkEzH/view'
+              //     )
+                 }style={{border:'2px',backgroundColor:'brown'}}>PayNow</Button>
+    </div>
+               </div>
+    
+                
+ <div style={{paddingTop:'50px',paddingLeft:"190px"}}>
+   OR
+ </div>
+ <div style={{paddingTop:'50px',paddingLeft:"190px"}}>
+   <h1>b. Child Sponsorship
+</h1>
+ </div>
+ <div style={{paddingLeft:700,paddingBottom:500 ,display:'flex',flexDirection:'row',paddingTop:'-50px'}}>
       <MDBContainer fluid class="d-flex justify-content-cente"  >
       <div >
       <MDBRow >
@@ -279,9 +444,9 @@ A person can adopt irrespective of their marital status and whether or not he or
     />
    </div>
    
-   <label htmlFor="sum">Payment Plan</label>
+   {/* <label htmlFor="sum">Payment Plan</label> */}
    <div>
-        <select className="browser-default custom-select"  name="choice"
+        {/* <select className="browser-default custom-select"  name="choice"
       ref={refs.cho}
     // onChange={onChange}  
       title="Payment Plan"
@@ -293,18 +458,21 @@ A person can adopt irrespective of their marital status and whether or not he or
           <option  value="half">Half yearly</option>
           <option  value="qua">quarterly</option>
           <option value="mon">Monthly</option>
-        </select>
-        <h4>You selected {value} </h4>
+        </select> */}
+        <h4>selected amount ₹:{value} </h4>
       </div>
                 <div className="text-center py-4 mt-3">
-                  <MDBBtn onClick={() => {
-      window.open(
-       ' https://pages.razorpay.com/pl_HRc2yXiFYdkEzH/view'
-      );
-    }} >
-                     Pay Now
-                    <MDBIcon far icon="paper-plane" className="ml-2" />
-                  </MDBBtn>
+                <Button style={{border:'2px',backgroundColor:'brown'}} 
+            onClick={
+              displayRazorpay
+              // opendata
+              //   window.open(
+              //  ' https://pages.razorpay.com/pl_HRc2yXiFYdkEzH/view'
+              //     )
+                 } >
+               PayNow
+              <MDBIcon far icon="paper-plane" className="ml-2" />
+            </Button>
                 </div>
               </form>
             </MDBCardBody>
@@ -314,9 +482,54 @@ A person can adopt irrespective of their marital status and whether or not he or
       </MDBRow>
       </div>
     </MDBContainer>
-  /</div>
+  </div>
     </div>
-   
+    <Carousel>
+  <Carousel.Item interval={1000}>
+  <img style={{ height: '550px',width:'2030px'}}
+      className="d-block w-0"
+      src={require("../assets/Testimony.jpg")}
+      alt="First slide"
+    
+    />
+    <Carousel.Caption>
+      {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
+      <h6 style={{paddingLeft:'850px',fontFamily: 'Montserrat, sans-serif',fontWeight:'bold',fontSize:'50px',paddingTop:'50px'}}>My Story</h6>
+      <p style={{paddingLeft:'790px',paddingTop:"90px",fontFamily: 'Raleway,sans-serif',fontSize:'20px',color:"white",fontStyle: 'italic',textAlign:'center',width:'1250px',paddingLeft:'875px'}}>
+This is a great place to add a tagline.
+
+Tell customers more about you. Add a few words and a stunning pic to grab their attention and get them to click.
+
+​This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</p>
+    </Carousel.Caption>
+    {/* <Carousel.Caption> */}
+      {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
+    
+    {/* </Carousel.Caption> */}
+  {/* </Carousel.Item> */}
+  {/* <Carousel.Item interval={500}> */}
+     {/* <img style={{width: '550px', height: '450px'}}
+      className="d-block w-100"
+      src={require("../assets/pc1.jpg")}
+     alt="Third slide"
+    /> */}
+     {/* <Carousel.Caption> */}
+       {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
+    
+    {/* </Carousel.Caption> */}
+   {/* </Carousel.Item> */}
+   {/* <Carousel.Item interval={500}> */}
+     {/* <img style={{width: '550px', height: '450px'}}
+      className="d-block w-100"
+      src={require("../assets/pc1.jpg")}
+     alt="Third slide"
+    /> */}
+     {/* <Carousel.Caption> */}
+       {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
+    
+    {/* </Carousel.Caption> */}
+   </Carousel.Item>
+  </Carousel>
     </div>
     );
    };

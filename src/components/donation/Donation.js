@@ -9,6 +9,7 @@ import Dropdown from 'react-bootstrap/Dropdown'
 import { Button } from "@material-ui/core";
 import { useHistory } from 'react-router-dom';
 import { OpenWithRounded } from "@material-ui/icons";
+import Swal from 'sweetalert2'
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 700,
@@ -28,7 +29,21 @@ floatchild: {
  
 }));
 
+function loadScript(src) {
+	return new Promise((resolve) => {
+		const script = document.createElement('script')
+		script.src = src
+		script.onload = () => {
+			resolve(true)
+		}
+		script.onerror = () => {
+			resolve(false)
+		}
+		document.body.appendChild(script)
+	})
+}
 
+// const __DEV__ = document.domain === 'localhost'
 
 export default function Donation() {
   const [Nchild,setNchild] = useState('');
@@ -222,7 +237,8 @@ setValue(dis)
       setValue(dis)
     }
     useEffect(() => {
-      
+      var val = localStorage.getItem("value")
+      console.log(val,"bbbbbbbbbbbbbbbbbbbbbbbb")
       var requestOptions = {
         method: 'GET',
         redirect: 'follow'
@@ -264,7 +280,7 @@ setValue(dis)
       })
     function postdata () {
       var val = localStorage.getItem("value")
-      console.log(val)
+      console.log(val,"bbbbbbbbbbbbbbbbbbbbbbbb")
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
        var raw = JSON.stringify({
@@ -323,19 +339,120 @@ function opendata(){
           ' https://pages.razorpay.com/pl_HRc2yXiFYdkEzH/view'
          );
 }
+async function displayRazorpay() {
+ 
+  var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+var raw = JSON.stringify({
+  "id": "1",
+  "currency": "INR",
+  "amount": localStorage.getItem('amount'),
+  "sponid": "77",
+  "planid": "94",
+  "tot": "15000",
+  "pending": "15000",
+  "Date": "26/07/2021"
+});
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+  const data = await fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/razorpay", requestOptions)
+ .then(response => response.json())
+//  .then(json =>{
+//   console.log("response",data)
+//  })
+console.log(data)
+
+
+  const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
+
+  if (!res) {
+    alert('Razorpay SDK failed to load. Are you online?')
+    return
+  }
+
+  // const data = await fetch('https://gzacors.herokuapp.com/http://122.185.13.163:3013/razorpay', { method: 'POST' }).then((t) =>
+  //   t.json()
+  // )
+
+  // console.log(data,"data....")
+
+  var options = {
+    "key": 'rzp_test_LzrSt5hd7JwDVF', // Enter the Key ID generated from the Dashboard
+    "amount": data.amount.toString()+"00",// Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": "INR",
+    "name": 'Donation',
+    "description": 'Thank you for nothing. Please give us some money',
+    "image": `${require("../assets/Panaah3.png")}`,
+    "order_id":data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    "handler": function (response){
+    
+      console.log("paymentid",response.razorpay_payment_id)
+      console.log("orderid",response.razorpay_order_id)
+      console.log("signature",response.razorpay_signature)
+      
+        // alert(response.razorpay_payment_id);
+        // alert(response.razorpay_order_id);
+        // alert(response.razorpay_signature)
+        Swal.fire({
+          icon: 'success',
+          title: 'Success!...',
+          text: 'Your payment was successful!',
+        })
+    },
+    //localStorage.getItem("name")
+    "prefill": {
+        "name": "Prem",
+        "email": "gaurav.kumar@example.com",
+        "contact": "9999999999"
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+var rzp1 =new window.Razorpay(options);
+rzp1.on('payment.failed', function (response){
+  Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: 'paymentfailed!',
+   
+  })
+        // alert(response.error.code);
+        // alert(response.error.description);
+        // alert(response.error.source);
+        // alert(response.error.step);
+        // alert(response.error.reason);
+        // alert(response.error.metadata.order_id);
+        // alert(response.error.metadata.payment_id);
+});
+//document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    //e.preventDefault();
+//}
+}
+  // const paymentObject = new window.Razorpay(options)
+  // paymentObject.open()
      
     return (
       ( localStorage.getItem("New_plan"))==1?
       
-     <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + "/images/p.png"})`, backgroundRepeat:'no-repeat',
-     backgroundSize:'cover'}} >
-       <div class="float-container" style={{ border: '2px black',
-    padding: '20px',
-    backgroundImage: `url(${process.env.PUBLIC_URL + "/images/p.png"})`, backgroundRepeat:'no-repeat',
-     backgroundSize:'cover'
-    }}>
+     <div >
+       <div class="float-container" style={{ 
+         //border: '2px black',
+   // padding: '20px',
+    //backgroundImage: `url(${process.env.PUBLIC_URL + "/images/p.png"})`, backgroundRepeat:'no-repeat',
+     //backgroundSize:'cover'
+    }}
+    >
 
-<div class="float-child" style={{ width: '50%',
+<div class="float-child" style={{ width: '50%',height:'950px',
     float: 'left',
     padding: '20px',
     border: '1px black',backgroundImage: `url(${process.env.PUBLIC_URL + "/images/p.png"})`, backgroundRepeat:'no-repeat',
@@ -344,25 +461,45 @@ function opendata(){
   <div stlye={{display:'flex', flexdirection:'row'}}>
       
 
-      <h5 style={{color:"black",width:'50%'}} >
+<h1 style={{paddingLeft:'90px'}}>Panaah: Adopt A Child</h1>
 
-A person can adopt irrespective of their marital status and whether or not he or she has a biological son or daughter. 3. A single female can adopt a child of any gender but a single male shall not be eligible to adopt a girl child. In case of a married couple, both spouses should give their consent for adoption</h5>
-  <h5 style={{color:"black",
-    width:'50%'}} >
+      <h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',width:'90%',paddingLeft:'190px'}} >
 
-A person can adopt irrespective of their marital status and whether or not he or she has a biological son or daughter. 3. A single female can adopt a child of any gender but a single male shall not be eligible to adopt a girl child. In case of a married couple, both spouses should give their consent for adoption</h5>
+      By registering here you commit to partner with us in giving hope for tomorrow to young lives in hopeless homes today.  Panaah provides you a platform to give / contribute an amount of minimum INR 750 monthly or INR 2250 quarterly or 4500 Half Yearly or 9000 Annually towards the educational and developmental needs of children from poor families and rural communities. Select the number of children and the number of years you would like to support. </h5>
+  <h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',
+    paddingTop:'15px',width:'90%',paddingLeft:'190px'}} >
+
+.Select the number of children and the number of years you would like to support the child/children.</h5>
   
-      <h5 style={{color:"black",textAlign:'justify', flexDirection: 'column',flex: 1,
+      <h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',textAlign:'justify', flexDirection: 'column',flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',width:'50%',fontSize:'8'}} >
+    alignItems: 'center',width:'90%',paddingLeft:'190px'}} >
 
-A person can adopt irrespective of their marital status and whether or not he or she has a biological son or daughter. 3. A single female can adopt a child of any gender but a single male shall not be eligible to adopt a girl child. In case of a married couple, both spouses should give their consent for adoption</h5>
-  
- 
+.Choose the sponsor/payment plan that suits you and submit to save your preferences</h5>
+<h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',textAlign:'justify', flexDirection: 'column',flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',width:'90%',paddingLeft:'190px'}} >
+
+.Once saved you can click on the pay now button to send you contributions according to your plan</h5>
+<h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',textAlign:'justify', flexDirection: 'column',flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',width:'90%',paddingLeft:'190px'}} >
+
+.For your convenience you can use the autopay/auto debit option by enabling the option in your profile page to send your contributions on time</h5>
+<h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',textAlign:'justify', flexDirection: 'column',flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',width:'90%',paddingLeft:'190px'}} >
+
+.To change your plan or any other information check your profile page</h5>
+<h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',textAlign:'justify', flexDirection: 'column',flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',width:'90%',paddingLeft:'190px'}} >
+
+.Email id, Pan Number and Name cannot be edited. For more information on this contact our team.</h5>
  </div>
 </div>
 
-<div class="float-child" style={{ width: '50%',
+<div class="float-child" style={{ width: '50%',height:'950px',
     float: 'left',
     padding: '20px',
     border: '1px ', backgroundImage: `url(${process.env.PUBLIC_URL + "/images/p.png"})`, backgroundRepeat:'no-repeat',
@@ -374,12 +511,12 @@ A person can adopt irrespective of their marital status and whether or not he or
   
 <MDBRow >
   
-  <MDBCard  style={{ backgroundColor:'#FFFFFF',borderColor:"#5D6D7E", width: "30rem", borderRadius:'10px'} }>
+  <MDBCard  style={{ backgroundColor:'#FFFFFF',borderColor:"#5D6D7E", width: "30rem", borderRadius:'10px',paddingTop:'40px'} }>
       <MDBCardBody>
         <form>
           <p className="h4 text-center py-4">SPONSOR NOW</p>
           <label htmlFor="child" >Number of children</label>
-
+          <br></br>
 <input
 disabled
 min="1" max="10"
@@ -392,8 +529,9 @@ type="number"
 className="form-control"
 placeholder={localStorage.getItem("No_of_child")}
 />
-
+<br></br>
 <label htmlFor="second">Sponsorship Duration in Year's</label>
+<br></br>
 <div>
 <input disabled
 min="1" max="10"
@@ -407,7 +545,9 @@ className="form-control"
 placeholder={localStorage.getItem("No_of_year")}
 />
 </div>
+<br></br>
 <label htmlFor="sum">Sponsorship Amount</label>
+<br></br>
 <div>
 <input
 disabled
@@ -421,11 +561,23 @@ className="form-control"
 placeholder={localStorage.getItem("amount")}
 />
 </div>
-
+<br></br>
 <label htmlFor="sum">Payment Plan</label>
 
 <div>
-  <select className="browser-default custom-select"  name="choice"
+
+<input
+disabled
+ref={refs.sum}
+onChange={onChange}
+//defaultValue={vars.sum}
+// id="sum"
+// name="sum"
+// type="number"
+className="form-control"
+placeholder={localStorage.getItem("paymentplan")}
+/>
+  {/* <select className="browser-default custom-select"  name="choice"
 ref={refs.cho}
 disabled
 // onChange={onChange}  
@@ -440,15 +592,16 @@ onChange={onChange.bind(this, setNMonth)}>
     <option  value="halfYearly">Half yearly</option>
     <option  value="quarterly">quarterly</option>
     <option value="monthly">Monthly</option>
-  </select>
-  {localStorage.setItem("value",value)}
-  <h4>Total Amount: {value} </h4>
+  </select> */}
+  {/* {localStorage.setItem("value",value)} */}
+  <h4>Total Amount:{localStorage.getItem("amount")} </h4>
 </div>
 {/* <div> <Button onClick={postdata}> submit</Button></div> */}
           <div className="text-center py-4 mt-3">
             <Button style={{border:'2px',backgroundColor:'brown'}} 
             onClick={
-              opendata
+              displayRazorpay
+              // opendata
               //   window.open(
               //  ' https://pages.razorpay.com/pl_HRc2yXiFYdkEzH/view'
               //     )
@@ -469,6 +622,7 @@ onChange={onChange.bind(this, setNMonth)}>
 
 </div>
 <button onClick={() => history.push('/Userprofile')}>Profile</button>
+<button onClick={displayRazorpay}> pay now</button>
 </div>
 
 
@@ -490,21 +644,41 @@ onChange={onChange.bind(this, setNMonth)}>
  <div stlye={{display:'flex', flexdirection:'row'}}>
      
 
-     <h5 style={{color:"black",width:'50%'}} >
+ <h1 style={{paddingLeft:'90px'}}>Panaah: Adopt A Child</h1>
 
-A person can adopt irrespective of their marital status and whether or not he or she has a biological son or daughter. 3. A single female can adopt a child of any gender but a single male shall not be eligible to adopt a girl child. In case of a married couple, both spouses should give their consent for adoption</h5>
- <h5 style={{color:"black",
-   width:'50%'}} >
+<h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',width:'90%',paddingLeft:'190px'}} >
 
-A person can adopt irrespective of their marital status and whether or not he or she has a biological son or daughter. 3. A single female can adopt a child of any gender but a single male shall not be eligible to adopt a girl child. In case of a married couple, both spouses should give their consent for adoption</h5>
- 
-     <h5 style={{color:"black",textAlign:'justify', flexDirection: 'column',flex: 1,
-   justifyContent: 'center',
-   alignItems: 'center',width:'50%',fontSize:'8'}} >
+By registering here you commit to partner with us in giving hope for tomorrow to young lives in hopeless homes today.  Panaah provides you a platform to give / contribute an amount of minimum INR 750 monthly or INR 2250 quarterly or 4500 Half Yearly or 9000 Annually towards the educational and developmental needs of children from poor families and rural communities. Select the number of children and the number of years you would like to support. </h5>
+<h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',
+paddingTop:'15px',width:'90%',paddingLeft:'190px'}} >
 
-A person can adopt irrespective of their marital status and whether or not he or she has a biological son or daughter. 3. A single female can adopt a child of any gender but a single male shall not be eligible to adopt a girl child. In case of a married couple, both spouses should give their consent for adoption</h5>
- 
+.Select the number of children and the number of years you would like to support the child/children.</h5>
 
+<h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',textAlign:'justify', flexDirection: 'column',flex: 1,
+justifyContent: 'center',
+alignItems: 'center',width:'90%',paddingLeft:'190px'}} >
+
+.Choose the sponsor/payment plan that suits you and submit to save your preferences</h5>
+<h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',textAlign:'justify', flexDirection: 'column',flex: 1,
+justifyContent: 'center',
+alignItems: 'center',width:'90%',paddingLeft:'190px'}} >
+
+.Once saved you can click on the pay now button to send you contributions according to your plan</h5>
+<h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',textAlign:'justify', flexDirection: 'column',flex: 1,
+justifyContent: 'center',
+alignItems: 'center',width:'90%',paddingLeft:'190px'}} >
+
+.For your convenience you can use the autopay/auto debit option by enabling the option in your profile page to send your contributions on time</h5>
+<h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',textAlign:'justify', flexDirection: 'column',flex: 1,
+justifyContent: 'center',
+alignItems: 'center',width:'90%',paddingLeft:'190px'}} >
+
+.To change your plan or any other information check your profile page</h5>
+<h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',textAlign:'justify', flexDirection: 'column',flex: 1,
+justifyContent: 'center',
+alignItems: 'center',width:'90%',paddingLeft:'190px'}} >
+
+.Email id, Pan Number and Name cannot be edited. For more information on this contact our team.</h5>
 </div>
 </div>
 
@@ -612,8 +786,12 @@ onChange={onChange.bind(this, setNMonth)}>
 
 </div>
 <button onClick={() => history.push('/Userprofile')}>Profile</button>
+{/* <button onClick={displayRazorpay}> pay now</button> */}
 </div>
-
+<div>
+  {/* <button onClick={displayRazorpay}> pay now</button> */}
+  {/* onClick={() => history.push('/Userprofile')} */}
+</div>
 
    </div>
   );

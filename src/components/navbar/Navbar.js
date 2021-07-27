@@ -161,7 +161,7 @@ function Navbar() {
             <li>ContactUs </li>
             </Link>
             <Link style={navstayle}to='/Newuserlogin'>
-            <li>Sigin</li>
+            <li>SignIn</li>
            </Link>
             </>
             )}

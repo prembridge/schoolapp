@@ -146,7 +146,7 @@ export default class Registation extends Component {
     var raw = JSON.stringify({
       "FirstName":this.state.firstName,
       "LastName":this.state.lastName,
-      "EmailID":this.state.email,
+      "EmailID":localStorage.getItem("Newuseremail"),
       "Phonenumber":this.state.mobileNo,
       "password":this.state.password,
       "Address":this.state.Address,
@@ -348,21 +348,22 @@ export default class Registation extends Component {
       spacing={0}
       alignItems="center"
       justify="center"
-      style={{ minHeight: '110vh' }}>
-      <MDBCard variant="outlined" className={styles.card}  style={{ maxWidth :'800',borderColor:"#1c1a14",} }>
+      style={{ minHeight: '100vh' }}>
+          <h3 style={{paddingLeft:'250px',}}>New Donor Registration</h3>
+      <MDBCard variant="outlined" className={styles.card}  style={{ maxWidth :'1100px',borderColor:"#1c1a14",paddingLeft:'25px'} }>
         <CardContent align-items-center>
       <div className="wrapper">
       <div className="form-wrapper">
-        <h3 style={{paddingLeft:400}}> Registration</h3>
+      
 
         <form onSubmit={this.handleSubmit} noValidate>
         <div class="form-row">
         <div class=" col-md-6">
-          <div className="firstName"   >
+          <div className="firstName"> 
            < label htmlFor="firstName">First Name* </ label>
             </div>
             <div>
-            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1,maxWidth:'450px' }}
               className={formErrors.firstName.length > 0 ? "error" : null}
               hint="First Name"
               type="text"
@@ -379,7 +380,7 @@ export default class Registation extends Component {
           
           <div class=" col-md-6">
           <label htmlFor="lastName">Last Name* </label>
-           <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
+           <MDBInput style={{borderColor: 'gray', borderWidth: 1,maxWidth:'450px' }}
               className={formErrors.lastName.length > 0 ? "error" : null}
               hint="Last Name"
               type="text"
@@ -397,14 +398,14 @@ export default class Registation extends Component {
             <label htmlFor="email">UserName/Email ID *</label>
             </div>
             <div>
-            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1,maxWidth:'450px' }}
               className={formErrors.email.length > 0 ? "error" : null}
-              hint="UserName/Email"
+              hint={localStorage.getItem("Newuseremail")}
               type="email"
               name="email"
               noValidate
               onChange={this.handleChange}
-            />
+              disabled />
             {formErrors.email.length > 0 && (
               <span   style={{ color: 'red' }} className="errorMessage">{formErrors.email}</span>
             )}
@@ -415,7 +416,7 @@ export default class Registation extends Component {
             <label htmlFor="password">Password *</label>
             </div>
             <div>
-            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1,maxWidth:'450px' }}
               className={formErrors.password.length > 0 ? "error" : null}
               hint="Password"
               type="password"
@@ -433,7 +434,7 @@ export default class Registation extends Component {
             <label htmlFor="password">ConfirmPassword *</label>
             </div>
             <div>
-            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1,maxWidth:'450px' }}
               className={formErrors.confirmpassword.length > 0 ? "error" : null}
               hint="confirmpassword"
               type="confirmpassword"
@@ -451,7 +452,7 @@ export default class Registation extends Component {
             <label htmlFor="mobileNo">Mobile No *</label>
             </div>
             <div>
-            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1,maxWidth:'450px' }}
               className={formErrors.mobileNo.length > 0 ? "error" : null}
               hint="MobileNo"
               type="mobileNo"
@@ -470,7 +471,7 @@ export default class Registation extends Component {
             <label htmlFor="Address">Address *</label>
             </div>
             <div>
-            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1,maxWidth:'450px' }}
               className={formErrors.Address.length > 0 ? "error" : null}
               hint="Address"
               type="Address"
@@ -489,7 +490,7 @@ export default class Registation extends Component {
             <label htmlFor="password">State *</label>
             </div>
             <div>
-            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1,maxWidth:'450px' }}
               className={formErrors.State.length > 0 ? "error" : null}
               hint="State"
               type="State"
@@ -505,7 +506,7 @@ export default class Registation extends Component {
           <div class=" col-md-6">
           <div className="City">
             <label htmlFor="password">City *</label>
-            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1,maxWidth:'450px' }}
               className={formErrors.City.length > 0 ? "error" : null}
               hint="City"
               type="City"
@@ -523,7 +524,7 @@ export default class Registation extends Component {
             <label htmlFor="Pincode">Pincode *</label>
             </div>
             <div>
-            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1,maxWidth:'450px' }}
               className={formErrors.Pincode.length > 0 ? "error" : null}
               hint="Pincode"
               type="Pincode"
@@ -541,7 +542,7 @@ export default class Registation extends Component {
             <label htmlFor="Country">Country *</label>
             </div>
             <div>
-            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1,maxWidth:'450px' }}
               className={formErrors.Country.length > 0 ? "error" : null}
               hint="Country"
               type="Country"
@@ -557,7 +558,7 @@ export default class Registation extends Component {
           <div class=" col-md-6">
           <div className="panid">
             <label htmlFor="password">PAN Card No *</label>
-            <MDBInput style={{borderColor: 'gray', borderWidth: 1 }}
+            <MDBInput style={{borderColor: 'gray', borderWidth: 1,maxWidth:'450px' }}
               className={formErrors.panid.length > 0 ? "error" : null}
               hint="PAN Card No."
               type="panid"
@@ -584,7 +585,7 @@ export default class Registation extends Component {
         <div  style={{   display: "flex",
           justifyContent: "center",
           alignItems: "center"}} className="createAccount">
-            <button disabled={!this.state.firstName|| !this.state.lastName ||!this.state.password|| !this.state.confirmpassword ||!this.state.panid||!this.state.email } style={{backgroundColor:'#f2dea0',paddingRight:40 }} onClick={this.handleSubmit} type="submit">Submit</button>
+            <button disabled={!this.state.firstName|| !this.state.lastName ||!this.state.password|| !this.state.confirmpassword ||!this.state.panid } style={{backgroundColor:"#FFEDD9",width:150,height:50,borderRadius:50 }} onClick={this.handleSubmit} type="submit">Submit</button>
             {/* disabled={!this.state.firstName|| !this.state.lastName ||!this.state.password|| !this.state.confirmpassword ||!this.state.panid||!this.state.email } */}
             {/* <h5 onClick={this.sayHello} type = "submit">Already Have an Account?</h5> */}
             </div>
@@ -599,7 +600,7 @@ export default class Registation extends Component {
 const styles = 
  {
  card: {
-   maxWidth: 1000,
+   maxWidth: 500,
    margin: "top",
    transition: "0.3s",
    boxShadow: "0 8px 40px -12px rgba(0,0,0,0.3)",

@@ -13,19 +13,32 @@ export default function Groups() {
       <div>
     <div className="App" style={{ backgroundColor:"#006699"}}>
       <WhiteTextTypography variant="h3">
-        About us
+      Our Story
       </WhiteTextTypography>
     </div>
     <div>
-    <Typography variant="h5" style={{ backgroundColor:" #e6ffff" }}>
-    Along with FAQ and Contact pages, the About Us page is one of the first supporting pages you'll likely create for your website, regardless of the industry you're in.
-
-They may go by different labels—“About”, “Story”, “Mission”—but these types of pages generally serve the same key purpose: to be the go-to page for a brand to say, “This is who we are.”
-
-When a visitor wants to learn more about you or your business, it's the page they'll look for.
-
-Unfortunately, About Us pages are too often treated as an obligation rather than the valuable opportunity they are to connect with your customers by selling your story, your vision, your mission, and what makes you, YOU.
-                </Typography>
+   <h4>SCOPE</h4>
+    </div>
+    <div>
+      <h6> 
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+      </h6>
+    </div>
+    <div>
+   <h4>ELIGIBILITY</h4>
+    </div>
+    <div>
+      <h6> 
+      Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+      </h6>
+    </div>
+    <div>
+   <h4>DURATION</h4>
+    </div>
+    <div>
+      <h6> 
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio 
+      </h6>
     </div>
     </div>
   );
