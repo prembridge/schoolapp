@@ -247,7 +247,7 @@ export default class Registation extends Component {
           value.length < 6 ? "minimum 6 characaters required" : "";
         break;
         case "confirmpassword":
-          formErrors.confirmpassword = this.state.password !== this.state.confirmpassword ? " ": "Passwords don't match";
+          formErrors.confirmpassword =  this.state.password !== this.state.confirmpassword ? " ": "Passwords don't match" ;
         break;
         case "panid":
           formErrors.panid =PanRegex.test(value)
@@ -436,8 +436,8 @@ export default class Registation extends Component {
             <div>
             <MDBInput style={{borderColor: 'gray', borderWidth: 1,maxWidth:'450px' }}
               className={formErrors.confirmpassword.length > 0 ? "error" : null}
-              hint="confirmpassword"
-              type="confirmpassword"
+              hint="password"
+              type="password"
               name="confirmpassword"
               noValidate
               onChange={this.handleChange}

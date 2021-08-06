@@ -8,7 +8,9 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown'
 import Carousel from 'react-bootstrap/Carousel'
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import { Button } from "@material-ui/core";
+import Swal from 'sweetalert2'
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 700,
@@ -30,7 +32,8 @@ function loadScript(src) {
 	})
 }
 export default function Guestprofile() {
-  
+  const [Nchild,setNchild] = useState('');
+    const [Nyear, setNyear] = useState('');
   var tot = 0;
   var sum = 0;
    
@@ -42,7 +45,7 @@ export default function Guestprofile() {
     var children=0;
     var years = 0;
     var total = 0;
-    const [firstName, setFirstName] = useState('');
+   
   const classes = useStyles();
   const [refs] = useState({
     child: React.createRef(),
@@ -61,7 +64,9 @@ export default function Guestprofile() {
     
     const [value,setValue]=useState('');
     const [amount, setamount] = useState('');
-    const onChange = (e) => {
+   
+    const onChange = ( setIdentifierState ,e) => {
+      setIdentifierState(e.target.value);
     const { name, value } = e.target;
     vars[name] = value;
     // Could've used vars, but just use refs because we keep references to all 3
@@ -220,7 +225,152 @@ setValue(dis)
 
       setValue(dis)
     }
+async function postamount(){
+  
+
+  console.log ( localStorage.getItem("fkid"),"idddddddddddd")
+      var val = localStorage.getItem("value")
+      console.log(val,"bbbbbbbbbbbbbbbbbbbbbbbb")
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+       var raw = JSON.stringify({
+        "uid":localStorage.getItem("id"),
+        "noc": "1",
+        "noy": "1",
+        "amtp": "1",
+        "tot": amount,
+        "pen": "1",
+        "pay": "1",
+        "New_entry": "1"
+      });
+      
+       
+      
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      };
+      
+       
+      
+    await  fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/plans", requestOptions)
+        .then(response => response.json())
+        .then(json => {
+          
+           console.log("json.. data", JSON.stringify(json))
+        
+           var message = json.message
+           alert(message)
+           if(message === "Succesfully inserted"){
+            amountRazorpay()
+
+        //    window.open(
+        //   ' https://pages.razorpay.com/pl_HRc2yXiFYdkEzH/view'
+        //  );
+           } else {
+             if(message === "" )
+             alert("please Enter Valid details.")
+           }
+         }
+          )
+        .then(result =>  console.log(result,"resulttt afrer posting"))
+        .catch(error => console.log('error', error));
+
+
+        // window.open(
+        //   ' https://pages.razorpay.com/pl_HRc2yXiFYdkEzH/view'
+        //  );
+
+    }
+
+
+    async function postdata () {
+      console.log ( localStorage.getItem("fkid"),"idddddddddddd")
+      var val = localStorage.getItem("value")
+      console.log(val,"bbbbbbbbbbbbbbbbbbbbbbbb")
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+       var raw = JSON.stringify({
+        "uid":localStorage.getItem("id"),
+        "noc": Nchild,
+        "noy": Nyear,
+        "amtp": '',
+        "tot": localStorage.getItem('value'),
+        "pen": "",
+        "pay": "",
+        "New_entry": "1"
+      });
+      
+       
+      
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      };
+      
+       
+      
+    await  fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/plans", requestOptions)
+        .then(response => response.json())
+        .then(json => {
+          
+           console.log("json.. data", JSON.stringify(json))
+        
+           var message = json.message
+           alert(message)
+           if(message === "Succesfully inserted"){
+            displayRazorpay()
+
+        //    window.open(
+        //   ' https://pages.razorpay.com/pl_HRc2yXiFYdkEzH/view'
+        //  );
+           } else {
+             if(message === "" )
+             alert("please Enter Valid details.")
+           }
+         }
+          )
+        .then(result =>  console.log(result,"resulttt afrer posting"))
+        .catch(error => console.log('error', error));
+
+
+        // window.open(
+        //   ' https://pages.razorpay.com/pl_HRc2yXiFYdkEzH/view'
+        //  );
+
+    }
+
     async function displayRazorpay() {
+      var tempDate = new Date();
+ var date = tempDate.getDate() + '-' + (tempDate.getMonth()+1) + '-' + tempDate.getFullYear() ;
+  var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+var raw = JSON.stringify({
+  "id": "1",
+  "currency": "INR",
+  "amount": localStorage.getItem('value'),
+  "sponid": localStorage.getItem("id"), //Fk_SponsorID
+  "planid": "1", //Pk_id
+  "tot": localStorage.getItem('value'), //Total
+  "pending": localStorage.getItem('value'), //Pending_amt
+  "Date":date //"26/07/2021" //data
+});
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+  const data = await fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/razorpay", requestOptions)
+ .then(response => response.json())
+//  .then(json =>{
+//   console.log("response",data)
+//  })
+console.log(data ,"data of data")
  
       const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
     
@@ -236,18 +386,18 @@ setValue(dis)
       // console.log(data,"data....")
     
       var options = {
-        "key": 'rzp_test_rujuPR6IGGzAhW', // Enter the Key ID generated from the Dashboard
-        "amount": value.toString()+"00",// Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "key": 'rzp_test_LzrSt5hd7JwDVF', // Enter the Key ID generated from the Dashboard
+        "amount": data.amount.toString()+"00",// Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         "currency": "INR",
         "name": "PREMKUMAR",
         "description": "Test Transaction",
         "image": `${require("../assets/Panaah3.png")}`,
-        // "order_id": "order_HcKdrNdFZuo5Bb", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        // "handler": function (response){
-        //     alert(response.razorpay_payment_id);
-        //     alert(response.razorpay_order_id);
-        //     alert(response.razorpay_signature)
-        // },
+        "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        "handler": function (response){
+            alert(response.razorpay_payment_id);
+            alert(response.razorpay_order_id);
+            alert(response.razorpay_signature)
+        },
         "prefill": {
             "name": "Gaurav Kumar",
             "email": "gaurav.kumar@example.com",
@@ -277,12 +427,40 @@ setValue(dis)
     }
     async function amountRazorpay() {
  
-      const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
-    
-      if (!res) {
-        alert('Razorpay SDK failed to load. Are you online?')
-        return
-      }
+      var tempDate = new Date();
+      var date = tempDate.getDate() + '-' + (tempDate.getMonth()+1) + '-' + tempDate.getFullYear() ;
+   var myHeaders = new Headers();
+ myHeaders.append("Content-Type", "application/json");
+ var raw = JSON.stringify({
+   "id": "1",
+   "currency": "INR",
+   "amount": amount,
+   "sponid":  localStorage.getItem("id"), //Fk_SponsorID
+   "planid": "1", //Pk_id
+   "tot": amount, //Total
+   "pending": amount, //Pending_amt
+   "Date": date //data
+ });
+ var requestOptions = {
+   method: 'POST',
+   headers: myHeaders,
+   body: raw,
+   redirect: 'follow'
+ };
+   const data = await fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/razorpay", requestOptions)
+  .then(response => response.json())
+ //  .then(json =>{
+ //   console.log("response",data)
+ //  })
+ console.log(data,"data data")
+ 
+ 
+   const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
+ 
+   if (!res) {
+     alert('Razorpay SDK failed to load. Are you online?')
+     return
+   }
     
       // const data = await fetch('https://gzacors.herokuapp.com/http://122.185.13.163:3013/razorpay', { method: 'POST' }).then((t) =>
       //   t.json()
@@ -291,18 +469,29 @@ setValue(dis)
       // console.log(data,"data....")
     
       var options = {
-        "key": 'rzp_test_rujuPR6IGGzAhW', // Enter the Key ID generated from the Dashboard
+        "key": 'rzp_test_LzrSt5hd7JwDVF', // Enter the Key ID generated from the Dashboard
+    
         "amount": amount.toString()+"00",// Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         "currency": "INR",
         "name": "PREMKUMAR",
         "description": "Test Transaction",
         "image": `${require("../assets/Panaah3.png")}`,
-        // "order_id": "order_HcKdrNdFZuo5Bb", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        // "handler": function (response){
-        //     alert(response.razorpay_payment_id);
-        //     alert(response.razorpay_order_id);
-        //     alert(response.razorpay_signature)
-        // },
+        "order_id":data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+     "handler": function (response){
+     
+       console.log("paymentid",response.razorpay_payment_id)
+       console.log("orderid",response.razorpay_order_id)
+       console.log("signature",response.razorpay_signature)
+       
+         // alert(response.razorpay_payment_id);
+         // alert(response.razorpay_order_id);
+         // alert(response.razorpay_signature)
+         Swal.fire({
+           icon: 'success',
+           title: 'Success!...',
+           text: 'Your payment was successful!',
+         })
+     },
         "prefill": {
             "name": "Gaurav Kumar",
             "email": "gaurav.kumar@example.com",
@@ -339,7 +528,7 @@ setValue(dis)
        <div style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',paddingLeft:'540px',paddingTop:'20px'}}>
     <h1> Adopt A Child</h1>
     </div>
-    <div style={{paddingLeft:'300px',paddingTop:"30px",fontFamily: 'Montserrat,sans-serif',fontSize:'20px',paddingBottom:"100px"}}>
+    <div style={{paddingLeft:'200px',paddingTop:"30px",fontFamily: 'Montserrat,sans-serif',fontSize:'20px',paddingBottom:"100px"}}>
     <h4>Panaah provides you the platform and privilege of contributing / gifting a grant of your convenience without a periodic commitment. A one time gift of any value can still mean a lot to give hope for tomorrow to young lives in hopeless homes today. (Minimum contribution of INR 1000)</h4>
     </div>
     {/* <MDBCard  style={{ backgroundColor:'#FFFFFF',borderColor:"#5D6D7E", width: "60rem", borderRadius:'10px',marginLeft:330,} }>
@@ -376,19 +565,21 @@ setValue(dis)
               onChange={e => setamount(e.target.value)}
               />
 <div>
-      <Button  onClick={
-              amountRazorpay
+      <Button 
+      type ='button'
+       onClick={
+              postamount
               // opendata
               //   window.open(
               //  ' https://pages.razorpay.com/pl_HRc2yXiFYdkEzH/view'
               //     )
-                 }style={{border:'2px',backgroundColor:'brown'}}>PayNow</Button>
+                 }style={{border:'2px',backgroundColor:'#FFEDD9' }}>Pay Now</Button>
     </div>
                </div>
     
                 
- <div style={{paddingTop:'50px',paddingLeft:"190px"}}>
-   OR
+ <div style={{paddingTop:'45px',paddingLeft:"190px"}}>
+   <h1> OR</h1>
  </div>
  <div style={{paddingTop:'50px',paddingLeft:"190px"}}>
    <h1>b. Child Sponsorship
@@ -409,7 +600,7 @@ setValue(dis)
     <input
     min="1" max="10"
     ref={refs.child}
-    onChange={onChange}
+    onChange={onChange.bind(this, setNchild)}
     defaultValue={vars.child}
     name="child"
     id="child"
@@ -422,7 +613,7 @@ setValue(dis)
     <input
     min="1" max="10"
     ref={refs.second}
-    onChange={onChange}
+    onChange={onChange.bind(this, setNyear)}
     defaultValue={vars.second}
     name="second"
     id="second"
@@ -459,18 +650,19 @@ setValue(dis)
           <option  value="qua">quarterly</option>
           <option value="mon">Monthly</option>
         </select> */}
+        {localStorage.setItem("value",value)}
         <h4>selected amount ₹:{value} </h4>
       </div>
                 <div className="text-center py-4 mt-3">
-                <Button style={{border:'2px',backgroundColor:'brown'}} 
+                <Button style={{border:'2px',backgroundColor:'#FFEDD9'}} 
             onClick={
-              displayRazorpay
+              postdata
               // opendata
               //   window.open(
               //  ' https://pages.razorpay.com/pl_HRc2yXiFYdkEzH/view'
               //     )
                  } >
-               PayNow
+               Pay Now
               <MDBIcon far icon="paper-plane" className="ml-2" />
             </Button>
                 </div>

@@ -19,7 +19,8 @@ import styled from "styled-components";
 import { Container, Row, Col } from "reactstrap";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBInput,MDBInputGroup } from 'mdbreact';
 import { light } from '@material-ui/core/styles/createPalette';
-
+import Swal from 'sweetalert2'
+import { useForm } from 'react-hook-form';
 const Styles = styled.div`
 
 .rcorners1 {
@@ -58,6 +59,7 @@ const Styles = styled.div`
     margin-top: 1.5rem;
   }`
 export default function Newuser() {
+  const { register, handleSubmit, errors } = useForm();
   const [NewuserEmail, setFirstName] = useState('');
   const [GuestuserEmail, setGuestuserEmail] = useState('');
   const [VolunteerEmail, setVolunteerEmail] = useState('');
@@ -73,6 +75,125 @@ export default function Newuser() {
   console.log("name",getgu)
   console.log("guest",GuestuserEmaill)
   console.log("volunteer",VolunteerEmaill)
+
+ async function Vemail(){
+   console.log("bbbbbbbbbbbbb")
+    var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+var raw = JSON.stringify({
+  "EmailID": NewuserEmaill
+});
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+ await fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/mailcheck", requestOptions)
+  .then(response => response.json())
+  .then(json =>{
+    var message = json.message
+    var otp_verified = json.otp_verified
+    console.log(otp_verified)
+    console.log(json)
+    if(message === "The E-mail already in use" ){
+
+      if(message === "The E-mail already in use" && otp_verified === "0"){
+//message = "You have already registered.Please complete OTP validation"
+        alert("You have already registered.Please complete OTP validation.") 
+        Swal.fire({
+          title: 'Enter vaild OTP',
+      input: 'text',
+      showCancelButton: true,
+      confirmButtonText: 'Submit',
+      showLoaderOnConfirm: true,
+      preConfirm: function (email) {
+        return new Promise(function (resolve, reject) {
+          setTimeout(function() {
+
+            var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+var raw = JSON.stringify({
+  "otp": email,
+  "email": localStorage.getItem("Newuseremail")
+});
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/otpcheck", requestOptions)
+  .then(response => response.json())
+  .then(json =>{ 
+    var message = json.message
+    // if(message === 'wrong otp"'){
+    //   alert("InVaild OTP")
+    // }
+    if (message === "correct otp") {
+         
+      window.location = "./Newuserlogin";
+      reject('This email is already taken.')
+    } else {
+     
+     resolve()
+     alert("Enter Valid OTP..");
+    }
+    console.log(json ,"result in otp ver")
+  })
+  //.then(result => console.log(result ,"result in otp ver")
+  
+  .catch(error => console.log('error', error));
+            // if ('correct otp') {
+             
+            //   window.location = "./Newuserlogin";
+            //    //reject('Invaild OTP.')
+            // } else {
+            //   if("wrong otp")
+            //   alert("Enter Valid OTP..");
+            //  resolve()
+            //  //alert("Enter Valid OTP..");
+            // }
+          }, 2000)
+        })
+      },
+      allowOutsideClick: false
+        }).then(function() {
+         
+         // window.location = "./guestprofile";
+      })
+      }else{
+        if(message === "The E-mail already in use" && otp_verified === "1"){
+          alert("User is already registered. Please sign in")
+history.push('/Newuserlogin')
+        }
+      }
+          
+    }else {
+      history.push('/Registation')
+    }
+    console.log(message,"json.........")
+  })
+  .catch(error => console.log('error', error));
+  }
+  function volunteer(){
+
+var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+var raw = JSON.stringify({
+  "email": VolunteerEmail
+});
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/volunteer", requestOptions)
+  .then(response => response.text())
+  .then(result => alert(result))
+  .catch(error => console.log('error', error));
+  }
   return (
     // <div style={{paddingLeft:'125px'}}>
     <Styles> 
@@ -96,7 +217,7 @@ export default function Newuser() {
             )} */}
           </div>
           <div style={{paddingLeft:'350px',}}>
-    <button  disabled={!NewuserEmail} onClick={() => history.push('/Registation')}style={{backgroundColor:"#FFEDD9",width:150,height:50,borderRadius:50}}>SIGN UP</button>
+    <button  disabled={!NewuserEmail} onClick={Vemail }style={{backgroundColor:"#FFEDD9",width:150,height:50,borderRadius:50}}>SIGN UP</button>
     </div>
 </div>
 
@@ -146,8 +267,9 @@ export default function Newuser() {
               <span style={{ color: 'red' }} className="errorMessage">{formErrors.firstName}</span>
             )} */}
           </div>
-          <div style={{paddingLeft:'450px'}}>
-    <button   onClick={() => history.push('/Registation')}style={{backgroundColor:"#FFEDD9",width:150,height:50,borderRadius:50}}>JOIN</button>
+          <div style={{paddingLeft:'402px'}}>
+    <button disabled={!VolunteerEmail}   onClick={volunteer}
+style={{backgroundColor:"#FFEDD9",width:150,height:50,borderRadius:50}}>JOIN</button>
     </div>
     
 </div>
@@ -171,33 +293,43 @@ Tell customers more about you. Add a few words and a stunning pic to grab their 
 
 ​This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</p>
     </Carousel.Caption>
-    {/* <Carousel.Caption> */}
+  </Carousel.Item>
+  <Carousel.Item interval={1000}>
+  <img style={{ height: '550px',width:'2030px'}}
+      className="d-block w-0"
+      src={require("../assets/Testimony.jpg")}
+      alt="First slide"
+    
+    />
+    <Carousel.Caption>
       {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
+      <h6 style={{paddingLeft:'850px',fontFamily: 'Montserrat, sans-serif',fontWeight:'bold',fontSize:'50px',paddingTop:'50px'}}>My Story</h6>
+      <p style={{paddingLeft:'790px',paddingTop:"90px",fontFamily: 'Raleway,sans-serif',fontSize:'20px',color:"white",fontStyle: 'italic',textAlign:'center',width:'1250px',paddingLeft:'875px'}}>
+This is a great place to add a tagline.
+
+Tell customers more about you. Add a few words and a stunning pic to grab their attention and get them to click.
+
+​This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</p>
+    </Carousel.Caption>
+  </Carousel.Item>
+  <Carousel.Item interval={1000}>
+  <img style={{ height: '550px',width:'2030px'}}
+      className="d-block w-0"
+      src={require("../assets/Testimony.jpg")}
+      alt="First slide"
     
-    {/* </Carousel.Caption> */}
-  {/* </Carousel.Item> */}
-  {/* <Carousel.Item interval={500}> */}
-     {/* <img style={{width: '550px', height: '450px'}}
-      className="d-block w-100"
-      src={require("../assets/pc1.jpg")}
-     alt="Third slide"
-    /> */}
-     {/* <Carousel.Caption> */}
-       {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
-    
-    {/* </Carousel.Caption> */}
-   {/* </Carousel.Item> */}
-   {/* <Carousel.Item interval={500}> */}
-     {/* <img style={{width: '550px', height: '450px'}}
-      className="d-block w-100"
-      src={require("../assets/pc1.jpg")}
-     alt="Third slide"
-    /> */}
-     {/* <Carousel.Caption> */}
-       {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
-    
-    {/* </Carousel.Caption> */}
-   </Carousel.Item>
+    />
+    <Carousel.Caption>
+      {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
+      <h6 style={{paddingLeft:'850px',fontFamily: 'Montserrat, sans-serif',fontWeight:'bold',fontSize:'50px',paddingTop:'50px'}}>My Story</h6>
+      <p style={{paddingLeft:'790px',paddingTop:"90px",fontFamily: 'Raleway,sans-serif',fontSize:'20px',color:"white",fontStyle: 'italic',textAlign:'center',width:'1250px',paddingLeft:'875px'}}>
+This is a great place to add a tagline.
+
+Tell customers more about you. Add a few words and a stunning pic to grab their attention and get them to click.
+
+​This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</p>
+    </Carousel.Caption>
+  </Carousel.Item>
   </Carousel>
 </div>
     </Styles>

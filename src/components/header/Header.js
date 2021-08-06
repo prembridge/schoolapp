@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {createContext, useReducer} from 'react';
 // import logo from './logo.svg';
 // import './App.css';
 import { makeStyles } from '@material-ui/core/styles';
@@ -27,16 +27,20 @@ import Newuser from '../newuser/Newuser';
 import Guestprofile from '../Guestprofile/guestprofile'
 import Newuserlogin from '../newuserlogin/Newuserlogin'
 import Userprofile from '../userprofile/Userprofile'
-
+import viewtransaction from '../ViewTransactions/viewtransaction'
+import resetpassword from '../resetpassword/Resetpassword'
 import {
   BrowserRouter as Router,
   Switch, Route, Link
 } from "react-router-dom";
+
+import { initialState,reducer } from '../reducer/UseReducer';
 //import Home from '../home/Home';
 // import {
 //     BrowserRouter as Router,
 //     Switch, Route, Link
 //   } from "react-router-dom";
+export const usercontext = createContext()
 const useStyles = makeStyles({
     appbar: {
       backgroundImage: `url(${process.env.PUBLIC_URL + "/images/background.jpeg"})`,width: '550px', height: '350px'
@@ -61,6 +65,7 @@ const useStyles = makeStyles({
 });
 
 function Header() {
+  const [state ,dispatch ]= useReducer(reducer,initialState)
   //const history = useHistory();
  const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
@@ -90,7 +95,7 @@ function Header() {
     <Router>
     <div className ={classes.root}>
 
-     
+     <usercontext.Provider value={{state,dispatch}}>
        <Nav/>
        
        <Switch>
@@ -108,6 +113,8 @@ function Header() {
        <Route 
        path="/Forgotpassword" component={Forgotpassword}></Route>
        <Route 
+       path ="/Resetpassword" component={resetpassword}></Route>
+       <Route 
        path="/Groups" component={Groups}></Route>
         <Route 
        path="/Newuser" component={Newuser}></Route>
@@ -117,12 +124,14 @@ function Header() {
        path="/Guestprofile" component={Guestprofile}></Route>
         <Route 
        path="/Userprofile" component={Userprofile}></Route>
+         <Route 
+       path="/Viewtransaction" component={viewtransaction}></Route>
 
         <Route 
        path="/" component={Home}></Route>
         
        </Switch>
-         
+       </usercontext.Provider> 
 <div>
     
 </div>

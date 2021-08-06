@@ -49,7 +49,20 @@ export default function Donation() {
   const [Nchild,setNchild] = useState('');
   const [Nyear, setNyear] = useState('');
   const [NMonth, setNMonth] = useState('');
-
+  const [Ntotal, setNTotal] = useState('');
+  const [Ninpay ,setNinpay] = useState('');
+  const [pkid, setpkid] = useState('');
+  const [Rpkid, setRpkid] = useState('');
+  const [Rfkid ,setRfkid] = useState('');
+  const [Rpending, setRpending]= useState('');
+  const [Rtotal , setRtotal]= useState('');
+  const [Rinst, setRinst]= useState('');
+  const [fk_SponsorID ,setFk_SponsorID] = useState('');
+  const [ No_of_child,setNo_of_child] = useState('');
+  const [No_of_year,setNo_of_year] = useState('');
+  const [amount, setamount]=useState('');
+  const [pending_amt,setPending_amt] = useState('');
+   const [paymentplan, setpaymentplan] = useState('')
   const history = useHistory();
   
   var tot = 0;
@@ -182,7 +195,8 @@ tota = tot;
 
 setValue(dis)
     console.log(tot,"t");
-   
+    setNTotal(tot)
+   console.log("setvalue",Ntotal)
     };
 
     const handleSelect=(e)=>{
@@ -247,38 +261,54 @@ setValue(dis)
         .then(response => response.json())
         .then(json => {
           console.log("jssssssssssssss",JSON.stringify(json))
-         var mon = json.data.Payment_type
-         var No_of_child = json.data.No_of_child
-         var No_of_year = json.data.No_of_year
+         var Paymentplan = json.data.Payment_type
+         var No_of_Child = json.data.No_of_child
+         var No_of_Year = json.data.No_of_year
          var New_entry = json.data.New_entry
-         var amount = json.data.Total
-         var pkid =json.data.Pk_id
-           localStorage.setItem("paymentplan",mon)
-           localStorage.setItem("No_of_child",No_of_child)
-           localStorage.setItem("No_of_year",No_of_year)
-           localStorage.setItem("amount",amount)
+         var Amount = json.data.Total
+         var AmtPay =json.data.AmtPay
+         var Pkid =json.data.Pk_id
+         var Ninpay = json.data.AmtPay
+         var Fk_SponsorIDd = json.data.Fk_SponsorID
+         var Pending_amt = json.data.Pending_amt
+         localStorage.setItem("fkid",Fk_SponsorIDd)
+         localStorage.getItem("fkid")
+         setPending_amt(Pending_amt)
+         setFk_SponsorID(Fk_SponsorIDd)
+         setNinpay(Ninpay)
+         setNo_of_child(No_of_Child)
+         setNo_of_year(No_of_Year)
+         setamount(Amount)
+         setpaymentplan(Paymentplan)
+         setpkid(Pkid)
+         //  localStorage.setItem("paymentplan",mon)
+          //  localStorage.setItem("No_of_child",No_of_child)
+          //  localStorage.setItem("No_of_year",No_of_year)
+           //localStorage.setItem("amount",amount)
+           localStorage.setItem("AmtPay",AmtPay)
            localStorage.getItem("No_of_year")
            localStorage.setItem("New_entry",New_entry)
            localStorage.getItem("New_entry")
-           localStorage.getItem("amount")
-            var child =localStorage.getItem("No_of_child")
-            var year = localStorage.getItem("No_of_year")
+          // localStorage.getItem("amount")
+           localStorage.getItem("AmtPay")
+            // var child =localStorage.getItem("No_of_child")
+            // var year = localStorage.getItem("No_of_year")
             var amt = localStorage.getItem("amount")
            var get = localStorage.getItem("paymentplan")
            console.log(No_of_child)
            console.log(No_of_year)
            console.log(amount)
           console.log("pkid",pkid)
-          console.log("json..",json)
-          console.log("get",child)
-          console.log("year",year)
+          console.log("json..getplan",json)
+        //  console.log("get",child)
+         // console.log("year",year)
           console.log("amount",amt)
           console.log("newentery", localStorage.getItem("New_plan"))
         }
          )
         .catch(error => console.log('error', error));
       })
-    function postdata () {
+      async function postdata () {
       var val = localStorage.getItem("value")
       console.log(val,"bbbbbbbbbbbbbbbbbbbbbbbb")
       var myHeaders = new Headers();
@@ -287,7 +317,9 @@ setValue(dis)
         "uid": localStorage.getItem("id"),
         "noc": Nchild,
         "noy": Nyear,
-        "tot": localStorage.getItem('value'),
+        "amtp": localStorage.getItem('value'),
+        "tot": Ntotal,
+        "pen": Ntotal,
         "pay": NMonth,
         "New_entry": "1"
       });
@@ -303,22 +335,43 @@ setValue(dis)
       
        
       
-      fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/plans", requestOptions)
+    await  fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/plans", requestOptions)
         .then(response => response.json())
         .then(json => {
           //var mon = json.data.Payment_type
-          var pkid =json.data.insertId
-            localStorage.setItem("pkid",pkid)
+         // var pkid =json.data.insertId
            // localStorage.setItem("pkid",pkid)
-            var get = localStorage.getItem("pkid")
-           console.log("pkid",pkid)
-           console.log("json.. data",json)
+           // localStorage.setItem("pkid",pkid)
+           // var get = localStorage.getItem("pkid")
+          // console.log("pkid",pkid)
+           console.log("json.. data", JSON.stringify(json))
+           var Fk_SponsorID = json.data.Fk_SponsorID
+           var Pk_id = json.data.Pk_id
+           var RTotal = json.data.Total
+           var RPending_amt  = json.data.Pending_amt
+           var RAmtPay = json.data.AmtPay
+           localStorage.setItem("Rfkid",Fk_SponsorID)
+            console.log(localStorage.getItem("Rfkid"),"local")
+           localStorage.setItem("pkid",Pk_id)
+           localStorage.getItem("pkid")
+           localStorage.setItem("pend",RPending_amt)
+          console.log(localStorage.getItem("pend"),"pending")
+
+          //  setRfkid(Fk_SponsorID);
+          //  setRpkid(Pk_id);
+          //  setRpending(RPending_amt)
+          //  setRtotal(RTotal)
+          //  setRinst(RAmtPay)
+          console.log("amountstate",Rtotal)
+          console.log("rtotal",RTotal)
            var message = json.message
            alert(message)
            if(message === "Succesfully inserted"){
-           window.open(
-          ' https://pages.razorpay.com/pl_HRc2yXiFYdkEzH/view'
-         );
+            PostRazorpay()
+
+        //    window.open(
+        //   ' https://pages.razorpay.com/pl_HRc2yXiFYdkEzH/view'
+        //  );
            } else {
              if(message === "" )
              alert("please Enter Valid details.")
@@ -334,24 +387,126 @@ setValue(dis)
         //  );
 
     }
-function opendata(){
-   window.open(
-          ' https://pages.razorpay.com/pl_HRc2yXiFYdkEzH/view'
-         );
-}
-async function displayRazorpay() {
+// function opendata(){
+//    window.open(
+//           ' https://pages.razorpay.com/pl_HRc2yXiFYdkEzH/view'
+//          );
+// }
+
+async function PostRazorpay() {
+  var tempDate = new Date();
+  var date = tempDate.getDate() + '/' + (tempDate.getMonth()+1) + '/' + tempDate.getFullYear() ;
+   var myHeaders = new Headers();
+ myHeaders.append("Content-Type", "application/json");
+ var raw = JSON.stringify({
+   "id": "1",
+   "currency": "INR",
+   "amount": localStorage.getItem('value'),
+   "sponid": localStorage.getItem("Rfkid"), //Fk_SponsorID
+   "planid":  localStorage.getItem("pkid"), //Pk_id
+   "tot": Ntotal, //Total
+   "pending": localStorage.getItem("pend"), //Pending_amt
+   "Date": "26/07/2021" //data
+ });
+ var requestOptions = {
+   method: 'POST',
+   headers: myHeaders,
+   body: raw,
+   redirect: 'follow'
+ };
+   const data = await fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/razorpay", requestOptions)
+  .then(response => response.json())
+ //  .then(json =>{
+ //   console.log("response",data)
+ //  })
+ console.log(data,"data data")
  
+ 
+   const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
+ 
+   if (!res) {
+     alert('Razorpay SDK failed to load. Are you online?')
+     return
+   }
+ 
+   // const data = await fetch('https://gzacors.herokuapp.com/http://122.185.13.163:3013/razorpay', { method: 'POST' }).then((t) =>
+   //   t.json()
+   // )
+ 
+   // console.log(data,"data....")
+ 
+   var options = {
+     "key": 'rzp_test_LzrSt5hd7JwDVF', // Enter the Key ID generated from the Dashboard
+     "amount": data.amount.toString()+"00",// Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+     "currency": "INR",
+     "name": 'Donation',
+     "description": 'Thank you for nothing. Please give us some money',
+     "image": `${require("../assets/Panaah3.png")}`,
+     "order_id":data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+     "handler": function (response){
+     
+       console.log("paymentid",response.razorpay_payment_id)
+       console.log("orderid",response.razorpay_order_id)
+       console.log("signature",response.razorpay_signature)
+       
+         // alert(response.razorpay_payment_id);
+         // alert(response.razorpay_order_id);
+         // alert(response.razorpay_signature)
+         Swal.fire({
+           icon: 'success',
+           title: 'Success!...',
+           text: 'Your payment was successful!',
+         })
+     },
+     //localStorage.getItem("name")
+     "prefill": {
+         "name": "Prem",
+         "email": "gaurav.kumar@example.com",
+         "contact": "9999999999"
+     },
+     "notes": {
+         "address": "Razorpay Corporate Office"
+     },
+     "theme": {
+         "color": "#3399cc"
+     }
+ };
+ var rzp1 =new window.Razorpay(options);
+ rzp1.on('payment.failed', function (response){
+   Swal.fire({
+     icon: 'error',
+     title: 'Oops...',
+     text: 'paymentfailed!',
+    
+   })
+         // alert(response.error.code);
+         // alert(response.error.description);
+         // alert(response.error.source);
+         // alert(response.error.step);
+         // alert(response.error.reason);
+         // alert(response.error.metadata.order_id);
+         // alert(response.error.metadata.payment_id);
+ });
+ //document.getElementById('rzp-button1').onclick = function(e){
+     rzp1.open();
+     //e.preventDefault();
+ //}
+ }
+   // const paymentObject = new window.Razorpay(options)
+async function displayRazorpay() {
+ var tempDate = new Date();
+ var date = tempDate.getDate() + '/' + (tempDate.getMonth()+1) + '/' + tempDate.getFullYear() ;
   var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 var raw = JSON.stringify({
   "id": "1",
   "currency": "INR",
-  "amount": localStorage.getItem('amount'),
-  "sponid": "77",
-  "planid": "94",
-  "tot": "15000",
-  "pending": "15000",
-  "Date": "26/07/2021"
+  "amount": localStorage.getItem("AmtPay"),
+  "sponid": fk_SponsorID, //Fk_SponsorID
+  "planid": pkid, //Pk_id
+  "tot": amount, //Total
+  "pending": pending_amt, //Pending_amt
+  "Date":date //"26/07/2021" //data
 });
 var requestOptions = {
   method: 'POST',
@@ -364,7 +519,7 @@ var requestOptions = {
 //  .then(json =>{
 //   console.log("response",data)
 //  })
-console.log(data)
+console.log(data ,"data of data")
 
 
   const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
@@ -461,7 +616,7 @@ rzp1.on('payment.failed', function (response){
   <div stlye={{display:'flex', flexdirection:'row'}}>
       
 
-<h1 style={{paddingLeft:'90px'}}>Panaah: Adopt A Child</h1>
+<h1 style={{paddingLeft:'190px'}}>Panaah: Adopt A Child</h1>
 
       <h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',width:'90%',paddingLeft:'190px'}} >
 
@@ -469,33 +624,33 @@ rzp1.on('payment.failed', function (response){
   <h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',
     paddingTop:'15px',width:'90%',paddingLeft:'190px'}} >
 
-.Select the number of children and the number of years you would like to support the child/children.</h5>
+1. Select the number of children and the number of years you would like to support the child/children.</h5>
   
       <h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',textAlign:'justify', flexDirection: 'column',flex: 1,
     justifyContent: 'center',
     alignItems: 'center',width:'90%',paddingLeft:'190px'}} >
 
-.Choose the sponsor/payment plan that suits you and submit to save your preferences</h5>
+2. Choose the sponsor/payment plan that suits you and submit to save your preferences</h5>
 <h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',textAlign:'justify', flexDirection: 'column',flex: 1,
     justifyContent: 'center',
     alignItems: 'center',width:'90%',paddingLeft:'190px'}} >
 
-.Once saved you can click on the pay now button to send you contributions according to your plan</h5>
+3. Once saved you can click on the pay now button to send you contributions according to your plan</h5>
 <h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',textAlign:'justify', flexDirection: 'column',flex: 1,
     justifyContent: 'center',
     alignItems: 'center',width:'90%',paddingLeft:'190px'}} >
 
-.For your convenience you can use the autopay/auto debit option by enabling the option in your profile page to send your contributions on time</h5>
+4. For your convenience you can use the autopay/auto debit option by enabling the option in your profile page to send your contributions on time</h5>
 <h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',textAlign:'justify', flexDirection: 'column',flex: 1,
     justifyContent: 'center',
     alignItems: 'center',width:'90%',paddingLeft:'190px'}} >
 
-.To change your plan or any other information check your profile page</h5>
+5. To change your plan or any other information check your profile page</h5>
 <h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',textAlign:'justify', flexDirection: 'column',flex: 1,
     justifyContent: 'center',
     alignItems: 'center',width:'90%',paddingLeft:'190px'}} >
 
-.Email id, Pan Number and Name cannot be edited. For more information on this contact our team.</h5>
+6. Email id, Pan Number and Name cannot be edited. For more information on this contact our team.</h5>
  </div>
 </div>
 
@@ -527,7 +682,7 @@ name="child"
 id="child"
 type="number"
 className="form-control"
-placeholder={localStorage.getItem("No_of_child")}
+placeholder={No_of_child}
 />
 <br></br>
 <label htmlFor="second">Sponsorship Duration in Year's</label>
@@ -542,7 +697,7 @@ name="second"
 id="second"
 type="number"
 className="form-control"
-placeholder={localStorage.getItem("No_of_year")}
+placeholder={No_of_year}
 />
 </div>
 <br></br>
@@ -558,7 +713,7 @@ onChange={onChange}
 // name="sum"
 // type="number"
 className="form-control"
-placeholder={localStorage.getItem("amount")}
+placeholder={amount}
 />
 </div>
 <br></br>
@@ -575,8 +730,9 @@ onChange={onChange}
 // name="sum"
 // type="number"
 className="form-control"
-placeholder={localStorage.getItem("paymentplan")}
+placeholder={paymentplan}
 />
+<br></br>
   {/* <select className="browser-default custom-select"  name="choice"
 ref={refs.cho}
 disabled
@@ -594,11 +750,11 @@ onChange={onChange.bind(this, setNMonth)}>
     <option value="monthly">Monthly</option>
   </select> */}
   {/* {localStorage.setItem("value",value)} */}
-  <h4>Total Amount:{localStorage.getItem("amount")} </h4>
+  <h4 style={{paddingLeft:'90px'}}>Total Amount:{Ninpay} </h4>
 </div>
 {/* <div> <Button onClick={postdata}> submit</Button></div> */}
           <div className="text-center py-4 mt-3">
-            <Button style={{border:'2px',backgroundColor:'brown'}} 
+            <Button style={{border:'2px',backgroundColor:"#FFEDD9" }} 
             onClick={
               displayRazorpay
               // opendata
@@ -606,7 +762,7 @@ onChange={onChange.bind(this, setNMonth)}>
               //  ' https://pages.razorpay.com/pl_HRc2yXiFYdkEzH/view'
               //     )
                  } >
-               PayNow
+               Pay Now
               <MDBIcon far icon="paper-plane" className="ml-2" />
             </Button>
           </div>
@@ -644,7 +800,7 @@ onChange={onChange.bind(this, setNMonth)}>
  <div stlye={{display:'flex', flexdirection:'row'}}>
      
 
- <h1 style={{paddingLeft:'90px'}}>Panaah: Adopt A Child</h1>
+ <h1 style={{paddingLeft:'190px'}}>Panaah: Adopt A Child</h1>
 
 <h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',width:'90%',paddingLeft:'190px'}} >
 
@@ -652,33 +808,33 @@ By registering here you commit to partner with us in giving hope for tomorrow to
 <h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',
 paddingTop:'15px',width:'90%',paddingLeft:'190px'}} >
 
-.Select the number of children and the number of years you would like to support the child/children.</h5>
+1. Select the number of children and the number of years you would like to support the child/children.</h5>
 
 <h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',textAlign:'justify', flexDirection: 'column',flex: 1,
 justifyContent: 'center',
 alignItems: 'center',width:'90%',paddingLeft:'190px'}} >
 
-.Choose the sponsor/payment plan that suits you and submit to save your preferences</h5>
+2. Choose the sponsor/payment plan that suits you and submit to save your preferences</h5>
 <h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',textAlign:'justify', flexDirection: 'column',flex: 1,
 justifyContent: 'center',
 alignItems: 'center',width:'90%',paddingLeft:'190px'}} >
 
-.Once saved you can click on the pay now button to send you contributions according to your plan</h5>
+3. Once saved you can click on the pay now button to send you contributions according to your plan</h5>
 <h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',textAlign:'justify', flexDirection: 'column',flex: 1,
 justifyContent: 'center',
 alignItems: 'center',width:'90%',paddingLeft:'190px'}} >
 
-.For your convenience you can use the autopay/auto debit option by enabling the option in your profile page to send your contributions on time</h5>
+4. For your convenience you can use the autopay/auto debit option by enabling the option in your profile page to send your contributions on time</h5>
 <h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',textAlign:'justify', flexDirection: 'column',flex: 1,
 justifyContent: 'center',
 alignItems: 'center',width:'90%',paddingLeft:'190px'}} >
 
-.To change your plan or any other information check your profile page</h5>
+5. To change your plan or any other information check your profile page</h5>
 <h5 style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',textAlign:'justify', flexDirection: 'column',flex: 1,
 justifyContent: 'center',
 alignItems: 'center',width:'90%',paddingLeft:'190px'}} >
 
-.Email id, Pan Number and Name cannot be edited. For more information on this contact our team.</h5>
+6. Email id, Pan Number and Name cannot be edited. For more information on this contact our team.</h5>
 </div>
 </div>
 
@@ -735,7 +891,7 @@ onChange={onChange}
 defaultValue={vars.sum}
 // id="sum"
 // name="sum"
-// type="number"
+//type="number"
 className="form-control"
 //placeholder={localStorage.getItem("amount")}
 />
@@ -755,22 +911,22 @@ onChange={onChange.bind(this, setNMonth)}>
   <option  value="fullAmount">Full Amount</option>
    <option  value="annual">Annual</option>
    <option  value="halfYearly">Half yearly</option>
-   <option  value="quarterly">quarterly</option>
+   <option  value="quarterly">Quarterly</option>
    <option value="monthly">Monthly</option>
  </select>
  {localStorage.setItem("value",value)}
- <h4>Total Amount: {value} </h4>
+ <h4 style={{paddingLeft:'90px',paddingTop:"20px"}}>Total Amount: {value} </h4>
 </div>
 {/* <div> <Button onClick={postdata}> submit</Button></div> */}
          <div className="text-center py-4 mt-3">
-           <Button style={{border:'2px',backgroundColor:'brown'}}
+           <Button style={{border:'2px',backgroundColor:"#FFEDD9"}}
             onClick={
              postdata
 // window.open(
 //  ' https://pages.razorpay.com/pl_HRc2yXiFYdkEzH/view'
 // );
 } >
-              Submit
+              Pay Now
              <MDBIcon far icon="paper-plane" className="ml-2" />
            </Button>
          </div>
@@ -785,7 +941,7 @@ onChange={onChange.bind(this, setNMonth)}>
 </MDBContainer>
 
 </div>
-<button onClick={() => history.push('/Userprofile')}>Profile</button>
+{/* <button onClick={() => history.push('/Userprofile')}>Profile</button> */}
 {/* <button onClick={displayRazorpay}> pay now</button> */}
 </div>
 <div>

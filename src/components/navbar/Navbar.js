@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useState,useEffect,useContext} from 'react';
 // import logo from './logo.svg';
 //import './App.css'
 // import Header from './components/header/Header'
@@ -13,6 +13,8 @@ import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
+import {usercontext} from '../header/Header'
+//import {usercontext} from '../header/Header'
 //import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles ((theme) => ({
   root: {
@@ -42,17 +44,50 @@ const useStyles = makeStyles ((theme) => ({
 }));
 
 function Navbar() {
-
+ const [name, setname] =useState('');
+ const {state , dispatch }= useContext(usercontext)
+ //const [state ,dispatch ] = useContext(usercontext)
   function logOut() {
+
     localStorage.clear();
+    dispatch({type:'USER',playload:false})
     history.push("/Newuserlogin");
   };
   
-  const getstate = async () => {
+  async function getstate () {
+    
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", `Bearer ${localStorage.getItem("resdata")}`);
   
-   var data =  await localStorage.getItem("name")
-   console.log("ddddddddddddddddddd",data)
-   setData(data)
+   var requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
+  };
+  
+    await fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/getuser", requestOptions)
+    .then(response => response.json())
+    .then(json =>{
+     var resdata =  json.user.FirstName;
+      localStorage.setItem("log",resdata)
+      localStorage.getItem("log")
+      //dispatch({type:''})
+      setname(resdata)
+      console.log("resdara",name)
+     
+     
+    //   this.setState({
+       
+    //     err:res,
+    //  })
+    })
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+  
+  
+  //  var data =  await localStorage.getItem("name")
+  //  console.log("ddddddddddddddddddd",data)
+  //  setData(data)
 
  }
   const classes = useStyles();
@@ -106,7 +141,7 @@ function Navbar() {
         <img  style={{width: '140px', height: '70px',}}src={process.env.PUBLIC_URL + '/images/Panaah3.png'}/> 
        </div>
         <ul className= {classes.navlink}>
-        {localStorage.getItem("name")?
+        {state?
         
         (
           <>
@@ -116,15 +151,18 @@ function Navbar() {
             <Link style={navstayle}to ='/Groups'>
             <li>OurStories</li>
             </Link>
+            <Link style={navstayle}to ='/Donation'>
+            <li>Donate </li></Link>
             <Link style={navstayle}to ='/Project'>
             <li>ContactUs </li></Link>
-          <Button
+           
+          <Button style={{fontFamily: 'Fuggles, cursive'}}
           ref={anchorRef}
           aria-controls={open ? 'menu-list-grow' : undefined}
           aria-haspopup="true"
           onClick={handleToggle}
         >
-          Hi!{data}
+          Hi!{localStorage.getItem("log")}
         </Button>
         <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
           {({ TransitionProps, placement }) => (
@@ -161,7 +199,7 @@ function Navbar() {
             <li>ContactUs </li>
             </Link>
             <Link style={navstayle}to='/Newuserlogin'>
-            <li>SignIn</li>
+            <li>Login</li>
            </Link>
             </>
             )}

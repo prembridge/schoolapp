@@ -1,6 +1,21 @@
-import React from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBInput } from 'mdbreact';
+import React, { useState } from "react";
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBInput,MDBInputGroup } from 'mdbreact';
 import { useHistory } from "react-router-dom";
+import styled from "styled-components";
+const Styles = styled.div`
+
+.rcorners1 {
+    border-radius: 45px;
+    border: 2px solid #000000;
+    padding-left: 60px;
+    padding-right: 20px;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    width: 550px;
+    height: 350px;
+    margin-left: 30.5rem;
+    margin-top: 8.5rem;
+  }`
 // const mailgun = require('mailgun-js')({
 //  api_key = 'key-28ec2fb77b09201ee40d5d2f974ff488-360a0b2c-28fc800c',
 //  domain = 'sandboxed0967b9dfa04800b666367c5b13bab0.mailgun.org'
@@ -24,7 +39,28 @@ const Submit =()=>{
 // });
 }
 const Forgotpassword = () => {
+
+  async  function  postemail(){
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    var raw = JSON.stringify({
+      "email": email
+      
+    });
+    console.log("email",email)
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+    await fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/forgotpass", requestOptions)
+      .then(response => response.text())
+      .then(result => alert("We have sent a password reset link to your registered email id. Please reset password using the link"))
+      .catch(error => console.log('error', error));
+  }
   
+const[email,setEmail] = useState("")
   const history = useHistory()
   const nextPage = () => {
        
@@ -32,43 +68,47 @@ const Forgotpassword = () => {
    
    }
   return (
-    <MDBContainer>
-      <MDBRow>
-        <MDBCol md="6">
-          <MDBCard style={{ backgroundColor:'#8cb6fa'} } > 
-            <div className="header pt-3 grey lighten-2">
-              <MDBRow className="d-flex justify-content-start">
-                <h3 className="deep-grey-text mt-3 mb-4 pb-1 mx-5">
-                  Forgotpassword
-                </h3>
-              </MDBRow>
-            </div>
-            <MDBCardBody className="mx-4 mt-4">
+    <Styles>
+    <div className="rcorners1">
+   <h2 style={{paddingLeft:'70px',fontFamily: 'Fuggles, cursive',marginLeft:'-28px' }}> Forgot Password?</h2>
+<br></br>
+   <h8 style={{marginLeft:'45px'}}>Enter your email address</h8>
+    <MDBContainer  style ={{marginTop:'-30px'}}>
           
-              <MDBInput
-                label="Your Email "
-                group
-                type="password"
-                validate
-                containerClass="mb-0"
-              />
-              
-              <div className="text-center mb-4 mt-5">
-                <MDBBtn
-                  color="danger"
-                  type="button"
-                  className="btn-block z-depth-2"
-                  onClick={Submit}
+           
+           <MDBRow>
+        
+         
+       
+         <MDBCardBody className="mx-4 mt-4" style={{ maxWidth :'400',} }>
+         
+           
+        
+             <div>
+             <MDBInputGroup  style={{}} containerClassName="mb-3" prepend="Email ID" hint=""  onChange={e => setEmail(e.target.value)} />
+           
+           </div>
+           <br></br>
+           
+               <div className="text-center mb-4 mt-5">
+                <button style={{marginTop:'-49px',backgroundColor:"#FFEDD9",width:150,height:50,borderRadius:50,fontFamily: 'Fuggles, cursive'}}
+                  
+                 type="button"
+                 className="btn-block z-depth-2"
+                 onClick={postemail}
                 >
-                  Submit
-                </MDBBtn>
-              </div>
-             
-            </MDBCardBody>
-          </MDBCard>
-        </MDBCol>
-      </MDBRow>
-    </MDBContainer>
+                Submit
+                 </button>
+               </div>
+     
+          </MDBCardBody>
+     
+          {/* </Grid> */}
+       </MDBRow>
+     </MDBContainer>
+   </div>
+    </Styles>
+      
   );
 };
 

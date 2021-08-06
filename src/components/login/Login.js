@@ -157,10 +157,15 @@ fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/guest", requestO
 .then(response => response.json())
 .then(json =>{ 
   var resdata =  json.otp;
+  var id = json.data.id
+  localStorage.setItem("id",id)
+   var lid = localStorage.getItem("id")
+  console.log(lid,"iddd")
   console.log("resdara",resdata)
   var savetoken =localStorage.setItem("otp" ,resdata)
   var tokenvalue = localStorage.getItem("otp")
   console.log("wht is in it"+tokenvalue)
+  console.log("jsonnnnnnn",json)
   if(tokenvalue == "undefined"){
 // return null;
   }else{
