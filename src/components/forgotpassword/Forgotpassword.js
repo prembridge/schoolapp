@@ -21,33 +21,26 @@ const Styles = styled.div`
 //  domain = 'sandboxed0967b9dfa04800b666367c5b13bab0.mailgun.org'
 // })
 
-const Submit =()=>{
-
-// const emailData = {
-//   from: 'Excited User <me@samples.mailgun.org>',
-//   to: 'g.premkumar77@gmail.com',
-//   subject: 'Reset Password',
-//   text: `A password reset has been requested for the MusicList account connected to this email address. If you made this request, please click the following link: https://musiclist.com/account/change-password/${foundUser.passwordReset} ... if you didn't make this request, feel free to ignore it!`,
-//   html: `<p>A password reset has been requested for the MusicList account connected to this email address. If you made this request, please click the following link: <a href="https://musiclist.com/account/change-password/${foundUser.passwordReset}&quot; target="_blank">https://musiclist.com/account/change-password/${foundUser.passwordReset}</a>.</p><p>If you didn't make this request, feel free to ignore it!</p>`,
-// };
-// mailgun.messages().send(emailData, (error, body) => {
-//   if (error || !body) {
-//     result = res.send(JSON.stringify({ error: 'Something went wrong while attempting to send the email. Please try again.' }));
-//   } else {
-//     result = res.send(JSON.stringify({ success: true }));
-//   }
-// });
-}
+const emailRegex = /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
 const Forgotpassword = () => {
-
+  const[emaill,setEmail] = useState("")
+  const [isValid, setIsValid] = useState(false);
+    const [message, setMessage] = useState('');
+    const history = useHistory()
+ 
   async  function  postemail(){
+    const email = emaill;
+    if (emailRegex.test(email)) {
+      setIsValid(true);
+      setMessage('Your email looks good!');
+   
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     var raw = JSON.stringify({
-      "email": email
+      "email": emaill
       
     });
-    console.log("email",email)
+    console.log("email",emaill)
     var requestOptions = {
       method: 'POST',
       headers: myHeaders,
@@ -58,10 +51,12 @@ const Forgotpassword = () => {
       .then(response => response.text())
       .then(result => alert("We have sent a password reset link to your registered email id. Please reset password using the link"))
       .catch(error => console.log('error', error));
-  }
+    } else {
+      setIsValid(false);
+      setMessage('Please enter a valid email!');
+    }}
   
-const[email,setEmail] = useState("")
-  const history = useHistory()
+
   const nextPage = () => {
        
     history.push("./Registation");
@@ -100,7 +95,9 @@ const[email,setEmail] = useState("")
                 Submit
                  </button>
                </div>
-     
+     <div className={`message ${isValid ? 'success' : 'error'}`}>
+        {message}
+      </div>
           </MDBCardBody>
      
           {/* </Grid> */}

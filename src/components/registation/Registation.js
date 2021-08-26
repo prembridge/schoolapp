@@ -28,7 +28,9 @@ const emailRegex = RegExp(
 const PanRegex = RegExp(
   RegExp(/^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/)
 );
-
+const passRegex = RegExp(
+RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,10}$/)
+);
 const formValid = ({ formErrors, ...rest }) => {
   let valid = true;
 
@@ -164,7 +166,7 @@ export default class Registation extends Component {
     };
     fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/register", requestOptions).then(response => response.text())
     .then(result => { var text = JSON.parse(result)
-      alert(result)
+      alert("Thank you!Registration successfully completed!")
       console.log('result', text.message)
       console.log("otp",text.otp)
       localStorage.setItem("otp",text.otp)
@@ -176,7 +178,7 @@ export default class Registation extends Component {
       } 
       else {
         Swal.fire({
-          title: 'Enter vaild OTP',
+          title: 'Enter OTP',
       input: 'text',
       showCancelButton: true,
       confirmButtonText: 'Submit',
@@ -190,7 +192,7 @@ export default class Registation extends Component {
             } else {
              
              resolve()
-             alert("Enter Valid OTP..");
+             alert("Enter  OTP..");
             }
           }, 2000)
         })
@@ -243,8 +245,8 @@ export default class Registation extends Component {
           : "invalid email address";
         break;
       case "password":
-        formErrors.password =
-          value.length < 6 ? "minimum 6 characaters required" : "";
+        formErrors.password = passRegex.test(value) ? "" :"Minimum eight and maximum 10 characters, at least one uppercase letter, one lowercase letter, one number and one special character:"
+          // value.length < 6 ? "minimum 6 characaters required" : "";
         break;
         case "confirmpassword":
           formErrors.confirmpassword =  this.state.password !== this.state.confirmpassword ? " ": "Passwords don't match" ;
@@ -349,7 +351,7 @@ export default class Registation extends Component {
       alignItems="center"
       justify="center"
       style={{ minHeight: '100vh' }}>
-          <h3 style={{paddingLeft:'250px',}}>New Donor Registration</h3>
+          <h3 style={{paddingLeft:'250px',}}>New Partner Registation</h3>
       <MDBCard variant="outlined" className={styles.card}  style={{ maxWidth :'1100px',borderColor:"#1c1a14",paddingLeft:'25px'} }>
         <CardContent align-items-center>
       <div className="wrapper">

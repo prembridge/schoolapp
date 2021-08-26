@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBInput,MDBInputGroup } from 'mdbreact';
 import { useHistory } from "react-router-dom";
 import { useForm } from 'react-hook-form';
+import { ErrorMessage } from "@hookform/error-message";
 import styled from "styled-components";
 import {
   Link,
@@ -17,7 +18,7 @@ const Styles = styled.div`
     padding-top: 40px;
     padding-bottom: 20px;
     width: 550px;
-    height: 450px;
+    height: 550px;
     margin-left: 30.5rem;
     margin-top: 8.5rem;
   }`
@@ -27,12 +28,26 @@ const Styles = styled.div`
 // })
 
 
+
+
+
+
 const Resetpassword = () => {
-  const { register, handleSubmit, errors } = useForm();
+  const [isValid, setIsValid] = useState(false);
+  const [message, setMessage] = useState('');
     const [id ,setId] =useState('')
     const [password ,setPassword] = useState('')
     const [confirmpass ,setConfirmpass] =useState('')
+    const {
+      register,
+      formState: { errors },
+      handleSubmit
+    } = useForm({
+      criteriaMode: "all"
+    });
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,10}$/;
 
+ 
 
     useEffect(() => {
         const queryParams = new URLSearchParams(window.location.search);
@@ -42,6 +57,11 @@ const Resetpassword = () => {
 
 
   async  function  postemail(){
+    const pass = password;
+    if (passwordRegex.test(pass)) {
+      setIsValid(true);
+     // setMessage('');
+   
     if (password !== confirmpass) {
         alert("Passwords don't match");
     } else {
@@ -72,6 +92,9 @@ const Resetpassword = () => {
      
       .catch(error => console.log('error', error));
       
+  } } else {
+    setIsValid(false);
+    setMessage('Minimum eight and maximum 10 characters, at least one uppercase letter, one lowercase letter, one number and one special character');
   }
 }
 
@@ -91,15 +114,16 @@ const Resetpassword = () => {
          
        
          <MDBCardBody className="mx-4 mt-4" style={{ maxWidth :'400',} }>
-         
+        
          <div  className="password">
               <label style={{fontFamily: 'Fuggles, cursive'}} htmlFor="password"> Password </label>
               </div>
         
              <div>
-             <MDBInput  placeholder="Password"
-                type="password"
-                name="password" style={{}} containerClassName="mb-3" prepend="New Password" hint=""  onChange={e => setPassword(e.target.value)}  />
+             <MDBInput   
+                 type="password" {...register('password', { required: true,maxLength: 6,
+                  })}  onChange={e => setPassword(e.target.value)}   />
+                 
            
            </div>
            <br></br>
@@ -109,9 +133,11 @@ const Resetpassword = () => {
               </div>
             
            <div>
-             <MDBInput    placeholder="Password"
-                type="password"
-                name="password" style={{}} containerClassName="mb-3" prepend="Confirm Password" hint=""   onChange={e => setConfirmpass(e.target.value)}   />
+             <MDBInput   
+                 type="password" {...register('password', { required: true, maxLength:6,
+                  })}  onChange={e => setConfirmpass(e.target.value)}   />
+                 
+    
            
            </div>
            <br></br>
@@ -126,13 +152,46 @@ const Resetpassword = () => {
                 Submit
                  </button>
                </div>
-             
-     
+               <div className={`message ${isValid ? 'success' : 'error'}`}>
+        {message}
+      </div>
           </MDBCardBody>
      
           {/* </Grid> */}
        </MDBRow>
      </MDBContainer>
+     {/* <form onSubmit={handleSubmit(onSubmit)}>
+     <label>First Name</label>
+
+<MDBInput type="firstName" {...register('firstName', { required: true, pattern: {
+            value: /\d+/,
+            message: "This input is number only."
+          },
+          minLength: {
+            value: 11,
+            message: "This input must exceed 10 characters"
+          }})} />
+{errors?.firstName?.type === "required" && <p>This field is required</p>}
+      {errors?.firstName?.type === "maxLength" && (
+        <p>First name cannot exceed 20 characters</p>
+      )}
+      {errors?.firstName?.type === "pattern" && (
+        <p>Alphabetical characters only</p>
+      )}
+       <ErrorMessage
+        errors={errors}
+        name="multipleErrorInput"
+        render={({ messages }) => {
+          console.log("messages", messages);
+          return messages
+            ? Object.entries(messages).map(([type, message]) => (
+                <p key={type}>{message}</p>
+              ))
+            : null;
+        }}
+      />
+      <input type="submit" />
+    </form> */}
    </div>
     </Styles>
       

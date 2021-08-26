@@ -262,7 +262,7 @@ async function postamount(){
            console.log("json.. data", JSON.stringify(json))
         
            var message = json.message
-           alert(message)
+          
            if(message === "Succesfully inserted"){
             amountRazorpay()
 
@@ -289,7 +289,7 @@ async function postamount(){
     async function postdata () {
       console.log ( localStorage.getItem("fkid"),"idddddddddddd")
       var val = localStorage.getItem("value")
-      console.log(val,"bbbbbbbbbbbbbbbbbbbbbbbb")
+    
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
        var raw = JSON.stringify({
@@ -321,7 +321,7 @@ async function postamount(){
            console.log("json.. data", JSON.stringify(json))
         
            var message = json.message
-           alert(message)
+          
            if(message === "Succesfully inserted"){
             displayRazorpay()
 
@@ -386,10 +386,10 @@ console.log(data ,"data of data")
       // console.log(data,"data....")
     
       var options = {
-        "key": 'rzp_test_LzrSt5hd7JwDVF', // Enter the Key ID generated from the Dashboard
+        "key": 'rzp_live_6GpVhmnXaxwEmB', // Enter the Key ID generated from the Dashboard
         "amount": data.amount.toString()+"00",// Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         "currency": "INR",
-        "name": "PREMKUMAR",
+        "name": localStorage.getItem("statename"),
         "description": "Test Transaction",
         "image": `${require("../assets/Panaah3.png")}`,
         "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
@@ -469,11 +469,11 @@ console.log(data ,"data of data")
       // console.log(data,"data....")
     
       var options = {
-        "key": 'rzp_test_LzrSt5hd7JwDVF', // Enter the Key ID generated from the Dashboard
+        "key": 'rzp_live_6GpVhmnXaxwEmB', // Enter the Key ID generated from the Dashboard
     
         "amount": amount.toString()+"00",// Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         "currency": "INR",
-        "name": "PREMKUMAR",
+        "name": localStorage.getItem("statename"),
         "description": "Test Transaction",
         "image": `${require("../assets/Panaah3.png")}`,
         "order_id":data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1

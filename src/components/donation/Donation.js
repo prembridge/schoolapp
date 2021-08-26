@@ -338,12 +338,7 @@ setValue(dis)
     await  fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/plans", requestOptions)
         .then(response => response.json())
         .then(json => {
-          //var mon = json.data.Payment_type
-         // var pkid =json.data.insertId
-           // localStorage.setItem("pkid",pkid)
-           // localStorage.setItem("pkid",pkid)
-           // var get = localStorage.getItem("pkid")
-          // console.log("pkid",pkid)
+       
            console.log("json.. data", JSON.stringify(json))
            var Fk_SponsorID = json.data.Fk_SponsorID
            var Pk_id = json.data.Pk_id
@@ -365,7 +360,7 @@ setValue(dis)
           console.log("amountstate",Rtotal)
           console.log("rtotal",RTotal)
            var message = json.message
-           alert(message)
+          
            if(message === "Succesfully inserted"){
             PostRazorpay()
 
@@ -436,11 +431,11 @@ async function PostRazorpay() {
    // console.log(data,"data....")
  
    var options = {
-     "key": 'rzp_test_LzrSt5hd7JwDVF', // Enter the Key ID generated from the Dashboard
+     "key": 'rzp_live_6GpVhmnXaxwEmB', // Enter the Key ID generated from the Dashboard
      "amount": data.amount.toString()+"00",// Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
      "currency": "INR",
      "name": 'Donation',
-     "description": 'Thank you for nothing. Please give us some money',
+    
      "image": `${require("../assets/Panaah3.png")}`,
      "order_id":data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
      "handler": function (response){
@@ -449,9 +444,7 @@ async function PostRazorpay() {
        console.log("orderid",response.razorpay_order_id)
        console.log("signature",response.razorpay_signature)
        
-         // alert(response.razorpay_payment_id);
-         // alert(response.razorpay_order_id);
-         // alert(response.razorpay_signature)
+       
          Swal.fire({
            icon: 'success',
            title: 'Success!...',
@@ -461,8 +454,8 @@ async function PostRazorpay() {
      //localStorage.getItem("name")
      "prefill": {
          "name": "Prem",
-         "email": "gaurav.kumar@example.com",
-         "contact": "9999999999"
+         "email": localStorage.getItem("EmailID"),
+         "contact": localStorage.getItem("phone")
      },
      "notes": {
          "address": "Razorpay Corporate Office"
@@ -529,18 +522,13 @@ console.log(data ,"data of data")
     return
   }
 
-  // const data = await fetch('https://gzacors.herokuapp.com/http://122.185.13.163:3013/razorpay', { method: 'POST' }).then((t) =>
-  //   t.json()
-  // )
-
-  // console.log(data,"data....")
-
+ 
   var options = {
-    "key": 'rzp_test_LzrSt5hd7JwDVF', // Enter the Key ID generated from the Dashboard
+    "key": 'rzp_live_6GpVhmnXaxwEmB', // Enter the Key ID generated from the Dashboard
     "amount": data.amount.toString()+"00",// Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
     "currency": "INR",
     "name": 'Donation',
-    "description": 'Thank you for nothing. Please give us some money',
+   
     "image": `${require("../assets/Panaah3.png")}`,
     "order_id":data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
     "handler": function (response){
@@ -560,9 +548,9 @@ console.log(data ,"data of data")
     },
     //localStorage.getItem("name")
     "prefill": {
-        "name": "Prem",
-        "email": "gaurav.kumar@example.com",
-        "contact": "9999999999"
+        "name": localStorage.getItem("name"),
+        "email": localStorage.getItem("EmailID"),
+        "contact":   localStorage.getItem("phone")
     },
     "notes": {
         "address": "Razorpay Corporate Office"
@@ -777,8 +765,8 @@ onChange={onChange.bind(this, setNMonth)}>
 </MDBContainer>
 
 </div>
-<button onClick={() => history.push('/Userprofile')}>Profile</button>
-<button onClick={displayRazorpay}> pay now</button>
+{/* <button onClick={() => history.push('/Userprofile')}>Profile</button>
+<button onClick={displayRazorpay}> pay now</button> */}
 </div>
 
 

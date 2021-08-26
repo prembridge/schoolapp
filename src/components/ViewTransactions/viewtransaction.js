@@ -56,17 +56,14 @@ export default function Viewtransaction() {
     .catch((error) => console.log("error", error));
 }, []);
 
-
+ const rowInfo=()=>{
+  console.log(rowInfo,"checked")
+}
 
   const datas ={
     columns: [
       
-        {
-          'label': 'Get Recipt',
-          'field': 'check',
-          'sort': 'asc'
-        },
-      
+     
       {
         label: 'Transaction ID',
         field: 'Orderid',
@@ -93,24 +90,19 @@ export default function Viewtransaction() {
         sort: 'asc',
         width: 100,
       },
-      {
-        label: 'Recipt ID',
-        field: 'Recipt',
-        sort: 'asc',
-        width: 100,
-      }
+     
     ],
     rows: data.map((data)=>{
       
         return{ 
           
-          check: <input label=' send'  type='checkbox'  ></input>,
+        
           
           Orderid:data.Orderid,
           Date_tr: data.Display_Date,
           Transaction_amount: data.Transaction_amount,
           Transaction_status: data.Transaction_status,
-          Recipt: data.Recipt,
+         
          
         }
     }),

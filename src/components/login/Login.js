@@ -138,6 +138,8 @@ componentDidMount(){
  // this.getdata();
 }
 getdata =()=>{
+  localStorage.setItem("statename",this.state.firstName)
+   console.log(localStorage.getItem("statename"),"valiyyyyyyyyyyyyy")
   var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 var raw = JSON.stringify({

@@ -6,22 +6,38 @@ import { useHistory } from "react-router-dom";
 //import car from  '../assets/cantact.jpeg'
 import { Button } from "@material-ui/core";
 import { Height } from "@material-ui/icons";
-
+import bg from "../assets/boy2.jpg";
+import { breakpoints as bp } from "../../GlobalStyle";
 import styled from "styled-components";
 const Styles = styled.div`
+
 
 .rcorners1 {
     border-radius: 45px;
     border: 2px solid #000000;
     padding-left: 60px;
     padding-right: 20px;
-    padding-top: 10px;
+    padding-top: 0px;
     padding-bottom: 20px;
     width: 800px;
     height: 700px;
-    margin-left: 30.5rem;
-    margin-top: 3.5rem;
-  }`
+    margin-left: 25.5rem;
+    // margin-top: 0rem;
+  }
+  @media all and (max-width: 768px) {
+    .rcorners1{
+     
+      border: 2px solid #000000;
+      padding-right: 30rem;
+    
+      padding-top: 0px;
+      width: 800px;
+      height: 700px;
+      margin-left: -10rem;
+      
+    }
+  
+  `
 const WhiteTextTypography = withStyles({
   root: {
     color: "#FFFFFF"
@@ -59,12 +75,21 @@ await fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/contact", 
   }
   return (
     <Styles>
+      <div
+          class="bg_image"
+          style={{
+            backgroundImage: `url(${bg})`,
+            backgroundSize: "cover",
+            height: "95vh",
+            color: "#000000",
+          }}
+        >
     <div className="rcorners1">
     <div class="container contact">
       <div  class="row" style={{marginRight:'-198px',marginLeft:'89px'}}>
         <div>
         <div class="contact-info">
-				<img src="https://image.ibb.co/kUASdV/contact-image.png" alt="image"/>
+				{/* <img src="https://image.ibb.co/kUASdV/contact-image.png" alt="image"/> */}
 				<h2 style={{paddingLeft:"20px"}}>Contact Us</h2>
 				<h4 style={{paddingLeft:"20px",paddingTop:"15px"}}>We would love to hear from you !</h4>
         
@@ -112,64 +137,8 @@ await fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/contact", 
 
     </div>
     </div>
+    </div>
      </Styles>
-    //   <div>
-    // {/* <div className="App" style={{ backgroundImage:`url(${require("../assets/ca.jpg")})` , height: '450px',backgroundSize: 'cover',
-    //         overflow: 'hidden'}}>
-    //   <WhiteTextTypography variant="h3">
-    //   Get in touch with us
-    //   </WhiteTextTypography>
-    // </div> */}
-    // <div style={{align:'center'}}> 
-    // <MDBContainer>
-    //   <MDBRow>
-    //     <MDBCol md="6">
-    //       <MDBCard style={{ backgroundColor:'#dfbf9f'} } > 
-    //         <div className="header pt-3 grey lighten-2">
-              
-    //         </div>
-    //         <MDBCardBody className="mx-4 mt-4">
-
-    //           <MDBInput
-    //            label="Your email" 
-    //            group type="text"
-    //             validate />
-    //           <MDBInput
-    //             label="Your Mobile Number"
-    //             group
-    //             type="password"
-    //             validate
-    //             containerClass="mb-0"
-    //           />
-    //           <div>
-    //              <label htmlFor="password">Password *</label>
-    //         </div>
-    //         <div>
-    //         <MDBInput style={{borderColor: 'gray', borderWidth: 1,maxWidth:'450px' }}
-              
-    //           hint="Password"
-    //           type="password"
-    //           name="password"
-    //           noValidate
-    //          // onChange={this.handleChange}
-    //         />
-    //         </div>
-    //          <MDBBtn
-    //               color="danger"
-    //               type="button"
-    //               className="btn-block z-depth-2"
-    //             >
-    //               Submit
-    //             </MDBBtn>
-    //         </MDBCardBody>
-    //       </MDBCard>
-    //     </MDBCol>
-    //   </MDBRow>
-    // </MDBContainer>
-    // </div>
-    // <div>
-      
-    // </div>
-    // </div>
+   
   );
 }
