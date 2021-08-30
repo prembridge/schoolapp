@@ -5,6 +5,7 @@ import moment from 'moment'
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { DataGrid } from '@material-ui/data-grid';
+import { breakpoints as bp } from "../../GlobalStyle";
 const Styles = styled.div`
 
 .rcorners1 {
@@ -18,6 +19,14 @@ const Styles = styled.div`
     height: 700px;
     margin-left: 30.5rem;
     margin-top: 3.5rem;
+}
+    @media all and (max-width: 768px) {
+      
+      .rcorners1{
+        margin-left: -42px
+       
+        }
+        
   }`
 export default function Viewtransaction() {
 

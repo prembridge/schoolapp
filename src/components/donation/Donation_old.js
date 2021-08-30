@@ -10,34 +10,7 @@ import { Button } from "@material-ui/core";
 import { useHistory } from 'react-router-dom';
 import { OpenWithRounded } from "@material-ui/icons";
 import Swal from 'sweetalert2'
-import img from "./p.png"
-import { breakpoints as bp } from "../../GlobalStyle";
-import styled from "styled-components";
-const Styles = styled.div`
-
-.donation {
-  
-  margin-left: 335px;
-   
-   
-}
-.cview{
-  padding-top: 31px;
-  margin-left: 380px;
-}
-@media all and (max-width: 768px) {
-      
-    .donation{
-      margin-left: 20px;
-    width: 100%;
-     
-      }
-      .cview{
-        margin-left: 10px;
-        width: 90%;
-      }
-  }`
-
+// import logo from "http://panaah.org/imgs/Panaah3.png"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -378,7 +351,12 @@ export default function Donation() {
     await fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/plans", requestOptions)
       .then(response => response.json())
       .then(json => {
-
+        //var mon = json.data.Payment_type
+        // var pkid =json.data.insertId
+        // localStorage.setItem("pkid",pkid)
+        // localStorage.setItem("pkid",pkid)
+        // var get = localStorage.getItem("pkid")
+        // console.log("pkid",pkid)
         console.log("json.. data", JSON.stringify(json))
         var Fk_SponsorID = json.data.Fk_SponsorID
         var Pk_id = json.data.Pk_id
@@ -400,7 +378,7 @@ export default function Donation() {
         console.log("amountstate", Rtotal)
         console.log("rtotal", RTotal)
         var message = json.message
-
+        //  alert(message)
         if (message === "Succesfully inserted") {
           PostRazorpay()
 
@@ -471,12 +449,12 @@ export default function Donation() {
     // console.log(data,"data....")
 
     var options = {
-      "key": 'rzp_live_6GpVhmnXaxwEmB', // Enter the Key ID generated from the Dashboard
+      "key": 'rzp_test_LzrSt5hd7JwDVF', // Enter the Key ID generated from the Dashboard
       "amount": data.amount.toString() + "00",// Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
       "currency": "INR",
       "name": 'Donation',
-
-      "image": `${require("../assets/Panaah3.png")}`,
+      "description": 'Thank you for nothing. Please give us some money',
+      "image": "http://panaah.org/imgs/Panaah3.png",
       "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
       "handler": function (response) {
 
@@ -484,7 +462,9 @@ export default function Donation() {
         console.log("orderid", response.razorpay_order_id)
         console.log("signature", response.razorpay_signature)
 
-
+        // alert(response.razorpay_payment_id);
+        // alert(response.razorpay_order_id);
+        // alert(response.razorpay_signature)
         Swal.fire({
           icon: 'success',
           title: 'Success!...',
@@ -494,8 +474,8 @@ export default function Donation() {
       //localStorage.getItem("name")
       "prefill": {
         "name": "Prem",
-        "email": localStorage.getItem("EmailID"),
-        "contact": localStorage.getItem("phone")
+        "email": "gaurav.kumar@example.com",
+        "contact": "9999999999"
       },
       "notes": {
         "address": "Razorpay Corporate Office"
@@ -562,14 +542,19 @@ export default function Donation() {
       return
     }
 
+    // const data = await fetch('https://gzacors.herokuapp.com/http://122.185.13.163:3013/razorpay', { method: 'POST' }).then((t) =>
+    //   t.json()
+    // )
+
+    // console.log(data,"data....")
 
     var options = {
-      "key": 'rzp_live_6GpVhmnXaxwEmB', // Enter the Key ID generated from the Dashboard
+      "key": 'rzp_test_LzrSt5hd7JwDVF', // Enter the Key ID generated from the Dashboard
       "amount": data.amount.toString() + "00",// Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
       "currency": "INR",
       "name": 'Donation',
-
-      "image": `${require("../assets/Panaah3.png")}`,
+      "description": 'Thank you for nothing. Please give us some money',
+      "image": "http://panaah.org/imgs/Panaah3.png",
       "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
       "handler": function (response) {
 
@@ -588,9 +573,9 @@ export default function Donation() {
       },
       //localStorage.getItem("name")
       "prefill": {
-        "name": localStorage.getItem("name"),
-        "email": localStorage.getItem("EmailID"),
-        "contact": localStorage.getItem("phone")
+        "name": "Prem",
+        "email": "gaurav.kumar@example.com",
+        "contact": "9999999999"
       },
       "notes": {
         "address": "Razorpay Corporate Office"
@@ -625,159 +610,160 @@ export default function Donation() {
 
   return (
     (localStorage.getItem("New_plan")) == 1 ?
-      <Styles>
-        <div>
-       
-          
-          
-            {/* style={{ width: '50%',height:'950px',
-    float: 'left',
-    padding: '20px',
-    border: '1px black',backgroundImage: `url(${process.env.PUBLIC_URL + "/images/p.png"})`, backgroundRepeat:'no-repeat',
-    backgroundSize:'cover'}} */}
-            <div className="donation">
-            {/* stlye={{ display: 'flex', flexdirection: 'row' }} */}
-              <div >
 
-              {/* style={{ paddingLeft: '190px' }} */}
-                <h1>Panaah: Adopt A Child</h1>
-                {/* style={{ fontFamily: 'Montserrat,sans-serif', fontSize: '20px', width: '90%', paddingLeft: '190px' }} */}
-                <h5  >
+      <div >
+        <div class="float-container" style={{
+          //border: '2px black',
+          // padding: '20px',
+          //backgroundImage: `url(${process.env.PUBLIC_URL + "/images/p.png"})`, backgroundRepeat:'no-repeat',
+          //backgroundSize:'cover'
+        }}
+        >
 
-                  By registering here you commit to partner with us in giving hope for tomorrow to young lives in hopeless homes today.  Panaah provides you a platform to give / contribute an amount of minimum INR 750 monthly or INR 2250 quarterly or 4500 Half Yearly or 9000 Annually towards the educational and developmental needs of children from poor families and rural communities. Select the number of children and the number of years you would like to support. </h5>
-                  {/* style={{
-                  fontFamily: 'Montserrat,sans-serif', fontSize: '20px',
-                  paddingTop: '15px', width: '90%', paddingLeft: '190px'
-                }} */}
-                <h5  >
+          <div class="float-child" style={{
+            width: '50%', height: '950px',
+            float: 'left',
+            padding: '20px',
+            border: '1px black', 
+             backgroundImage: `url(${process.env.PUBLIC_URL + "/images/p.png"})`, backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover'
+          }}>
 
-                  1. Select the number of children and the number of years you would like to support the child/children.</h5>
-                  {/* style={{
-                  fontFamily: 'Montserrat,sans-serif', fontSize: '20px', textAlign: 'justify', flexDirection: 'column', flex: 1,
-                  justifyContent: 'center',
-                  alignItems: 'center', width: '90%', paddingLeft: '190px'
-                }} */}
-                <h5  >
+            <div stlye={{ display: 'flex', flexdirection: 'row' }}>
 
-                  2. Choose the sponsor/payment plan that suits you and submit to save your preferences</h5>
-                  {/* style={{
-                  fontFamily: 'Montserrat,sans-serif', fontSize: '20px', textAlign: 'justify', flexDirection: 'column', flex: 1,
-                  justifyContent: 'center',
-                  alignItems: 'center', width: '90%', paddingLeft: '190px'
-                }} */}
-                <h5  >
 
-                  3. Once saved you can click on the pay now button to send you contributions according to your plan</h5>
-                  {/* style={{
-                  fontFamily: 'Montserrat,sans-serif', fontSize: '20px', textAlign: 'justify', flexDirection: 'column', flex: 1,
-                  justifyContent: 'center',
-                  alignItems: 'center', width: '90%', paddingLeft: '190px'
-                }} */}
-                <h5 >
+              <h1 style={{ paddingLeft: '190px' }}>Panaah: Adopt A Child</h1>
 
-                  4. For your convenience you can use the autopay/auto debit option by enabling the option in your profile page to send your contributions on time</h5>
-                  {/* style={{
-                  fontFamily: 'Montserrat,sans-serif', fontSize: '20px', textAlign: 'justify', flexDirection: 'column', flex: 1,
-                  justifyContent: 'center',
-                  alignItems: 'center', width: '90%', paddingLeft: '190px'
-                }} */}
-                <h5  >
+              <h5 style={{ fontFamily: 'Montserrat,sans-serif', fontSize: '20px', width: '90%', paddingLeft: '190px' }} >
 
-                  5. To change your plan or any other information check your profile page</h5>
-                  {/* style={{
-                  fontFamily: 'Montserrat,sans-serif', fontSize: '20px', textAlign: 'justify', flexDirection: 'column', flex: 1,
-                  justifyContent: 'center',
-                  alignItems: 'center', width: '90%', paddingLeft: '190px'
-                }} */}
-                <h5  >
+                By registering here you commit to partner with us in giving hope for tomorrow to young lives in hopeless homes today.  Panaah provides you a platform to give / contribute an amount of minimum INR 750 monthly or INR 2250 quarterly or 4500 Half Yearly or 9000 Annually towards the educational and developmental needs of children from poor families and rural communities. Select the number of children and the number of years you would like to support. </h5>
+              <h5 style={{
+                fontFamily: 'Montserrat,sans-serif', fontSize: '20px',
+                paddingTop: '15px', width: '90%', paddingLeft: '190px'
+              }} >
 
-                  6. Email id, Pan Number and Name cannot be edited. For more information on this contact our team.</h5>
-              </div>
+                1. Select the number of children and the number of years you would like to support the child/children.</h5>
+
+              <h5 style={{
+                fontFamily: 'Montserrat,sans-serif', fontSize: '20px', textAlign: 'justify', flexDirection: 'column', flex: 1,
+                justifyContent: 'center',
+                alignItems: 'center', width: '90%', paddingLeft: '190px'
+              }} >
+
+                2. Choose the sponsor/payment plan that suits you and submit to save your preferences</h5>
+              <h5 style={{
+                fontFamily: 'Montserrat,sans-serif', fontSize: '20px', textAlign: 'justify', flexDirection: 'column', flex: 1,
+                justifyContent: 'center',
+                alignItems: 'center', width: '90%', paddingLeft: '190px'
+              }} >
+
+                3. Once saved you can click on the pay now button to send you contributions according to your plan</h5>
+              <h5 style={{
+                fontFamily: 'Montserrat,sans-serif', fontSize: '20px', textAlign: 'justify', flexDirection: 'column', flex: 1,
+                justifyContent: 'center',
+                alignItems: 'center', width: '90%', paddingLeft: '190px'
+              }} >
+
+                4. For your convenience you can use the autopay/auto debit option by enabling the option in your profile page to send your contributions on time</h5>
+              <h5 style={{
+                fontFamily: 'Montserrat,sans-serif', fontSize: '20px', textAlign: 'justify', flexDirection: 'column', flex: 1,
+                justifyContent: 'center',
+                alignItems: 'center', width: '90%', paddingLeft: '190px'
+              }} >
+
+                5. To change your plan or any other information check your profile page</h5>
+              <h5 style={{
+                fontFamily: 'Montserrat,sans-serif', fontSize: '20px', textAlign: 'justify', flexDirection: 'column', flex: 1,
+                justifyContent: 'center',
+                alignItems: 'center', width: '90%', paddingLeft: '190px'
+              }} >
+
+                6. Email id, Pan Number and Name cannot be edited. For more information on this contact our team.</h5>
             </div>
-            {/* style={{
-                width: '50%', height: '950px',
-                float: 'left',
-                padding: '20px',
-                border: '1px ', backgroundImage: `url(${process.env.PUBLIC_URL + "/images/p.png"})`, backgroundRepeat: 'no-repeat',
-                backgroundSize: 'cover'
-              }} */}
-            <div >
-              <div className="cview" >
+          </div>
 
-                <MDBContainer fluid class="d-flex justify-content-cente"  >
+          <div class="float-child" style={{
+            width: '50%', height: '950px',
+            float: 'left',
+            padding: '20px',
+            border: '1px ', backgroundImage: `url(${process.env.PUBLIC_URL + "/images/p.png"})`, backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover'
+          }}>
 
-                  <div>
+            <MDBContainer fluid class="d-flex justify-content-cente"  >
 
-                    <MDBRow >
+              <div>
 
-                      <MDBCard style={{ backgroundColor: '#FFFFFF', borderColor: "#5D6D7E", width: "30rem", borderRadius: '10px', paddingTop: '40px' }}>
-                        <MDBCardBody>
-                          <form>
-                            <p className="h4 text-center py-4">SPONSOR NOW</p>
-                            <label htmlFor="child" >Number of children</label>
-                            <br></br>
-                            <input
-                              disabled
-                              min="1" max="10"
-                              ref={refs.child}
-                              onChange={onChange.bind(this, setNchild)}
-                              //defaultValue={vars.child}
-                              name="child"
-                              id="child"
-                              type="number"
-                              className="form-control"
-                              placeholder={No_of_child}
-                            />
-                            <br></br>
-                            <label htmlFor="second">Sponsorship Duration in Year's</label>
-                            <br></br>
-                            <div>
-                              <input disabled
-                                min="1" max="10"
-                                ref={refs.second}
-                                onChange={onChange.bind(this, setNyear)}
-                                //defaultValue={vars.second}
-                                name="second"
-                                id="second"
-                                type="number"
-                                className="form-control"
-                                placeholder={No_of_year}
-                              />
-                            </div>
-                            <br></br>
-                            <label htmlFor="sum">Sponsorship Amount</label>
-                            <br></br>
-                            <div>
-                              <input
-                                disabled
-                                ref={refs.sum}
-                                onChange={onChange}
-                                //defaultValue={vars.sum}
-                                // id="sum"
-                                // name="sum"
-                                // type="number"
-                                className="form-control"
-                                placeholder={amount}
-                              />
-                            </div>
-                            <br></br>
-                            <label htmlFor="sum">Payment Plan</label>
+                <MDBRow >
 
-                            <div>
+                  <MDBCard style={{ backgroundColor: '#FFFFFF', borderColor: "#5D6D7E", width: "30rem", borderRadius: '10px', paddingTop: '40px' }}>
+                    <MDBCardBody>
+                      <form>
+                        <p className="h4 text-center py-4">SPONSOR NOW</p>
+                        <label htmlFor="child" >Number of children</label>
+                        <br></br>
+                        <input
+                          disabled
+                          min="1" max="10"
+                          ref={refs.child}
+                          onChange={onChange.bind(this, setNchild)}
+                          //defaultValue={vars.child}
+                          name="child"
+                          id="child"
+                          type="number"
+                          className="form-control"
+                          placeholder={No_of_child}
+                        />
+                        <br></br>
+                        <label htmlFor="second">Sponsorship Duration in Year's</label>
+                        <br></br>
+                        <div>
+                          <input disabled
+                            min="1" max="10"
+                            ref={refs.second}
+                            onChange={onChange.bind(this, setNyear)}
+                            //defaultValue={vars.second}
+                            name="second"
+                            id="second"
+                            type="number"
+                            className="form-control"
+                            placeholder={No_of_year}
+                          />
+                        </div>
+                        <br></br>
+                        <label htmlFor="sum">Sponsorship Amount</label>
+                        <br></br>
+                        <div>
+                          <input
+                            disabled
+                            ref={refs.sum}
+                            onChange={onChange}
+                            //defaultValue={vars.sum}
+                            // id="sum"
+                            // name="sum"
+                            // type="number"
+                            className="form-control"
+                            placeholder={amount}
+                          />
+                        </div>
+                        <br></br>
+                        <label htmlFor="sum">Payment Plan</label>
 
-                              <input
-                                disabled
-                                ref={refs.sum}
-                                onChange={onChange}
-                                //defaultValue={vars.sum}
-                                // id="sum"
-                                // name="sum"
-                                // type="number"
-                                className="form-control"
-                                placeholder={paymentplan}
-                              />
-                              <br></br>
-                              {/* <select className="browser-default custom-select"  name="choice"
+                        <div>
+
+                          <input
+                            disabled
+                            ref={refs.sum}
+                            onChange={onChange}
+                            //defaultValue={vars.sum}
+                            // id="sum"
+                            // name="sum"
+                            // type="number"
+                            className="form-control"
+                            placeholder={paymentplan}
+                          />
+                          <br></br>
+                          {/* <select className="browser-default custom-select"  name="choice"
 ref={refs.cho}
 disabled
 // onChange={onChange}  
@@ -793,42 +779,40 @@ onChange={onChange.bind(this, setNMonth)}>
     <option  value="quarterly">quarterly</option>
     <option value="monthly">Monthly</option>
   </select> */}
-                              {/* {localStorage.setItem("value",value)} */}
-                              <h4 style={{ paddingLeft: '90px' }}>Total Amount:{Ninpay} </h4>
-                            </div>
-                            {/* <div> <Button onClick={postdata}> submit</Button></div> */}
-                            <div className="text-center py-4 mt-3">
-                              <Button style={{ border: '2px', backgroundColor: "#FFEDD9" }}
-                                onClick={
-                                  displayRazorpay
-                                  // opendata
-                                  //   window.open(
-                                  //  ' https://pages.razorpay.com/pl_HRc2yXiFYdkEzH/view'
-                                  //     )
-                                } >
-                                Pay Now
-                                <MDBIcon far icon="paper-plane" className="ml-2" />
-                              </Button>
-                            </div>
-                          </form>
+                          {/* {localStorage.setItem("value",value)} */}
+                          <h4 style={{ paddingLeft: '90px' }}>Total Amount:{Ninpay} </h4>
+                        </div>
+                        {/* <div> <Button onClick={postdata}> submit</Button></div> */}
+                        <div className="text-center py-4 mt-3">
+                          <Button style={{ border: '2px', backgroundColor: "#FFEDD9" }}
+                            onClick={
+                              displayRazorpay
+                              // opendata
+                              //   window.open(
+                              //  ' https://pages.razorpay.com/pl_HRc2yXiFYdkEzH/view'
+                              //     )
+                            } >
+                            Pay Now
+                            <MDBIcon far icon="paper-plane" className="ml-2" />
+                          </Button>
+                        </div>
+                      </form>
 
-                        </MDBCardBody>
-                      </MDBCard>
+                    </MDBCardBody>
+                  </MDBCard>
 
 
-                    </MDBRow>
-                  </div>
-
-                </MDBContainer>
+                </MDBRow>
               </div>
-            </div>
-            {/* <button onClick={() => history.push('/Userprofile')}>Profile</button>
-<button onClick={displayRazorpay}> pay now</button> */}
+            </MDBContainer>
+
           </div>
+          <button onClick={() => history.push('/Userprofile')}>Profile</button>
+          <button onClick={displayRazorpay}> pay now</button>
+        </div>
 
 
-     
-      </Styles>
+      </div>
       : <div style={{
         backgroundImage: `url(${process.env.PUBLIC_URL + "/images/p.png"})`, backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover'

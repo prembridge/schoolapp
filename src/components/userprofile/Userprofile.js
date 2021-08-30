@@ -861,6 +861,22 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import { useHistory } from 'react-router-dom';
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBIcon,MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from 'mdbreact';
+
+
+import styled from "styled-components";
+const Styles = styled.div`
+
+
+@media all and (max-width: 768px) {
+      
+    .todate{
+      margin-top: 50px;
+      margin-left: -269px;
+     
+      }
+      
+  }`
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -1276,6 +1292,7 @@ fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/putuser/ "+local
   };
 
   return (
+    <Styles>
     <div className={classes.root}>
       <div class="container">
       <div class="main-body">
@@ -1602,6 +1619,7 @@ onChange={e => setNMonth(e.target.value)}>
             onChange={handleCheckInDate}
           />
         </div>
+        <div className="todate">
         <div style={{paddingLeft:'250px' ,marginTop: '-31px'}}>
           <label style={{paddingRight:'5px',paddingLeft:'20px'}}>To Date</label>
           <DatePicker
@@ -1616,6 +1634,7 @@ onChange={e => setNMonth(e.target.value)}>
         <div style ={{paddingLeft:'510px',marginTop:'-30px'}} >
           <button  disabled={!checkInDate|| !checkOutDate }onClick={() => history.push('/Viewtransaction')}>Submit</button>
         </div>
+      </div>
       </div>
       {checkInDate && checkOutDate && (
         <div className="summary">
@@ -1669,5 +1688,6 @@ onChange={e => setNMonth(e.target.value)}>
        
       </Grid> */}
     </div>
+    </Styles>
   );
 }

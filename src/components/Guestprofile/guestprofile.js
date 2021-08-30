@@ -11,6 +11,65 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Button } from "@material-ui/core";
 import Swal from 'sweetalert2'
+import { breakpoints as bp } from "../../GlobalStyle";
+import styled from "styled-components";
+const Styles = styled.div`
+
+.guestview {
+  
+  margin-left: 3px;
+   
+   
+}
+.tview{
+  padding-Left: 200px,
+  padding-Top: 30px,
+  font-Family: Montserrat,sans-serif,
+  font-Size:20px,
+  padding-Bottom:100px
+}
+.grantspon{
+  padding-Top:10px;
+  padding-Left:190px
+}
+.labtext{
+
+}
+@media all and (max-width: 768px) {
+      
+    .guestview{
+      margin-left: -539px;
+      margin-right: -167px;
+      padding-left: 54px;
+    width:900px
+     
+      }
+      .tview{
+        margin-left: 570px;
+        width: 30%;
+      }
+      .grantspon{
+        padding-Top:10px;
+        padding-Left: 163px;
+        margin-left: 345px;
+      }
+      .labtext{
+        margin-left: -201px;
+    padding-top: 80px;
+        
+      }
+      .chidsp{
+        margin-top: -103px;
+    margin-left: 367px
+      }
+      .spcard{
+        margin-left: -210px;
+    margin-top: 24px;
+      }
+      .carous{
+        margin-top:-182px
+      }
+  }`
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 700,
@@ -82,84 +141,25 @@ export default function Guestprofile() {
     if (name === "child") {children = refs.sum.current.value = child * (second * 7500);
     tot = children;
     dis = tot;
-    // if(cho=="full"){
-    //   dis = tot ;
-    //  }
-    //  if(cho=="anual"){
-    //    dis = tot/second;
-    //  }
-    //  if(cho=='half'){
-    //    dis = tot/(2*second);
-    //  }
-    //  if(cho=='qua'){
-    //    dis =tot/(4*second);
-    //  }
-    //  if(cho=='mon'){
-    //    dis =tot/(12*second);
-    //  } 
+   
     }
     console.log(children,"children..")
     if (name === "second") {years = refs.sum.current.value = child * (second * 7500);
     tot = years;
     dis = tot;
-    // if(cho=="full"){
-    //   dis = tot ;
-    //  }
-    //  if(cho=="anual"){
-    //    dis = tot/second;
-    //  }
-    //  if(cho=='half'){
-    //    dis = tot/(2*second);
-    //  }
-    //  if(cho=='qua'){
-    //    dis =tot/(4*second);
-    //  }
-    //  if(cho=='mon'){
-    //    dis =tot/(12*second);
-    //  }
+   
     }
     console.log("years",years)
     if (name === "sum") { total = refs.second.current.value = child * (second * 7500);
     tot = total;
     dis = tot;
-    // if(cho=="full"){
-    //   dis = tot ;
-    //  }
-    //  if(cho=="anual"){
-    //    dis = tot/second;
-    //  }
-    //  if(cho=='half'){
-    //    dis = tot/(2*second);
-    //  }
-    //  if(cho=='qua'){
-    //    dis =tot/(4*second);
-    //  }
-    //  if(cho=='mon'){
-    //    dis =tot/(12*second);
-    //  }
-  // tot.toString();
+  
 }
 if (name === "choice") { 
   var tp = refs.sum.current.value = child * (second * 7500)
   tot = tp;
   dis = tot;
-  // if(cho=="full"){
-  //   dis = tot ;
-  //  }
-  //  if(cho=="anual"){
-  //    dis = tot/second;
-  //  }
-  //  if(cho=='half'){
-  //    dis = tot/(2*second);
-  //  }
-  //  if(cho=='qua'){
-  //    dis =tot/(4*second);
-  //  }
-  //  if(cho=='mon'){
-  //    dis =tot/(12*second);
-  //  }
  
-// tot.toString();
 }
 
 tota = tot;
@@ -390,7 +390,7 @@ console.log(data ,"data of data")
         "amount": data.amount.toString()+"00",// Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         "currency": "INR",
         "name": localStorage.getItem("statename"),
-        "description": "Test Transaction",
+      
         "image": `${require("../assets/Panaah3.png")}`,
         "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
         "handler": function (response){
@@ -474,7 +474,7 @@ console.log(data ,"data of data")
         "amount": amount.toString()+"00",// Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         "currency": "INR",
         "name": localStorage.getItem("statename"),
-        "description": "Test Transaction",
+       
         "image": `${require("../assets/Panaah3.png")}`,
         "order_id":data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
      "handler": function (response){
@@ -522,38 +522,25 @@ console.log(data ,"data of data")
 
 
     return (
-      <div >
+      <Styles>
+      <div  className="guestview">
      <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + "/images/p.png"})`, backgroundRepeat:'no-repeat',
      backgroundSize:'cover',height:'1150px'}} >
        <div style={{fontFamily: 'Montserrat,sans-serif',fontSize:'20px',paddingLeft:'540px',paddingTop:'20px'}}>
     <h1> Adopt A Child</h1>
     </div>
-    <div style={{paddingLeft:'200px',paddingTop:"30px",fontFamily: 'Montserrat,sans-serif',fontSize:'20px',paddingBottom:"100px"}}>
+    {/* style={{paddingLeft:'200px',paddingTop:"30px",fontFamily: 'Montserrat,sans-serif',fontSize:'20px',paddingBottom:"100px"}} */}
+    <div className='tview'>
     <h4>Panaah provides you the platform and privilege of contributing / gifting a grant of your convenience without a periodic commitment. A one time gift of any value can still mean a lot to give hope for tomorrow to young lives in hopeless homes today. (Minimum contribution of INR 1000)</h4>
     </div>
-    {/* <MDBCard  style={{ backgroundColor:'#FFFFFF',borderColor:"#5D6D7E", width: "60rem", borderRadius:'10px',marginLeft:330,} }>
-            <MDBCardBody>
-              <MDBRow>
-                <h1 className="h4 text-center py-4">Grant Sponsorship</h1>
-
-                <h5 style={{paddingLeft:180}} >Sponsorship Amount</h5>
-                <div>
-                <button style={{width:100,alignItems:'center',marginLeft:5,marginBottom:10}}> 7000</button>
-                </div>
-              
-                <button  onClick={() => {
-      window.open(
-       ' https://pages.razorpay.com/pl_HRc2yXiFYdkEzH/view'
-      );
-    }} style={{width:150,alignItems:'center',marginLeft:390,marginBottom:10, color:'white',backgroundColor:'brown'}}>Pay</button>
-              
-                </MDBRow>
-                </MDBCardBody>
-                </MDBCard> */}
-                <div style={{paddingTop:'10px',paddingLeft:"190px"}}>
+    {/* style={{paddingTop:'10px',paddingLeft:"190px"}} */}
+   
+                <div className="grantspon">
                   <h1>a. General Grant Sponsorship</h1>
                 
                 </div>
+                {/* style={{paddingLeft:'790px',paddingBottom:'0px',marginTop: '-70px'}} */}
+                <div className="labtext">
                 <div style={{paddingLeft:'790px',paddingBottom:'0px',marginTop: '-70px'}}>  
                 
             <label >
@@ -565,14 +552,12 @@ console.log(data ,"data of data")
               onChange={e => setamount(e.target.value)}
               />
 <div>
+</div>
       <Button 
       type ='button'
        onClick={
               postamount
-              // opendata
-              //   window.open(
-              //  ' https://pages.razorpay.com/pl_HRc2yXiFYdkEzH/view'
-              //     )
+            
                  }style={{border:'2px',backgroundColor:'#FFEDD9' }}>Pay Now</Button>
     </div>
                </div>
@@ -581,11 +566,14 @@ console.log(data ,"data of data")
  <div style={{paddingTop:'45px',paddingLeft:"190px"}}>
    <h1> OR</h1>
  </div>
+ <div className="chidsp">
  <div style={{paddingTop:'50px',paddingLeft:"190px"}}>
    <h1>b. Child Sponsorship
 </h1>
  </div>
- <div style={{paddingLeft:700,paddingBottom:500 ,display:'flex',flexDirection:'row',paddingTop:'-50px'}}>
+ </div>
+ <div className="spcard">
+ <div style={{paddingLeft:700,paddingBottom:'190px' ,display:'flex',flexDirection:'row',paddingTop:'-50px'}}>
       <MDBContainer fluid class="d-flex justify-content-cente"  >
       <div >
       <MDBRow >
@@ -637,19 +625,7 @@ console.log(data ,"data of data")
    
    {/* <label htmlFor="sum">Payment Plan</label> */}
    <div>
-        {/* <select className="browser-default custom-select"  name="choice"
-      ref={refs.cho}
-    // onChange={onChange}  
-      title="Payment Plan"
-      id="dropdown-menu-align-right"
-      onChange={onChange}>
-          <option disabled>Choose your option</option>
-          <option  value="full">Full Amount</option>
-          <option  value="anual">Annual</option>
-          <option  value="half">Half yearly</option>
-          <option  value="qua">quarterly</option>
-          <option value="mon">Monthly</option>
-        </select> */}
+        
         {localStorage.setItem("value",value)}
         <h4>selected amount ₹:{value} </h4>
       </div>
@@ -675,7 +651,9 @@ console.log(data ,"data of data")
       </div>
     </MDBContainer>
   </div>
+    
     </div>
+    <div className="carous">
     <Carousel>
   <Carousel.Item interval={1000}>
   <img style={{ height: '550px',width:'2030px'}}
@@ -722,7 +700,10 @@ Tell customers more about you. Add a few words and a stunning pic to grab their 
     {/* </Carousel.Caption> */}
    </Carousel.Item>
   </Carousel>
+  </div>
     </div>
+    </div>
+    </Styles>
     );
    };
 

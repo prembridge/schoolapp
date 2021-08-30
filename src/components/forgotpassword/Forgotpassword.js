@@ -15,6 +15,16 @@ const Styles = styled.div`
     height: 350px;
     margin-left: 30.5rem;
     margin-top: 8.5rem;
+}
+    @media all and (max-width: 768px) {
+      
+      .rcorners1{
+        margin-top: 50px;
+        margin-left: -91px
+       
+        }
+        
+    
   }`
 // const mailgun = require('mailgun-js')({
 //  api_key = 'key-28ec2fb77b09201ee40d5d2f974ff488-360a0b2c-28fc800c',
