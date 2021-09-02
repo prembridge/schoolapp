@@ -4,179 +4,84 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Carousel from 'react-bootstrap/Carousel'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import CarouselUser from './CarouselUser';
+import { breakpoints as bp } from "../../GlobalStyle";
 
 import styled from "styled-components";
 const Styles = styled.div`
+.ourvision {
+  background-color: rgb(255, 237, 217);
+  margin-top: -20vw !important;
+  height: 50%;
+  width: 100%;
+  
+}
+.ourvision h3{
+  font-size: 5vw;
+font-family: "Fira Sans sans-serif", 'monospace';
+margin-top: 4.5rem;
+left: 35vw !important;
+top: 225vw !important;
+text-align: center ;
+color: #000 !important;
+left: 5vw;
+}
+.ourvision h6{
+  font-size: 40px;
+  font-family: "Fira Sans sans-serif", 'monospace';
+  margin-top: 2.5rem;
+  left: 25vw !important;
+  top: 530vw !important;
+  color: #000 !important;
+  left: 5vw;
 
-
-@media all and (max-width: 768px) {
+  @media (max-width: ${bp.mobile}) {
     
-    .ourvision {
-      margin-left: -534px;
-    
-     
+    // .ourvision {
+    //   background-color: rgb(255, 200, 217);
+    //   height: 200px;
+    //   width: 908px;
+    //   padding-top: -20rem !important;
+    // }
+    .ourvision h3{
+      margin-top: -20vw !important;
+      background-color: rgb(255, 200, 217);
+      margin-left: -46px;
+      font-size: 26vw !important;
+      font-family: "Fira Sans sans-serif",'monospace';
+      top: 250vw !important;
+      color: #000 !important;
     }
-    .textvis{
-      margin-left:20px
-    }
-    .textinfo{
-      width:100px
+    .ourvision h6{
+      font-size: 5vw !important;
+      font-family: "Fira Sans sans-serif", 'monospace';
+      // margin-top: 5.5rem !important;
+      left: 25vw !important;
+      top: 560vw !important;
+      color: #000 !important;
+      
     }
   }`
 
-const STYLE = {
-  infoColor: {
-      color: 'green'
-  },
-  warningColor: {
-      color: 'orange'
-  },
-  errorColor: {
-      color: 'red'
-  }
-};
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-      backgroundColor:"#808080",
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-  media: {
-    height: 140,
-  },paper: {
-     backgroundColor:"#f7daf7",
-    margin: 'auto',
-    maxWidth: 500,
-  },
-  image: {
-    width: 128,
-    height: 128,
-  },
-  img: {
-    margin: 'auto',
-    display: 'block',
-    maxWidth: '100%',
-    maxHeight: '100%',
-  }
-}));
 
 export default function Users() {
-  const classes = useStyles();
 
   return (
     <Styles>
-    <div className={classes.root}>
-      <Grid container spacing={3}>
-        <div className='ourvision'>
-        <div style={{backgroundColor:"#FFEDD9",height:400,width:'1530px',paddingTop:100}}>
-          <div className='textvis'>
-          <h1 style={{fontFamily: 'Montserrat, sans-serif',fontWeight:'bold',paddingLeft:"65px",paddingLeft:600,}}>OUR VISION</h1>
+      <div>
+        <Grid >
+          <div className='ourvision'>     
+              <h3>OUR VISION</h3>
+              <h6 >Reaching the last, the least and the lost
+                for a better tomorrow </h6>
+
           </div>
-          <div className='textinfo'>
-          <div style={{paddingTop:50, fontFamily:'Raleway,sans-serif',fontSize:'130px',}} >
-          
-          <h6 style={{fontFamily: 'Raleway,sans-serif',fontSize:'40px',color:"#757575",fontStyle: 'italic',width:"1100px",textAlign:'center',paddingLeft:350}}>Reaching the last, the least and the lost 
-          for a better tomorrow </h6>
-            {/* <h6 style={{fontFamily: 'Raleway,sans-serif',fontSize:'30px',color:"#757575",fontStyle: 'italic'}}>for a better tomorrow</h6> */}
-</div>
-</div>
-        </div>
-        </div>
-        <div>
-             <Carousel>
-  <Carousel.Item interval={1000}>
-    <img style={{ height: '550px',width:'1530px'}}
-      className="d-block w-0"
-      src={require("../assets/Testimony.jpg")}
-      alt="First slide"
-    />
-    <Carousel.Caption>
-      {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
-      <h6 style={{paddingLeft:'790px',fontFamily: 'Montserrat, sans-serif',fontWeight:'bold',fontSize:'50px',paddingTop:'50px'}}>My Story</h6>
-      <p style={{paddingLeft:'790px',paddingTop:"90px",fontFamily: 'Raleway,sans-serif',fontSize:'20px',color:"white",fontStyle: 'italic',textAlign:'center',width:'1250px',paddingLeft:'575px'}}>
-This is a great place to add a tagline.
+          <div>
+            <CarouselUser />
+          </div>
 
-Tell customers more about you. Add a few words and a stunning pic to grab their attention and get them to click.
-
-​This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</p>
-    </Carousel.Caption>
-  </Carousel.Item>
-  <Carousel.Item interval={1000}>
-    <img style={{ height: '550px',width:'1530px'}}
-      className="d-block w-0"
-      src={require("../assets/Testimony.jpg")}
-      alt="First slide"
-    />
-    <Carousel.Caption>
-      {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
-      <h6 style={{paddingLeft:'790px',fontFamily: 'Montserrat, sans-serif',fontWeight:'bold',fontSize:'50px',paddingTop:'50px'}}>My Story1</h6>
-      <p style={{paddingLeft:'790px',paddingTop:"90px",fontFamily: 'Raleway,sans-serif',fontSize:'20px',color:"white",fontStyle: 'italic',textAlign:'center',width:'1250px',paddingLeft:'575px'}}>
-This is a great place to add a tagline.
-
-Tell customers more about you. Add a few words and a stunning pic to grab their attention and get them to click.
-
-​This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</p>
-    </Carousel.Caption>
-  </Carousel.Item>
-  <Carousel.Item interval={1000}>
-    <img style={{ height: '550px',width:'1530px'}}
-      className="d-block w-0"
-      src={require("../assets/Testimony.jpg")}
-      alt="First slide"
-    />
-    <Carousel.Caption>
-      {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
-      <h6 style={{paddingLeft:'790px',fontFamily: 'Montserrat, sans-serif',fontWeight:'bold',fontSize:'50px',paddingTop:'50px'}}>My Story2</h6>
-      <p style={{paddingLeft:'790px',paddingTop:"90px",fontFamily: 'Raleway,sans-serif',fontSize:'20px',color:"white",fontStyle: 'italic',textAlign:'center',width:'1250px',paddingLeft:'575px'}}>
-This is a great place to add a tagline.
-
-Tell customers more about you. Add a few words and a stunning pic to grab their attention and get them to click.
-
-​This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</p>
-    </Carousel.Caption>
-  </Carousel.Item>
-  {/* <Carousel.Item interval={500}> */}
-    {/* <img style={{ height: '550px'}}
-      className="d-block w-100"
-      src={require("../assets/Testimony.jpg")}
-      alt="Third slide"
-    /> */}
-     {/* <Carousel.Caption> */}
-      {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
-      {/* <h5>My Story</h5>
-      <p style={{width:500,paddingLeft:700}}>
-This is a great place to add a tagline.
-Tell customers more about you. Add a few words and a stunning pic to grab their attention and get them to click.
-​This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</p> */}
-    {/* </Carousel.Caption> */}
-  {/* </Carousel.Item> */}
-  {/* <Carousel.Item> */}
-    {/* <img style={{height: '550px'}}
-      className="d-block w-100"
-      src={require("../assets/Testimony.jpg")}
-      alt="Third slide"
-    /> */}
-    {/* <Carousel.Caption> */}
-    {/* <Carousel.Caption> */}
-      {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
-      {/* <h5>My Story</h5>
-      <p style={{width:500,paddingRight:100}}>
-This is a great place to add a tagline.
-Tell customers more about you. Add a few words and a stunning pic to grab their attention and get them to click.
-​This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</p> */}
-    {/* </Carousel.Caption>
-    </Carousel.Caption> */}
-  {/* </Carousel.Item> */}
-</Carousel> 
-        </div>
-      
-      </Grid>
-    </div>
+        </Grid>
+      </div>
     </Styles>
   );
 }

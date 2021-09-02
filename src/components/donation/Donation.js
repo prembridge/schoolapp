@@ -777,22 +777,7 @@ export default function Donation() {
                                 placeholder={paymentplan}
                               />
                               <br></br>
-                              {/* <select className="browser-default custom-select"  name="choice"
-ref={refs.cho}
-disabled
-// onChange={onChange}  
-title="Payment Plan"
-id="dropdown-menu-align-right"
-//placeholder={localStorage.getItem("payment")}
-onChange={onChange.bind(this, setNMonth)}>
-    <option disabled>Choose your option</option>
-    <option> CurrentPlan:{localStorage.getItem("paymentplan")}</option>
-    <option  value="fullAmount">Full Amount</option>
-    <option  value="annual">Annual</option>
-    <option  value="halfYearly">Half yearly</option>
-    <option  value="quarterly">quarterly</option>
-    <option value="monthly">Monthly</option>
-  </select> */}
+                             
                               {/* {localStorage.setItem("value",value)} */}
                               <h4 style={{ paddingLeft: '90px' }}>Total Amount:{Ninpay} </h4>
                             </div>
@@ -822,14 +807,17 @@ onChange={onChange.bind(this, setNMonth)}>
                 </MDBContainer>
               </div>
             </div>
-            {/* <button onClick={() => history.push('/Userprofile')}>Profile</button>
-<button onClick={displayRazorpay}> pay now</button> */}
+           
           </div>
 
 
      
       </Styles>
-      : <div style={{
+
+      : 
+      <div>
+        <Styles className="donation">
+      <div style={{
         backgroundImage: `url(${process.env.PUBLIC_URL + "/images/p.png"})`, backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover'
       }} >
@@ -913,7 +901,7 @@ onChange={onChange.bind(this, setNMonth)}>
 
               <div>
 
-                <MDBRow >
+                <MDBRow  lassName="cview" >
 
                   <MDBCard style={{ backgroundColor: '#FFFFFF', borderColor: "#5D6D7E", width: "30rem", borderRadius: '10px' }}>
                     <MDBCardBody>
@@ -1014,6 +1002,8 @@ onChange={onChange.bind(this, setNMonth)}>
           {/* onClick={() => history.push('/Userprofile')} */}
         </div>
 
+      </div>
+      </Styles>
       </div>
   );
 };
