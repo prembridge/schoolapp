@@ -27,7 +27,7 @@ color: #000 !important;
 left: 5vw;
 }
 .ourvision h6{
-  font-size: 40px;
+  font-size: 36px;
   font-family: "Fira Sans sans-serif", 'monospace';
   margin-top: 2.5rem;
   left: 25vw !important;
@@ -53,7 +53,7 @@ left: 5vw;
       color: #000 !important;
     }
     .ourvision h6{
-      font-size: 5vw !important;
+      font-size: 4vw !important;
       font-family: "Fira Sans sans-serif", 'monospace';
       // margin-top: 5.5rem !important;
       left: 25vw !important;

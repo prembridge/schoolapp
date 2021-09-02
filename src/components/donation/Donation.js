@@ -12,18 +12,40 @@ import { OpenWithRounded } from "@material-ui/icons";
 import Swal from 'sweetalert2'
 import img from "./p.png"
 import { breakpoints as bp } from "../../GlobalStyle";
+import bg from "../assets/boy2.jpg";
 import styled from "styled-components";
 const Styles = styled.div`
 
 .donation {
   
-  margin-left: 335px;
-   
+    width: 350px;
+    margin-left: 538px;
+}
+.donation h1{
+  
+    width: 490px;
+    margin-left: -15px;
+    margin-top:20px
+}
+
+   .donation h6{
+       font-size:8px
+    margin-top: -15px;
+    width: 1217px;
+    margin-left: -200px;
+    padding-top: 15px
+   }
    
 }
 .cview{
-  padding-top: 31px;
-  margin-left: 380px;
+    margin-top: -820px;
+   
+    margin-left: 968px;
+}
+.cviewsecond{
+    margin-top: -800px;
+   
+    margin-left: 968px; 
 }
 @media all and (max-width: 768px) {
       
@@ -32,9 +54,27 @@ const Styles = styled.div`
     width: 100%;
      
       }
+      .donation h1{
+  
+        width: 265px;
+    margin-left: 37px;
+    margin-top: 20px
+    }
+      .donation h6{
+        margin-left: 10px;
+      width: 80%;
+      font-size:15px
+       
+        }
       .cview{
         margin-left: 10px;
         width: 90%;
+        margin-top: 30px
+      }
+      .cviewsecond{
+        margin-left: 10px;
+        width: 90%;
+        margin-top: 30px
       }
   }`
 
@@ -626,7 +666,14 @@ export default function Donation() {
   return (
     (localStorage.getItem("New_plan")) == 1 ?
       <Styles>
-        <div>
+          
+        <div  class="bg_image"
+          style={{
+            backgroundImage: `url(${bg})`,
+            backgroundSize: "cover",
+            height: "130vh",
+            color: "#000000",
+          }}>
        
           
           
@@ -636,72 +683,38 @@ export default function Donation() {
     border: '1px black',backgroundImage: `url(${process.env.PUBLIC_URL + "/images/p.png"})`, backgroundRepeat:'no-repeat',
     backgroundSize:'cover'}} */}
             <div className="donation">
-            {/* stlye={{ display: 'flex', flexdirection: 'row' }} */}
-              <div >
+               <div >
 
-              {/* style={{ paddingLeft: '190px' }} */}
+             
                 <h1>Panaah: Adopt A Child</h1>
-                {/* style={{ fontFamily: 'Montserrat,sans-serif', fontSize: '20px', width: '90%', paddingLeft: '190px' }} */}
-                <h5  >
+                
+                <h4>
+                    By registering here you commit to partner with us in giving hope for tomorrow to young lives in hopeless homes today.  Panaah provides you a platform to give / contribute an amount of minimum INR 750 monthly or INR 2250 quarterly or 4500 Half Yearly or 9000 Annually towards the educational and developmental needs of children from poor families and rural communities. Select the number of children and the number of years you would like to support. </h4>
+                 <br></br>
+                <h6>
+             1. Select the number of children and the number of years you would like to support the child/children.</h6>
+                 <h6>
+            2. Choose the sponsor/payment plan that suits you and submit to save your preferences</h6>
+                 
+                <h6>
 
-                  By registering here you commit to partner with us in giving hope for tomorrow to young lives in hopeless homes today.  Panaah provides you a platform to give / contribute an amount of minimum INR 750 monthly or INR 2250 quarterly or 4500 Half Yearly or 9000 Annually towards the educational and developmental needs of children from poor families and rural communities. Select the number of children and the number of years you would like to support. </h5>
-                  {/* style={{
-                  fontFamily: 'Montserrat,sans-serif', fontSize: '20px',
-                  paddingTop: '15px', width: '90%', paddingLeft: '190px'
-                }} */}
-                <h5  >
+                  3. Once saved you can click on the pay now button to send you contributions according to your plan</h6>
+                 
+                <h6>
 
-                  1. Select the number of children and the number of years you would like to support the child/children.</h5>
-                  {/* style={{
-                  fontFamily: 'Montserrat,sans-serif', fontSize: '20px', textAlign: 'justify', flexDirection: 'column', flex: 1,
-                  justifyContent: 'center',
-                  alignItems: 'center', width: '90%', paddingLeft: '190px'
-                }} */}
-                <h5  >
+                  4. For your convenience you can use the autopay/auto debit option by enabling the option in your profile page to send your contributions on time</h6>
+                 
+                <h6>
 
-                  2. Choose the sponsor/payment plan that suits you and submit to save your preferences</h5>
-                  {/* style={{
-                  fontFamily: 'Montserrat,sans-serif', fontSize: '20px', textAlign: 'justify', flexDirection: 'column', flex: 1,
-                  justifyContent: 'center',
-                  alignItems: 'center', width: '90%', paddingLeft: '190px'
-                }} */}
-                <h5  >
+                  5. To change your plan or any other information check your profile page</h6>
+               
+                <h6>
 
-                  3. Once saved you can click on the pay now button to send you contributions according to your plan</h5>
-                  {/* style={{
-                  fontFamily: 'Montserrat,sans-serif', fontSize: '20px', textAlign: 'justify', flexDirection: 'column', flex: 1,
-                  justifyContent: 'center',
-                  alignItems: 'center', width: '90%', paddingLeft: '190px'
-                }} */}
-                <h5 >
-
-                  4. For your convenience you can use the autopay/auto debit option by enabling the option in your profile page to send your contributions on time</h5>
-                  {/* style={{
-                  fontFamily: 'Montserrat,sans-serif', fontSize: '20px', textAlign: 'justify', flexDirection: 'column', flex: 1,
-                  justifyContent: 'center',
-                  alignItems: 'center', width: '90%', paddingLeft: '190px'
-                }} */}
-                <h5  >
-
-                  5. To change your plan or any other information check your profile page</h5>
-                  {/* style={{
-                  fontFamily: 'Montserrat,sans-serif', fontSize: '20px', textAlign: 'justify', flexDirection: 'column', flex: 1,
-                  justifyContent: 'center',
-                  alignItems: 'center', width: '90%', paddingLeft: '190px'
-                }} */}
-                <h5  >
-
-                  6. Email id, Pan Number and Name cannot be edited. For more information on this contact our team.</h5>
+                  6. Email id, Pan Number and Name cannot be edited. For more information on this contact our team.</h6>
               </div>
             </div>
-            {/* style={{
-                width: '50%', height: '950px',
-                float: 'left',
-                padding: '20px',
-                border: '1px ', backgroundImage: `url(${process.env.PUBLIC_URL + "/images/p.png"})`, backgroundRepeat: 'no-repeat',
-                backgroundSize: 'cover'
-              }} */}
-            <div >
+           
+            <div>
               <div className="cview" >
 
                 <MDBContainer fluid class="d-flex justify-content-cente"  >
@@ -709,8 +722,8 @@ export default function Donation() {
                   <div>
 
                     <MDBRow >
-
-                      <MDBCard style={{ backgroundColor: '#FFFFFF', borderColor: "#5D6D7E", width: "30rem", borderRadius: '10px', paddingTop: '40px' }}>
+{/* style={{ backgroundColor: '#FFFFFF', borderColor: "#5D6D7E", width: "30rem", borderRadius: '10px', paddingTop: '40px' }} */}
+                      <MDBCard  style={{ backgroundColor: '#FFFFFF', borderColor: "#5D6D7E", width: "30rem",height: '585px',borderRadius: '5px',  }} >
                         <MDBCardBody>
                           <form>
                             <p className="h4 text-center py-4">SPONSOR NOW</p>
@@ -816,94 +829,74 @@ export default function Donation() {
 
       : 
       <div>
-        <Styles className="donation">
-      <div style={{
-        backgroundImage: `url(${process.env.PUBLIC_URL + "/images/p.png"})`, backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover'
-      }} >
-        <div class="float-container" style={{
-          border: '2px black',
-          padding: '20px',
-          backgroundImage: `url(${process.env.PUBLIC_URL + "/images/p.png"})`, backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover'
-        }}>
-
-          <div class="float-child" style={{
-            width: '50%',
-            float: 'left',
-            padding: '20px',
-            border: '1px black', backgroundImage: `url(${process.env.PUBLIC_URL + "/images/p.png"})`, backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover'
+        <Styles>
+        <div  class="bg_image"
+          style={{
+            backgroundImage: `url(${bg})`,
+            backgroundSize: "cover",
+            height: "130vh",
+            color: "#000000",
           }}>
+        <div 
+        // class="float-container" style={{
+        //   border: '2px black',
+        //   padding: '20px',
+        //   backgroundImage: `url(${process.env.PUBLIC_URL + "/images/p.png"})`, backgroundRepeat: 'no-repeat',
+        //   backgroundSize: 'cover'
+        // }}
+        >
 
-            <div stlye={{ display: 'flex', flexdirection: 'row' }}>
+          <div  className="donation"
+        //   class="float-child" style={{
+        //     width: '50%',
+        //     float: 'left',
+        //     padding: '20px',
+        //     border: '1px black', backgroundImage: `url(${process.env.PUBLIC_URL + "/images/p.png"})`, backgroundRepeat: 'no-repeat',
+        //     backgroundSize: 'cover'
+        //   }}
+          >
+
+            <div 
+            // stlye={{ display: 'flex', flexdirection: 'row' }}
+            >
 
 
-              <h1 style={{ paddingLeft: '190px' }}>Panaah: Adopt A Child</h1>
+              <h1 >Panaah: Adopt A Child</h1>
 
-              <h5 style={{ fontFamily: 'Montserrat,sans-serif', fontSize: '20px', width: '90%', paddingLeft: '190px' }} >
+              <h4 >
 
-                By registering here you commit to partner with us in giving hope for tomorrow to young lives in hopeless homes today.  Panaah provides you a platform to give / contribute an amount of minimum INR 750 monthly or INR 2250 quarterly or 4500 Half Yearly or 9000 Annually towards the educational and developmental needs of children from poor families and rural communities. Select the number of children and the number of years you would like to support. </h5>
-              <h5 style={{
-                fontFamily: 'Montserrat,sans-serif', fontSize: '20px',
-                paddingTop: '15px', width: '90%', paddingLeft: '190px'
-              }} >
+                By registering here you commit to partner with us in giving hope for tomorrow to young lives in hopeless homes today.  Panaah provides you a platform to give / contribute an amount of minimum INR 750 monthly or INR 2250 quarterly or 4500 Half Yearly or 9000 Annually towards the educational and developmental needs of children from poor families and rural communities. Select the number of children and the number of years you would like to support. </h4>
+              <h6>
 
-                1. Select the number of children and the number of years you would like to support the child/children.</h5>
+                1. Select the number of children and the number of years you would like to support the child/children.</h6>
 
-              <h5 style={{
-                fontFamily: 'Montserrat,sans-serif', fontSize: '20px', textAlign: 'justify', flexDirection: 'column', flex: 1,
-                justifyContent: 'center',
-                alignItems: 'center', width: '90%', paddingLeft: '190px'
-              }} >
+              <h6>
 
-                2. Choose the sponsor/payment plan that suits you and submit to save your preferences</h5>
-              <h5 style={{
-                fontFamily: 'Montserrat,sans-serif', fontSize: '20px', textAlign: 'justify', flexDirection: 'column', flex: 1,
-                justifyContent: 'center',
-                alignItems: 'center', width: '90%', paddingLeft: '190px'
-              }} >
+                2. Choose the sponsor/payment plan that suits you and submit to save your preferences</h6>
+              <h6>
 
-                3. Once saved you can click on the pay now button to send you contributions according to your plan</h5>
-              <h5 style={{
-                fontFamily: 'Montserrat,sans-serif', fontSize: '20px', textAlign: 'justify', flexDirection: 'column', flex: 1,
-                justifyContent: 'center',
-                alignItems: 'center', width: '90%', paddingLeft: '190px'
-              }} >
+                3. Once saved you can click on the pay now button to send you contributions according to your plan</h6>
+              <h6>
 
-                4. For your convenience you can use the autopay/auto debit option by enabling the option in your profile page to send your contributions on time</h5>
-              <h5 style={{
-                fontFamily: 'Montserrat,sans-serif', fontSize: '20px', textAlign: 'justify', flexDirection: 'column', flex: 1,
-                justifyContent: 'center',
-                alignItems: 'center', width: '90%', paddingLeft: '190px'
-              }} >
+                4. For your convenience you can use the autopay/auto debit option by enabling the option in your profile page to send your contributions on time</h6>
+              <h6>
 
-                5. To change your plan or any other information check your profile page</h5>
-              <h5 style={{
-                fontFamily: 'Montserrat,sans-serif', fontSize: '20px', textAlign: 'justify', flexDirection: 'column', flex: 1,
-                justifyContent: 'center',
-                alignItems: 'center', width: '90%', paddingLeft: '190px'
-              }} >
+                5. To change your plan or any other information check your profile page</h6>
+              <h6>
 
-                6. Email id, Pan Number and Name cannot be edited. For more information on this contact our team.</h5>
+                6. Email id, Pan Number and Name cannot be edited. For more information on this contact our team.</h6>
             </div>
           </div>
 
-          <div class="float-child" style={{
-            width: '50%',
-            float: 'left',
-            padding: '20px',
-            border: '1px ', backgroundImage: `url(${process.env.PUBLIC_URL + "/images/p.png"})`, backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover'
-          }}>
+          <div className="cviewsecond">
 
             <MDBContainer fluid class="d-flex justify-content-cente"  >
 
               <div>
 
-                <MDBRow  lassName="cview" >
+                <MDBRow   >
 
-                  <MDBCard style={{ backgroundColor: '#FFFFFF', borderColor: "#5D6D7E", width: "30rem", borderRadius: '10px' }}>
+                  <MDBCard style={{ backgroundColor: '#FFFFFF', borderColor: "#5D6D7E", width: "30rem",height: '555px',borderRadius: '5px',  }}>
                     <MDBCardBody>
                       <form>
                         <p className="h4 text-center py-4">SPONSOR NOW</p>

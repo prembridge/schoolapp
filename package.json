@@ -2,7 +2,7 @@
   "name": "panaah",
   "version": "0.1.0",
   "private": true,
-  "homepage":"http://panaah.org",
+  "homepage":"https://panaah.org",
   "dependencies": {
     "@hookform/error-message": "^2.0.0",
     "@material-ui/core": "^4.11.0",
