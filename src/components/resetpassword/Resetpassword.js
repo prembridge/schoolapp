@@ -8,6 +8,7 @@ import {
   Link,
 
 } from "react-router-dom";
+import { breakpoints as bp } from "../../GlobalStyle";
 const Styles = styled.div`
 
 .rcorners1 {
@@ -21,6 +22,19 @@ const Styles = styled.div`
     height: 550px;
     margin-left: 30.5rem;
     margin-top: 8.5rem;
+}
+@media all and (max-width: 768px) {
+  .rcorners1{
+   
+    border: 2px solid #000000;
+    padding-right: 30rem;
+  
+    padding-top: 0px;
+    width: 800px;
+    height: 500px;
+    margin-left: -5rem;
+    
+  }
   }`
 // const mailgun = require('mailgun-js')({
 //  api_key = 'key-28ec2fb77b09201ee40d5d2f974ff488-360a0b2c-28fc800c',

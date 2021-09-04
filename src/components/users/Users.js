@@ -17,24 +17,29 @@ const Styles = styled.div`
   
 }
 .ourvision h3{
-  font-size: 5vw;
-font-family: "Fira Sans sans-serif", 'monospace';
+  font-size: 8vw;
+font-family: 'Montserrat, sans-serif';
 margin-top: 4.5rem;
 left: 35vw !important;
 top: 225vw !important;
 text-align: center ;
 color: #000 !important;
 left: 5vw;
+
 }
 .ourvision h6{
   font-size: 36px;
-  font-family: "Fira Sans sans-serif", 'monospace';
+  font-family: "Raleway,sans-serif";
   margin-top: 2.5rem;
   left: 25vw !important;
   top: 530vw !important;
-  color: #000 !important;
+  color: #757575 !important;
   left: 5vw;
-
+ 
+  font-Size:40px,
+  
+  font-Style: italic,
+  text-Align:center
   @media (max-width: ${bp.mobile}) {
     
     // .ourvision {
@@ -47,8 +52,8 @@ left: 5vw;
       margin-top: -20vw !important;
       background-color: rgb(255, 200, 217);
       margin-left: -46px;
-      font-size: 26vw !important;
-      font-family: "Fira Sans sans-serif",'monospace';
+      font-size: 30vw !important;
+      font-family: 'Montserrat, sans-serif';
       top: 250vw !important;
       color: #000 !important;
     }
@@ -71,7 +76,7 @@ export default function Users() {
       <div>
         <Grid >
           <div className='ourvision'>     
-              <h3>OUR VISION</h3>
+              <h3 style={{fontFamily: 'Raleway,sans-serif',fontWeight:'bold' }}>OUR VISION</h3>
               <h6 >Reaching the last, the least and the lost
                 for a better tomorrow </h6>
 

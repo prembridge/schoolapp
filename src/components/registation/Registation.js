@@ -22,6 +22,22 @@ import { useHistory } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBInput } from 'mdbreact';
 
+import { breakpoints as bp } from "../../GlobalStyle";
+import bg from "../assets/boy2.jpg";
+import styled from "styled-components";
+const Styles = styled.div`
+
+
+  @media (max-width: ${bp.mobile}) {
+    
+    .textmain {
+      width: 908px;
+      margin-left: -215px
+     
+    }
+    
+    
+  }`
 const emailRegex = RegExp(
   RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i)
 );
@@ -300,58 +316,24 @@ export default class Registation extends Component {
    // let history = useHistory();
 
     return (
-      <MDBContainer style={{ maxWidth :'800'} }>
-      <MDBRow>
-        <MDBCol md="6">
-          <MDBCard>
-            
-            <MDBCardBody className="mx-4 mt-4">
-              <MDBInput label="Your email" group type="text" validate />
-              <MDBInput
-                label="Your password"
-                group
-                type="password"
-                validate
-                containerClass="mb-0"
-              />
-              <p className="font-small grey-text d-flex justify-content-end">
-                Forgot
-                <a
-                  href="#!"
-                  className="dark-grey-text font-weight-bold ml-1"
-                >
-                  Password?
-                </a>
-              </p>
-              <div className="text-center mb-4 mt-5">
-                <MDBBtn
-                  color="danger"
-                  type="button"
-                  className="btn-block z-depth-2"
-                >
-                  Log in
-                </MDBBtn>
-              </div>
-              <p className="font-small grey-text d-flex justify-content-center">
-                Don't have an account?
-                <a 
-                  href="#!"
-                  className="dark-grey-text font-weight-bold ml-1"
-                > Click
-                  Sign up
-                </a>
-              </p>
-            </MDBCardBody>
-          </MDBCard>
-        </MDBCol>
-      </MDBRow>
-    </MDBContainer>,
+    <Styles>
+       <div
+          class="bg_image"
+          style={{
+            backgroundImage: `url(${bg})`,
+            backgroundSize: "cover",
+            height: "130vh",
+            color: "#000000",
+          }}
+        >
       <Grid container
       spacing={0}
       alignItems="center"
       justify="center"
       style={{ minHeight: '100vh' }}>
+        <div className='textmain'>
           <h3 style={{paddingLeft:'250px',}}>New Partner Registation</h3>
+          </div>
       <MDBCard variant="outlined" className={styles.card}  style={{ maxWidth :'1100px',borderColor:"#1c1a14",paddingLeft:'25px'} }>
         <CardContent align-items-center>
       <div className="wrapper">
@@ -596,6 +578,8 @@ export default class Registation extends Component {
     </CardContent>
     </MDBCard>
     </Grid>
+    </div>
+    </Styles>
     );
   } 
 }

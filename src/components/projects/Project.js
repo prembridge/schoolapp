@@ -80,7 +80,7 @@ await fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/contact", 
           style={{
             backgroundImage: `url(${bg})`,
             backgroundSize: "cover",
-            height: "95vh",
+            height: "100vh",
             color: "#000000",
           }}
         >

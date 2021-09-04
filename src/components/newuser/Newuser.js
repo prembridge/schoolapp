@@ -22,7 +22,7 @@ import { light } from '@material-ui/core/styles/createPalette';
 import Swal from 'sweetalert2'
 import { useForm } from 'react-hook-form';
 import { breakpoints as bp } from "../../GlobalStyle";
-
+import bg from "../assets/boy2.jpg";
 const Styles = styled.div`
 .inform {
   padding-top: 40px; 
@@ -301,6 +301,15 @@ export default function Newuser() {
   return (
 
     <Styles>
+       <div
+          class="bg_image"
+          style={{
+            backgroundImage: `url(${bg})`,
+            backgroundSize: "cover",
+            height: "130vh",
+            color: "#000000",
+          }}
+        >
       <Container className="container">
         <div style={{ paddingLeft: '70px' }}>
           <Row>
@@ -451,6 +460,7 @@ export default function Newuser() {
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
+      </div>
       </div>
     </Styles>
 

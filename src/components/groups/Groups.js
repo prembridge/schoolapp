@@ -6,16 +6,17 @@ import Carousel from 'react-bootstrap/Carousel'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from "styled-components";
 import { breakpoints as bp } from "../../GlobalStyle";
-
+import bg from "../assets/boy2.jpg";
 const Styles = styled.div`
 .App{
-  padding-top: 40px; 
-  padding-left: 58rem;
-  font-Family: Raleway,sans-serif;
-  font-Size: 25px;
-  text-Align:justify;
-  padding-Bottom:90px;
-  padding-Right: 100px
+  padding-top: 20px; 
+  padding-left: 3rem;
+  font-size: 1.3vw;
+    font-family: 'Raleway';
+ width:100%
+ font-Style: italic,
+  text-Align:center
+  
 }
 
 
@@ -23,11 +24,11 @@ const Styles = styled.div`
 
   @media all and (max-width: 768px) {
     .App{
-      margin-top: 50px;
-      font-Family: Raleway,sans-serif;
-      font-Size: 25px;
-      text-Align:justify
-      
+     margin-left: -56px;
+    padding-top: 20px;
+    padding-left: -5rem;
+    font-size: 5vw;
+    font-family: 'Raleway';
       
     }
    
@@ -42,9 +43,19 @@ const WhiteTextTypography = withStyles({
 
 export default function Groups() {
   return (
+    <Styles>
+        <div
+          class="bg_image"
+          style={{
+            backgroundImage: `url(${bg})`,
+            backgroundSize: "cover",
+            height: "130vh",
+            color: "#000000",
+          }}
+        >
       <div className="App">
     <div >
-      <h1 style={{paddingTop:'10px'}}>
+      <h1 style={{paddingTop:'10px',fontFamily:'Raleway,sans-serif',fontSize: '65px',}}>
       Our Story
       </h1>
     </div>
@@ -194,8 +205,8 @@ Tell customers more about you. Add a few words and a stunning pic to grab their 
         </div>
       
      </div>
-    
- 
+     </div>
+     </Styles>
     
   );
 }

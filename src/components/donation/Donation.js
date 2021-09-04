@@ -19,7 +19,7 @@ const Styles = styled.div`
 .donation {
   
     width: 350px;
-    margin-left: 538px;
+    margin-left: 400px;
 }
 .donation h1{
   
@@ -40,7 +40,7 @@ const Styles = styled.div`
 .cview{
     margin-top: -820px;
    
-    margin-left: 968px;
+    margin-left: 800px;
 }
 .cviewsecond{
     margin-top: -800px;

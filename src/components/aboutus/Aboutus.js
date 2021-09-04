@@ -29,7 +29,7 @@ body{
 main{
   width: 100%;
   overflow: hidden;
-  font-family: 'Expletus Sans', cursive;
+  font-family: 'Raleway';
 }
 .hero2{
   width: 100%;
@@ -49,7 +49,7 @@ main{
 .hero2 h1{
   font-size: 4.2rem;
   color: #fff !important;
-  font-family: "Raleway,sans-serif" 
+  font-family: 'Raleway';
   font-weight: bold;
   margin-top: 15.5rem !important;
   letter-spacing: 0rem;
@@ -77,7 +77,7 @@ main{
 .hero2 p{
   font-size: 1.5em;
 //   font-family: "Raleway,sans-serif" 
-  font-family: "Lucida Console", "Courier New", monospace;
+font-family: 'Raleway';
   margin: auto;
   position: absolute; 
   top: 300px;
@@ -94,8 +94,8 @@ main{
 
 .heading1 h3 {
   font-size: 1.5;
-  color: '#FFEDD9' !important;
-  font-family: "Raleway,sans-serif" ;
+  color: #FFEDD9 !important;
+  font-family: 'Raleway';
   font-weight: bold;
   margin: auto;
   letter-spacing: 0rem;
@@ -110,7 +110,7 @@ main{
   z-index: 1;
 }
 .heading1 p {
-  font-family: "Raleway,sans-serif" ;
+  font-family: 'Raleway';
   font-size: 1.5px;
   padding: 5px 25px 15px 35px !important;
   top: 13.5rem !important;
@@ -123,8 +123,8 @@ main{
 }
 .heading2 h3 {
   font-size: 2.1rem;
-  color: #fff !important;
-  font-family: "Raleway,sans-serif" 
+  color: #FFEDD9 !important;
+  font-family: 'Raleway';
   font-weight: bold;
   margin: auto;
   letter-spacing: 0rem;
@@ -152,14 +152,14 @@ main{
 }
 .second img {
   margin-top: 3.5rem !important;
-  margin-left: -120.5rem; !important;
+  margin-left: -100.5rem; !important;
   width: 30% !important;
   height: 30% !important;
 }
 .heading3 h3 {
   font-size: 2.1rem;
-  color: #fff !important;
-  font-family: "Raleway,sans-serif" 
+  color: #FFEDD9 !important;
+  font-family: 'Raleway';
   font-weight: bold;
   margin: auto;
   letter-spacing: 0rem;
@@ -202,7 +202,7 @@ main{
 
   .hero2 h1{
     font-size: 8vw;
-    font-family: "Fira Sans sans-serif", 'monospace';
+    font-family: 'Raleway';
     margin-top: -5.5rem !important;
     float: center;
     top: 80vw !important;
@@ -210,28 +210,28 @@ main{
   }
   .hero2 h2{
     font-size: 6vw;
-    font-family: "Times New Roman", Times, serif;
+    font-family: 'Raleway';
     top: 18vw;
   }
   .hero2 p{
     font-size: 4vw;
-    font-family: 'Expletus Sans', cursive;
+    font-family: 'Raleway';
     // font-family: "Lucida Console", "Courier New", monospace;
     top: 32vw;
   }
   .heading1 h3 {
     font-size: 5vw;
-    font-family: "Montserrat,sans-serif";
-    margin-top: 0.5rem;
+    font-family: 'Raleway';
+    margin-top: -2.5rem;
     margin-left: -5rem;
     top: 50vw;
     left: 2vw;
-    color:'#FFEDD9'
+    color: #FFEDD9 !important;
      
   }
   .heading1 p {
-    font-family: "Raleway,sans-serif" ;
-  
+    font-family: 'Raleway';
+    text-aline:'Justfiy'
     margin-top: 492.5rem;
     margin-left: 0rem;
     margin-right: -5rem;
@@ -248,23 +248,24 @@ main{
   }
   .heading2 h3 {
     font-size: 5vw;
-    font-family: "Fira Sans sans-serif", 'monospace';
-    margin-top: -6.5rem !important;
+    font-family: 'Raleway';
+    margin-top: -7.5rem !important;
     margin-left: -93rem !important;
     top: 50vw !important;
     left: 2vw;
   }
   .heading2 p {
-    font-family: "Fira Sans sans-serif";
+    font-family: 'Raleway';
     margin-top: 500.5rem;
     margin-left: -47rem !important;
     margin-right: -5rem;
     padding-left: 10px;
     padding-right: 718px !important;
-    top: 65vw !important;
+    top: 70vw !important;
     position: relative !important;
+    font-size: 5vw;
     left: 5vw;
-
+    text-aline:'Justfiy'
     // font-family: "Fira Sans sans-serif" ;
     // margin-top: 492.5rem;
     // margin-left: 0rem;
@@ -277,12 +278,12 @@ main{
   .second img {
     width: 100%;
     height: 120%;
-    margin-top: 14.5rem !important;
+    margin-top: 15.5rem !important;
     margin-left: -4.5rem !important;
   }
   .heading3 h3 {
     font-size: 5vw;
-    font-family: "Fira Sans sans-serif", 'monospace';
+    font-family: 'Raleway';
     margin-top: -2.5rem !important;
     margin-left: -2.5rem !important;
     top: 68vw;
@@ -290,13 +291,14 @@ main{
      
   }
   .heading3 p {
-    font-family: "Fira Sans sans-serif" ;
+    font-family: 'Raleway';
     margin-top: -2.5rem !important;
-    margin-left: -5.5rem !important;
-    padding-left: 90px !important;
+    margin-left: -6.5rem !important;
+    padding-left: 70px !important;
     padding-right: 20px;
+    text-aline:'Justfiy'
     top: 62vw;
-             : -5vw !important;
+             
   }
   .third img {
     width: 100%;
@@ -306,7 +308,7 @@ main{
   }
   .btnpartner{
     margin-left: 112px;
-    margin-top: 8px !important;
+    margin-top: 20px !important;
   }
 }
 `

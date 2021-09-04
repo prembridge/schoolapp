@@ -6,6 +6,22 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBInput } 
 import Grid from '@material-ui/core/Grid';
 import { useHistory } from "react-router-dom";
 import Swal from 'sweetalert2'
+import { breakpoints as bp } from "../../GlobalStyle";
+import bg from "../assets/boy2.jpg";
+import styled from "styled-components";
+const Styles = styled.div`
+
+
+  @media (max-width: ${bp.mobile}) {
+    
+    .textmain {
+      width: 908px;
+      margin-left: -180px
+     
+    }
+    
+    
+  }`
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 );
@@ -232,32 +248,28 @@ fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/guest", requestO
     
 
     return (
+      <Styles>
+        <div
+          class="bg_image"
+          style={{
+            backgroundImage: `url(${bg})`,
+            backgroundSize: "cover",
+            height: "95vh",
+            color: "#000000",
+          }}
+        >
       <MDBContainer >
-       
-        
-         <MDBRow>
+        <MDBRow>
          <Grid container
       spacing={0}
       alignItems="center"
       justify="center"
       style={{ minHeight: '80vh' }}>
+        <div className='textmain'>
           <h3 style={{paddingLeft:'200px',paddingTop:'50px'}}>Guest Information Page</h3>
+          </div>
          <MDBCard style={{maxWidth :'1100px',borderColor:"#1c1a14",paddingLeft:'25px'} } > 
-        
-         {/* <div className="header pt-3 grey lighten-2" style={{  paddingRight :400} } >
-            
-            <MDBCol  className="d-flex justify-content-start">
-                <h3 className="deep-grey-text mt-3 mb-4 pb-1 mx-5">
-                  Guest Login
-               </h3>
-             </MDBCol>
-            </div> */}
-           
-        
-        {/* <img style={{position:"center", top:100 , width:150,height:150}}  src={process.env.PUBLIC_URL + '/images/login.svg'} /> */}
-        
-      
-        <MDBCardBody className="mx-4 mt-4" style={{ maxWidth :'400',paddingTop:"80px"} }>
+         <MDBCardBody className="mx-4 mt-4" style={{ maxWidth :'400',paddingTop:"80px"} }>
         <form onSubmit={this.handleSubmit} noValidate>
         <div class="form-row">
         <div class=" col-md-6">
@@ -385,6 +397,8 @@ fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/guest", requestO
          </Grid>
       </MDBRow>
     </MDBContainer>
+    </div>
+    </Styles>
     );
   }
 }

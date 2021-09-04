@@ -15,15 +15,17 @@ const Styles = styled.div`
 .textcar{
   margin-left: 285px;
     position: absolute;
-    font-size: 18px !important;
+    font-size: 21px !important;
     right: 7%;
-    bottom: 172px;
+    bottom: 130px;
     left: 58%;
     z-index: 4;
-    padding-top: -63px;
-    padding-bottom: 20px;
+    padding-top: -50px;
+    padding-bottom: -10px;
     color: #fff;
-    text-align: center;
+    text-align: 'justify';
+    
+    font-Family: 'Montserrat, sans-serif'
 }
   .carousel  h3{
     top: 25vw !important;
@@ -52,15 +54,29 @@ const Styles = styled.div`
       margin-left: 32vw !important;
       padding-Left:'790px',
       padding-Top:"90px",
-      font-Family: 'Raleway,sans-serif',
+      font-Family: 'Montserrat, sans-serif',
       font-Size:'20px',
       color:"white",
       font-Style: 'italic',
-      text-Align:'center',
+      text-Align:'justify',
       width:'1250px',
       padding-Left:'575px'
     }
-
+    // .textcar{
+    //   margin-left: 28px;
+    //     position: absolute;
+    //     font-size: 25px !important;
+    //     right: 7%;
+    //     bottom: 130px;
+    //     left: 40%;
+    //     z-index: 4;
+    //     padding-top: -50px;
+    //     padding-bottom: -10px;
+    //     color: #fff;
+    //     text-align: 'justify';
+        
+    //     font-Family: 'Montserrat, sans-serif'
+    // }
   }
   
 
@@ -84,7 +100,7 @@ export default function CarouselUser() {
             />
             <Carousel.Caption className="textcar">
               {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
-              <h6 >My Story</h6>
+              <h4>My Story</h4>
               <h8 >
                 This is a great place to add a tagline.
 
@@ -102,7 +118,7 @@ export default function CarouselUser() {
             />
             <Carousel.Caption className="textcar">
               {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
-              <h6 >My Story</h6>
+              <h4>My Story</h4>
               <h8 >
                 This is a great place to add a tagline.
 
@@ -120,7 +136,7 @@ export default function CarouselUser() {
             />
             <Carousel.Caption className="textcar">
               {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
-              <h6 >My Story</h6>
+              <h4>My Story</h4>
               <h8 >
                 This is a great place to add a tagline.
 

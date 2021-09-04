@@ -15,6 +15,7 @@ import {
   Link,
 
 } from "react-router-dom";
+import bg from "../assets/boy2.jpg";
 const Styles = styled.div`
 
 .rcorners1 {
@@ -38,13 +39,13 @@ const Styles = styled.div`
       .rcorners1{
        
         border: 2px solid #000000;
-        padding-right: 10rem;
-        padding-left: 50px;
+        padding-right: 1.0rem;
+        padding-left: 0.5rem ! important;
         padding-top: 0px;
-        width: 450px;
+        width: 360px !important;
         height: 400px;
-        margin-left: -4rem;
-        margin-right:20px
+        margin-left: 0.5rem;
+        margin-right:2.5rem;
         
       }
       .forgot{
@@ -201,8 +202,23 @@ export default function Newuserlogin() {
   return (
 
     <Styles>
+      
       <div className="rcorners1">
-        <h2 style={{ paddingLeft: '70px', fontFamily: 'Fuggles, cursive', marginLeft: '-28px' }}> Sign In</h2>
+      <div
+          class="bg_image"
+          style={{
+            backgroundImage: `url(${bg})`,
+            backgroundSize: "cover",
+           
+            color: "#000000",
+            margintop: '-48px',
+    marginleft: '-56px',
+    paddingTop:'46px',
+    height: '49vh',
+    width: '467px'
+          }}
+        >
+        <h2 style={{ paddingLeft: '70px', fontFamily: 'Fuggles, cursive', marginLeft: '-28px',marginTop:'30px' }}> Sign In</h2>
         <MDBContainer style={{ marginTop: '-30px' }}>
 
 
@@ -268,6 +284,7 @@ export default function Newuserlogin() {
             {/* </Grid> */}
           </MDBRow>
         </MDBContainer>
+      </div>
       </div>
     </Styles>
 
