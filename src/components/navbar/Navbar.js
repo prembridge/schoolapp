@@ -137,6 +137,7 @@ function Header() {
             height="70"
             href="/Home"
             className="d-inline-block align-top"
+            onClick={() => history.push('/Home')}
           />
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

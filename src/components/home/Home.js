@@ -258,7 +258,7 @@ body{
 main{
   width: 100%;
   overflow: hidden;
-  font-family: 'Expletus Sans', cursive;
+  font-family: Raleway;
 }
 .hero{
   width: 100%;
@@ -274,7 +274,7 @@ main{
 .hero h1{
   font-size: 4.5rem;
   color: #FFEDD9;
-  font-family: "Fira Sans sans-serif", 'monospace';
+  font-family: Raleway;
   font-weight: bold;
   margin: auto;
   letter-spacing: 0rem;
@@ -290,7 +290,7 @@ main{
 }
 .hero h2{
   font-size: 3.5em;
-  font-family: "Montserrat,sans-serif";
+  font-family: Raleway;
   margin: auto;
   position: absolute; 
   top: 60px;
@@ -300,9 +300,9 @@ main{
   z-index: 1; 
 }
 .hero p{
-  font-size: 1.5em;
+  font-size: 1.9em;
 //   font-family: 'Expletus Sans', cursive;
-  font-family: "Lucida Console", "Courier New", monospace;
+font-family: Raleway;
   margin: auto;
   position: relative !important; 
   top: 300px;
@@ -310,6 +310,7 @@ main{
   right: 0;
   bottom: 0;
    z-index: 1;
+   text-align: justify;
 }
 .hero img{
   width: 100%;
@@ -337,19 +338,19 @@ main{
   }
   .hero h1{
     font-size: 8vw;
-    font-family: "Fira Sans sans-serif", 'monospace';
+    font-family: Raleway;
     margin-top: 6.5rem;
     top: 0vw;
     left: 5vw;
   }
   .hero h2{
     font-size: 6vw;
-    font-family: "Times New Roman", Times, serif;
+    font-family: Raleway;
     top: 15vw;
   }
   .hero p{
     font-size: 2.5vw
-    font-family: 'Expletus Sans', cursive;
+    font-family: Raleway;
     text-align: center;
     position: relative;
     margin-left: -70px;

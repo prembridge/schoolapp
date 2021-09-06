@@ -204,20 +204,8 @@ export default function Newuserlogin() {
     <Styles>
       
       <div className="rcorners1">
-      <div
-          class="bg_image"
-          style={{
-            backgroundImage: `url(${bg})`,
-            backgroundSize: "cover",
-           
-            color: "#000000",
-            margintop: '-48px',
-    marginleft: '-56px',
-    paddingTop:'46px',
-    height: '49vh',
-    width: '467px'
-          }}
-        >
+    
+        
         <h2 style={{ paddingLeft: '70px', fontFamily: 'Fuggles, cursive', marginLeft: '-28px',marginTop:'30px' }}> Sign In</h2>
         <MDBContainer style={{ marginTop: '-30px' }}>
 
@@ -285,7 +273,7 @@ export default function Newuserlogin() {
           </MDBRow>
         </MDBContainer>
       </div>
-      </div>
+    
     </Styles>
 
 

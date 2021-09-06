@@ -115,15 +115,15 @@ Here we are today inviting you to Join the team Project Panaah - An Initiative F
     <div>
              <Carousel>
   <Carousel.Item interval={1000}>
-    <img style={{ height: '550px',width:'1530px'}}
+    <img style={{ height: '550px',width: '2030px'}}
       className="d-block w-0"
       src={require("../assets/Testimony.jpg")}
       alt="First slide"
     />
     <Carousel.Caption>
       {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
-      <h6 style={{paddingLeft:'790px',fontFamily: 'Montserrat, sans-serif',fontWeight:'bold',fontSize:'50px',paddingTop:'50px'}}>My Story</h6>
-      <p style={{paddingLeft:'790px',paddingTop:"90px",fontFamily: 'Raleway,sans-serif',fontSize:'20px',color:"white",fontStyle: 'italic',textAlign:'center',width:'1250px',paddingLeft:'575px'}}>
+      <h6 style={{paddingLeft:'850px',fontFamily: 'Montserrat, sans-serif',fontWeight:'bold',fontSize:'50px',paddingTop:'50px'}}>My Story</h6>
+      <p style={{paddingLeft:'790px',paddingTop:"90px",fontFamily: 'Raleway,sans-serif',fontSize:'20px',color:"white",fontStyle: 'italic', textAlign: 'center', width: '1250px', paddingLeft: '875px'}}>
 This is a great place to add a tagline.
 
 Tell customers more about you. Add a few words and a stunning pic to grab their attention and get them to click.
@@ -132,15 +132,15 @@ Tell customers more about you. Add a few words and a stunning pic to grab their 
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item interval={1000}>
-    <img style={{ height: '550px',width:'1530px'}}
+    <img style={{ height: '550px',width:'2030px'}}
       className="d-block w-0"
       src={require("../assets/Testimony.jpg")}
       alt="First slide"
     />
     <Carousel.Caption>
       {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
-      <h6 style={{paddingLeft:'790px',fontFamily: 'Montserrat, sans-serif',fontWeight:'bold',fontSize:'50px',paddingTop:'50px'}}>My Story</h6>
-      <p style={{paddingLeft:'790px',paddingTop:"90px",fontFamily: 'Raleway,sans-serif',fontSize:'20px',color:"white",fontStyle: 'italic',textAlign:'center',width:'1250px',paddingLeft:'575px'}}>
+      <h6 style={{paddingLeft:'850px',fontFamily: 'Montserrat, sans-serif',fontWeight:'bold',fontSize:'50px',paddingTop:'50px'}}>My Story</h6>
+      <p style={{paddingLeft:'790px',paddingTop:"90px",fontFamily: 'Raleway,sans-serif',fontSize:'20px',color:"white",fontStyle: 'italic', textAlign: 'center', width: '1250px', paddingLeft: '875px'}}>
 This is a great place to add a tagline.
 
 Tell customers more about you. Add a few words and a stunning pic to grab their attention and get them to click.
@@ -149,15 +149,15 @@ Tell customers more about you. Add a few words and a stunning pic to grab their 
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item interval={1000}>
-    <img style={{ height: '550px',width:'1530px'}}
+    <img style={{ height: '550px',width:'2030px'}}
       className="d-block w-0"
       src={require("../assets/Testimony.jpg")}
       alt="First slide"
     />
     <Carousel.Caption>
       {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
-      <h6 style={{paddingLeft:'790px',fontFamily: 'Montserrat, sans-serif',fontWeight:'bold',fontSize:'50px',paddingTop:'50px'}}>My Story</h6>
-      <p style={{paddingLeft:'790px',paddingTop:"90px",fontFamily: 'Raleway,sans-serif',fontSize:'20px',color:"white",fontStyle: 'italic',textAlign:'center',width:'1250px',paddingLeft:'575px'}}>
+      <h6 style={{paddingLeft:'850px',fontFamily: 'Montserrat, sans-serif',fontWeight:'bold',fontSize:'50px',paddingTop:'50px'}}>My Story</h6>
+      <p style={{paddingLeft:'790px',paddingTop:"90px",fontFamily: 'Raleway,sans-serif',fontSize:'20px',color:"white",fontStyle: 'italic', textAlign: 'center', width: '1250px', paddingLeft: '875px'}}>
 This is a great place to add a tagline.
 
 Tell customers more about you. Add a few words and a stunning pic to grab their attention and get them to click.

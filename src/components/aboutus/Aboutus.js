@@ -248,14 +248,14 @@ font-family: 'Raleway';
   }
   .heading2 h3 {
     font-size: 5vw;
-    font-family: 'Raleway';
+    font-family: Raleway;
     margin-top: -7.5rem !important;
     margin-left: -93rem !important;
     top: 50vw !important;
     left: 2vw;
   }
   .heading2 p {
-    font-family: 'Raleway';
+    font-family: Raleway;
     margin-top: 500.5rem;
     margin-left: -47rem !important;
     margin-right: -5rem;
@@ -265,7 +265,7 @@ font-family: 'Raleway';
     position: relative !important;
     font-size: 5vw;
     left: 5vw;
-    text-aline:'Justfiy'
+    text-aline:Justfiy
     // font-family: "Fira Sans sans-serif" ;
     // margin-top: 492.5rem;
     // margin-left: 0rem;
@@ -283,7 +283,7 @@ font-family: 'Raleway';
   }
   .heading3 h3 {
     font-size: 5vw;
-    font-family: 'Raleway';
+    font-family: Raleway;
     margin-top: -2.5rem !important;
     margin-left: -2.5rem !important;
     top: 68vw;
