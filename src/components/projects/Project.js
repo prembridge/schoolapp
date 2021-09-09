@@ -29,7 +29,7 @@ const Styles = styled.div`
      
       border: 2px solid #000000;
       padding-right: 30rem;
-    
+      overflow: hidden;
       padding-top: 0px;
       width: 800px;
       height: 700px;

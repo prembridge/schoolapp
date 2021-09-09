@@ -34,18 +34,19 @@ const Styles = styled.div`
     width: 1217px;
     margin-left: -200px;
     padding-top: 15px
+   
    }
    
 }
 .cview{
     margin-top: -820px;
    
-    margin-left: 800px;
+    margin-left: 814px;
 }
 .cviewsecond{
     margin-top: -800px;
    
-    margin-left: 968px; 
+    margin-left: 868px; 
 }
 @media all and (max-width: 768px) {
       
@@ -64,10 +65,11 @@ const Styles = styled.div`
         margin-left: 10px;
       width: 80%;
       font-size:15px
+      
        
         }
       .cview{
-        margin-left: 10px;
+        margin-left: 18px;
         width: 90%;
         margin-top: 30px
       }
@@ -180,7 +182,7 @@ export default function Donation() {
     console.log(second, "poof");
 
     if (name === "child") {
-      children = refs.sum.current.value = child * (second * 7500);
+      children = refs.sum.current.value = child * (second * 9000);
       tot = children;
       if (cho == "fullAmount") {
         dis = tot;
@@ -200,7 +202,7 @@ export default function Donation() {
     }
     console.log(children, "children..")
     if (name === "second") {
-      years = refs.sum.current.value = child * (second * 7500);
+      years = refs.sum.current.value = child * (second * 9000);
       tot = years;
       if (cho == "fullAmount") {
         dis = tot;
@@ -220,7 +222,7 @@ export default function Donation() {
     }
     console.log("years", years)
     if (name === "sum") {
-      total = refs.second.current.value = child * (second * 7500);
+      total = refs.second.current.value = child * (second * 9000);
       tot = total;
       if (cho == "fullAmount") {
         dis = tot;
@@ -240,7 +242,7 @@ export default function Donation() {
       // tot.toString();
     }
     if (name === "choice") {
-      var tp = refs.sum.current.value = child * (second * 7500)
+      var tp = refs.sum.current.value = child * (second * 9000)
       tot = tp;
       if (cho == "fullAmount") {
         dis = tot;
@@ -287,17 +289,17 @@ export default function Donation() {
     console.log(second, "poof");
 
     if (name === "child") {
-      children = refs.sum.current.value = child * (second * 7500);
+      children = refs.sum.current.value = child * (second * 9000);
       tot = children;
     }
     console.log(children, "children..")
     if (name === "second") {
-      years = refs.sum.current.value = child * (second * 7500);
+      years = refs.sum.current.value = child * (second * 9000);
       tot = years;
     }
     console.log("years", years)
     if (name === "sum") {
-      total = refs.second.current.value = child * (second * 7500);
+      total = refs.second.current.value = child * (second * 9000);
       tot = total;
     }
 
@@ -676,7 +678,7 @@ export default function Donation() {
           }}>
        
           
-          
+          <div>
             {/* style={{ width: '50%',height:'950px',
     float: 'left',
     padding: '20px',
@@ -688,32 +690,18 @@ export default function Donation() {
              
                 <h1>Panaah: Adopt A Child</h1>
                 
-                <h4>
-                    By registering here you commit to partner with us in giving hope for tomorrow to young lives in hopeless homes today.  Panaah provides you a platform to give / contribute an amount of minimum INR 750 monthly or INR 2250 quarterly or 4500 Half Yearly or 9000 Annually towards the educational and developmental needs of children from poor families and rural communities. Select the number of children and the number of years you would like to support. </h4>
+                <h4> By registering here you commit to partner with us in giving hope for tomorrow to young lives in hopeless homes today.  Panaah provides you a platform to give / contribute an amount of minimum INR 750 monthly or INR 2250 quarterly or 4500 Half Yearly or 9000 Annually towards the educational and developmental needs of children from poor families and rural communities. Select the number of children and the number of years you would like to support. </h4>
                  <br></br>
-                <h6>
-             1. Select the number of children and the number of years you would like to support the child/children.</h6>
-                 <h6>
-            2. Choose the sponsor/payment plan that suits you and submit to save your preferences</h6>
-                 
-                <h6>
-
-                  3. Once saved you can click on the pay now button to send you contributions according to your plan</h6>
-                 
-                <h6>
-
-                  4. For your convenience you can use the autopay/auto debit option by enabling the option in your profile page to send your contributions on time</h6>
-                 
-                <h6>
-
-                  5. To change your plan or any other information check your profile page</h6>
-               
-                <h6>
-
-                  6. Email id, Pan Number and Name cannot be edited. For more information on this contact our team.</h6>
-              </div>
+                <h6 > 1. Select the number of children and the number of years you would like to support the child/children.</h6>
+                 <h6> 2. Choose the sponsor/payment plan that suits you and submit to save your preferences</h6>
+                <h6>3. Once saved you can click on the pay now button to send you contributions according to your plan</h6>
+                 <h6> 4. For your convenience you can use the autopay/auto debit option by enabling the option in your profile page to send your contributions on time</h6>
+                 <h6>5. To change your plan or any other information check your profile page</h6>
+                 <h6> 6. Email id, Pan Number and Name cannot be edited. For more information on this contact our team.</h6>
+             
+           </div>
             </div>
-           
+            </div>
             <div>
               <div className="cview" >
 
@@ -723,7 +711,7 @@ export default function Donation() {
 
                     <MDBRow >
 {/* style={{ backgroundColor: '#FFFFFF', borderColor: "#5D6D7E", width: "30rem", borderRadius: '10px', paddingTop: '40px' }} */}
-                      <MDBCard  style={{ backgroundColor: '#FFFFFF', borderColor: "#5D6D7E", width: "30rem",height: '585px',borderRadius: '5px',  }} >
+                      <MDBCard  style={{ backgroundColor: '#FFFFFF', borderColor: "#5D6D7E", marginleft: '13px',width: "30rem",height: '585px',borderRadius: '5px',  }} >
                         <MDBCardBody>
                           <form>
                             <p className="h4 text-center py-4">SPONSOR NOW</p>
@@ -863,28 +851,14 @@ export default function Donation() {
 
               <h1 >Panaah: Adopt A Child</h1>
 
-              <h4 >
-
-                By registering here you commit to partner with us in giving hope for tomorrow to young lives in hopeless homes today.  Panaah provides you a platform to give / contribute an amount of minimum INR 750 monthly or INR 2250 quarterly or 4500 Half Yearly or 9000 Annually towards the educational and developmental needs of children from poor families and rural communities. Select the number of children and the number of years you would like to support. </h4>
-              <h6>
-
-                1. Select the number of children and the number of years you would like to support the child/children.</h6>
-
-              <h6>
-
-                2. Choose the sponsor/payment plan that suits you and submit to save your preferences</h6>
-              <h6>
-
-                3. Once saved you can click on the pay now button to send you contributions according to your plan</h6>
-              <h6>
-
-                4. For your convenience you can use the autopay/auto debit option by enabling the option in your profile page to send your contributions on time</h6>
-              <h6>
-
-                5. To change your plan or any other information check your profile page</h6>
-              <h6>
-
-                6. Email id, Pan Number and Name cannot be edited. For more information on this contact our team.</h6>
+              <h4> By registering here you commit to partner with us in giving hope for tomorrow to young lives in hopeless homes today.  Panaah provides you a platform to give / contribute an amount of minimum INR 750 monthly or INR 2250 quarterly or 4500 Half Yearly or 9000 Annually towards the educational and developmental needs of children from poor families and rural communities. Select the number of children and the number of years you would like to support. </h4>
+              <br></br>
+              <h6>1. Select the number of children and the number of years you would like to support the child/children.</h6>
+             <h6>2. Choose the sponsor/payment plan that suits you and submit to save your preferences</h6>
+              <h6> 3. Once saved you can click on the pay now button to send you contributions according to your plan</h6>
+              <h6>4. For your convenience you can use the autopay/auto debit option by enabling the option in your profile page to send your contributions on time</h6>
+              <h6>5. To change your plan or any other information check your profile page</h6>
+              <h6>6. Email id, Pan Number and Name cannot be edited. For more information on this contact our team.</h6>
             </div>
           </div>
 
@@ -896,7 +870,7 @@ export default function Donation() {
 
                 <MDBRow   >
 
-                  <MDBCard style={{ backgroundColor: '#FFFFFF', borderColor: "#5D6D7E", width: "30rem",height: '555px',borderRadius: '5px',  }}>
+                  <MDBCard style={{ backgroundColor: '#FFFFFF', borderColor: "#5D6D7E", marginleft: '13px' ,width: "30rem",height: '555px',borderRadius: '5px',  }}>
                     <MDBCardBody>
                       <form>
                         <p className="h4 text-center py-4">SPONSOR NOW</p>

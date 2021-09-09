@@ -316,7 +316,7 @@ export default function Newuser() {
 
             <Col>
               <div className="rcorners1">
-                <h3>New Partner Registation</h3>
+                <h3>New Partner Registration</h3>
 
                 <div
 

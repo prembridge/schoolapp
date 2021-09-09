@@ -60,7 +60,7 @@ const Styles = styled.div`
       }
       .chidsp{
         margin-top: -103px;
-    margin-left: 367px
+    margin-left: 324px
       }
       .spcard{
         margin-left: -210px;
@@ -563,7 +563,7 @@ console.log(data ,"data of data")
                </div>
     
                 
- <div style={{paddingTop:'45px',paddingLeft:"190px"}}>
+ <div style={{paddingTop:'12px',paddingLeft:"190px"}}>
    <h1> OR</h1>
  </div>
  <div className="chidsp">

@@ -115,7 +115,7 @@ font-family: 'Raleway';
   padding: 5px 25px 15px 35px !important;
   top: 13.5rem !important;
   // left: 2.5rem !important;
-  text-align: center !important;
+  text-aline:'Justfiy'
 }
 .first img {
   margin-top: 8.5rem !important;
@@ -141,7 +141,7 @@ font-family: 'Raleway';
 .heading2 p {
   top: 9.5rem !important;
   left: 45.5rem !important; 
-  text-align: center !important;
+  text-aline: Justfiy
   position: relative !important;
 
   // top: 9.5rem !important;
@@ -176,7 +176,7 @@ font-family: 'Raleway';
 .heading3 p {
   top: 9.5rem !important;
   left: 2.5rem !important;
-  text-align: center !important
+  text-aline:'Justfiy'
   position: relative !important;
 }
 .third img {
@@ -195,9 +195,10 @@ font-family: 'Raleway';
 @media (max-width: ${bp.mobile}) {
   .hero2{
     width: 100%;
-    height: 290vh;
+    height: 220vh;
     background-color: #000;
-
+    overflow: hidden;
+    
   }
 
   .hero2 h1{
@@ -239,11 +240,12 @@ font-family: 'Raleway';
     padding-right: 20px;
     top: 65vw !important;
     left: 5vw;
+    font-size: 10vw;
   }
   .first img {
     width: 100%;
     height: 120%;
-    margin-top: 13.5rem !important;
+    margin-top: 16.5rem !important;
     margin-left: 0rem;
   }
   .heading2 h3 {
@@ -278,8 +280,9 @@ font-family: 'Raleway';
   .second img {
     width: 100%;
     height: 120%;
-    margin-top: 15.5rem !important;
+    margin-top: 17.5rem !important;
     margin-left: -4.5rem !important;
+    
   }
   .heading3 h3 {
     font-size: 5vw;
@@ -293,7 +296,7 @@ font-family: 'Raleway';
   .heading3 p {
     font-family: 'Raleway';
     margin-top: -2.5rem !important;
-    margin-left: -6.5rem !important;
+    margin-left: -7rem !important;
     padding-left: 70px !important;
     padding-right: 20px;
     text-aline:'Justfiy'
@@ -333,7 +336,7 @@ export default function Aboutus() {
                   </div>
                   <div>
                     <p>
-                      According to NXXXX, over 20% of children below the age of 15 years in India are deprived of access to basic education . This is due to to various factors like poor financial background, lack of school in their region, social barriers towards girl child and physical disability. We are building a channel for such children to access a better tomorrow.
+                      According to National Sample Seurvey, over 20% of children below the age of 15 years in India are deprived of access to basic education This is due to to various factors like poor financial background, lack of school in their region, social barriers towards girl child and physical disability. We are building a channel for such children to access a better tomorrow.
                     </p>
                   </div>
                 </div>
@@ -355,7 +358,7 @@ export default function Aboutus() {
                     <h3>2. CHANGING THEIR MINDSET</h3>
                   </div>
                   <div>
-                    <p class="text-center">
+                    <p>
                       These children grow up in a vulnerable environment surrounded with abuse, addictions, violence and other social evils. The Pannah volunteers reach out to the children of these vulnerable sections through the communities they are placed in to provide access to education for all.
                     </p>
                   </div>

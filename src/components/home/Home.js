@@ -257,7 +257,7 @@ body{
 }
 main{
   width: 100%;
-  overflow: hidden;
+  overflow: 'hidden';
   font-family: Raleway;
 }
 .hero{
@@ -269,6 +269,7 @@ main{
   background: #392f28;
   position: relative; 
   color: #ffffff;
+  
 }
 
 .hero h1{
@@ -324,8 +325,10 @@ font-family: Raleway;
 }
 
 @media (max-width: ${bp.mobile}) {
+ 
   .hero{
     height: 40vw;
+   
     
   }
   .hero img{
@@ -339,9 +342,11 @@ font-family: Raleway;
   .hero h1{
     font-size: 8vw;
     font-family: Raleway;
-    margin-top: 6.5rem;
+    margin-top: 4.5rem;
     top: 0vw;
     left: 5vw;
+   
+    
   }
   .hero h2{
     font-size: 6vw;
@@ -349,9 +354,9 @@ font-family: Raleway;
     top: 15vw;
   }
   .hero p{
-    font-size: 2.5vw
+    font-size: 19px;
     font-family: Raleway;
-    text-align: center;
+    text-align: justify;
     position: relative;
     margin-left: -70px;
     margin-top: -50px;
