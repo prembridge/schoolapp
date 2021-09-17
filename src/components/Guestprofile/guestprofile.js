@@ -138,25 +138,25 @@ export default function Guestprofile() {
     console.log(second,"poof");
     console.log(sum,"summm")
     
-    if (name === "child") {children = refs.sum.current.value = child * (second * 7500);
+    if (name === "child") {children = refs.sum.current.value = child * (second * 9000);
     tot = children;
     dis = tot;
    
     }
     console.log(children,"children..")
-    if (name === "second") {years = refs.sum.current.value = child * (second * 7500);
+    if (name === "second") {years = refs.sum.current.value = child * (second * 9000);
     tot = years;
     dis = tot;
    
     }
     console.log("years",years)
-    if (name === "sum") { total = refs.second.current.value = child * (second * 7500);
+    if (name === "sum") { total = refs.second.current.value = child * (second * 9000);
     tot = total;
     dis = tot;
   
 }
 if (name === "choice") { 
-  var tp = refs.sum.current.value = child * (second * 7500)
+  var tp = refs.sum.current.value = child * (second * 9000)
   tot = tp;
   dis = tot;
  
@@ -186,13 +186,13 @@ setValue(dis)
        // const che = parseInt(refs.div.current.value,10);
        console.log(second,"poof");
        
-       if (name === "child") {children = refs.sum.current.value = child * (second * 7500);
+       if (name === "child") {children = refs.sum.current.value = child * (second * 9000);
        tot = children;} 
        console.log(children,"children..")
-       if (name === "second") {years = refs.sum.current.value = child * (second * 7500);
+       if (name === "second") {years = refs.sum.current.value = child * (second * 9000);
        tot = years;}
        console.log("years",years)
-       if (name === "sum") { total = refs.second.current.value = child * (second * 7500);
+       if (name === "sum") { total = refs.second.current.value = child * (second * 9000);
        tot = total;}
 
         // const cho = refs.cho.current.value;
@@ -255,7 +255,7 @@ async function postamount(){
       
        
       
-    await  fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/plans", requestOptions)
+    await  fetch("https://gzacors.herokuapp.com/https://panaah-api.herokuapp.com/plans", requestOptions)
         .then(response => response.json())
         .then(json => {
           
@@ -314,7 +314,7 @@ async function postamount(){
       
        
       
-    await  fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/plans", requestOptions)
+    await  fetch("https://gzacors.herokuapp.com/https://panaah-api.herokuapp.com/plans", requestOptions)
         .then(response => response.json())
         .then(json => {
           
@@ -365,7 +365,7 @@ var requestOptions = {
   body: raw,
   redirect: 'follow'
 };
-  const data = await fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/razorpay", requestOptions)
+  const data = await fetch("https://gzacors.herokuapp.com/https://panaah-api.herokuapp.com/razorpay", requestOptions)
  .then(response => response.json())
 //  .then(json =>{
 //   console.log("response",data)
@@ -447,7 +447,7 @@ console.log(data ,"data of data")
    body: raw,
    redirect: 'follow'
  };
-   const data = await fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/razorpay", requestOptions)
+   const data = await fetch("https://gzacors.herokuapp.com/https://panaah-api.herokuapp.com/razorpay", requestOptions)
   .then(response => response.json())
  //  .then(json =>{
  //   console.log("response",data)

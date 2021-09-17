@@ -45,7 +45,7 @@ const PanRegex = RegExp(
   RegExp(/^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/)
 );
 const passRegex = RegExp(
-RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,10}$/)
+RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,20}$/)
 );
 const formValid = ({ formErrors, ...rest }) => {
   let valid = true;
@@ -180,7 +180,7 @@ export default class Registation extends Component {
       body: raw,
       redirect: 'follow'
     };
-    fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/register", requestOptions).then(response => response.text())
+    fetch("https://gzacors.herokuapp.com/https://panaah-api.herokuapp.com/register", requestOptions).then(response => response.text())
     .then(result => { var text = JSON.parse(result)
       alert("Thank you!Registration successfully completed!")
       console.log('result', text.message)
@@ -208,7 +208,7 @@ export default class Registation extends Component {
             } else {
              
              resolve()
-             alert("Enter  OTP..");
+             alert("please enter a valid  OTP..");
             }
           }, 2000)
         })
@@ -261,7 +261,7 @@ export default class Registation extends Component {
           : "invalid email address";
         break;
       case "password":
-        formErrors.password = passRegex.test(value) ? "" :"Minimum eight and maximum 10 characters, at least one uppercase letter, one lowercase letter, one number and one special character:"
+        formErrors.password = passRegex.test(value) ? "" :"Minimum eight and maximum 20 characters, at least one uppercase letter, one lowercase letter, one number and one special character:"
           // value.length < 6 ? "minimum 6 characaters required" : "";
         break;
         case "confirmpassword":

@@ -93,7 +93,7 @@ const Resetpassword = () => {
       body: raw,
       redirect: 'follow'
     };
-    fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/resetpassword", requestOptions)
+    fetch("https://gzacors.herokuapp.com/https://panaah-api.herokuapp.com/resetpassword", requestOptions)
       .then(response => response.json())
       .then(result =>  {
         var data = result.data

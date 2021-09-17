@@ -42,7 +42,7 @@ const Forgotpassword = () => {
     const email = emaill;
     if (emailRegex.test(email)) {
       setIsValid(true);
-      setMessage('Your email looks good!');
+     
    
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -57,7 +57,7 @@ const Forgotpassword = () => {
       body: raw,
       redirect: 'follow'
     };
-    await fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/forgotpass", requestOptions)
+    await fetch("https://gzacors.herokuapp.com/https://panaah-api.herokuapp.com/forgotpass", requestOptions)
       .then(response => response.text())
       .then(result => alert("We have sent a password reset link to your registered email id. Please reset password using the link"))
       .catch(error => console.log('error', error));

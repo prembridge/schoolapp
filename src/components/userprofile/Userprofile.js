@@ -1131,7 +1131,7 @@ setValuee(dis)
       method: 'GET',
       redirect: 'follow'
     };
-    fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/getplan/"+localStorage.getItem("id"), requestOptions)
+    fetch("https://gzacors.herokuapp.com/https://panaah-api.herokuapp.com/getplan/"+localStorage.getItem("id"), requestOptions)
       .then(response => response.json())
       .then(json => {
        var Payment_type = json.data.Payment_type
@@ -1184,7 +1184,7 @@ var requestOptions = {
 };
 
   
-  fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/putplan/"+localStorage.getItem("pkid"), requestOptions)
+  fetch("https://gzacors.herokuapp.com/https://panaah-api.herokuapp.com/putplan/"+localStorage.getItem("pkid"), requestOptions)
     .then(response => response.json())
     .then(result => alert( JSON.stringify(result),"reault"))
     .catch(error => alert('error',  JSON.stringify(error)));
@@ -1245,7 +1245,7 @@ fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/putuser/ "+local
   // body: raw,
   redirect: 'follow'
   };
-  fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/trgetlast/"+(localStorage.getItem("fkid"))+'/'+ localStorage.getItem("pkid"), requestOptions)
+  fetch("https://gzacors.herokuapp.com/https://panaah-api.herokuapp.com/trgetlast/"+(localStorage.getItem("fkid"))+'/'+ localStorage.getItem("pkid"), requestOptions)
     .then(response => response.json())
     .then(result => setLpay(result.data[0].Display_Date))
     // .then(result => setResult(result.data[0]))

@@ -15,7 +15,7 @@ const Styles = styled.div`
     font-family: 'Raleway';
  width:100%
  font-Style: italic,
-  text-Align:center
+  text-aline:'Justfiy'
   
 }
 
@@ -50,6 +50,7 @@ export default function Groups() {
             backgroundImage: `url(${bg})`,
             backgroundSize: "cover",
             height: "130vh",
+            width:"100%",
             color: "#000000",
           }}
         >
@@ -59,7 +60,7 @@ export default function Groups() {
       Our Story
       </h1>
     </div>
-    <div>
+    <div  style={{ textAlign:"justify"}}>
     {/* style={{fontFamily:'Raleway,sans-serif',fontSize: '25px', textAlign:"justify",paddingBottom:'90px', paddingLeft: '100px', paddingRight: '100px'}} */}
       <p>
       Our history dates back to the winter of 1988 in the slums of Ambedkar Nagar in Ludhiana, Punjab. A young zealous couple demonstrated responsibility toward the education of children in the slum in their neighbourhood. Surender was a carpenter and lived in a one room house with his wife and three children. While Surender went to work every day, his wife used her time to teach basic education to a few children in the slum, she would also provide some snack to those she taught tuition. These children otherwise would play on the road, beg, or pick rags from the garbage as their parents were migrant workers and couldn’t even afford a proper meal for them.  Soon she had 11 children from the slum visiting her home and she encouraged them by being consistent in serving them. However, as the numbers went up, Surender and his wife found it difficult to sustain this support (Surender was the only earning member for the family and this initiative).  
@@ -112,9 +113,10 @@ Here we are today inviting you to Join the team Project Panaah - An Initiative F
       Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio 
       </h6> */}
     </div>
+    </div>
     <div>
              <Carousel>
-  <Carousel.Item interval={1000}>
+  <Carousel.Item interval={2500}>
     <img style={{ height: '550px',width: '2030px'}}
       className="d-block w-0"
       src={require("../assets/Testimony.jpg")}
@@ -131,7 +133,7 @@ Tell customers more about you. Add a few words and a stunning pic to grab their 
 ​This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</p>
     </Carousel.Caption>
   </Carousel.Item>
-  <Carousel.Item interval={1000}>
+  <Carousel.Item interval={2500}>
     <img style={{ height: '550px',width:'2030px'}}
       className="d-block w-0"
       src={require("../assets/Testimony.jpg")}
@@ -148,7 +150,7 @@ Tell customers more about you. Add a few words and a stunning pic to grab their 
 ​This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</p>
     </Carousel.Caption>
   </Carousel.Item>
-  <Carousel.Item interval={1000}>
+  <Carousel.Item interval={2500}>
     <img style={{ height: '550px',width:'2030px'}}
       className="d-block w-0"
       src={require("../assets/Testimony.jpg")}
@@ -205,7 +207,7 @@ Tell customers more about you. Add a few words and a stunning pic to grab their 
         </div>
       
      </div>
-     </div>
+    
      </Styles>
     
   );

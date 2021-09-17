@@ -108,7 +108,7 @@ export default function Newuserlogin() {
 
 
 
-    await fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/login", requestOptions)
+    await fetch("https://gzacors.herokuapp.com/https://panaah-api.herokuapp.com/login", requestOptions)
       .then(response => response.json())
       //console.log(response)
       .then(json => {
@@ -145,7 +145,7 @@ export default function Newuserlogin() {
       redirect: 'follow'
     };
 
-    await fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/getuser", requestOptions)
+    await fetch("https://gzacors.herokuapp.com/https://panaah-api.herokuapp.com/getuser", requestOptions)
       .then(response => response.json())
       .then(json => {
         var id = json.user.id
@@ -266,7 +266,7 @@ export default function Newuserlogin() {
             <Link style={{paddingLeft:'220px',marginTop:'-990px'}} onClick={forgot}> Forgot password</Link>
           </div> */}
 
-              <h1>{err}</h1>
+              <h2 style={{color:'red'}}>{err}</h2>
             </MDBCardBody>
 
             {/* </Grid> */}

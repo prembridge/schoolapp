@@ -81,7 +81,7 @@ function Header() {
       redirect: 'follow'
     };
 
-    await fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/getuser", requestOptions)
+    await fetch("https://gzacors.herokuapp.com/https://panaah-api.herokuapp.com/getuser", requestOptions)
       .then(response => response.json())
       .then(json => {
         var firstname = json.user.FirstName;
@@ -152,7 +152,7 @@ function Header() {
                         <Nav.Link href="/Home">Home</Nav.Link>
                       </Nav.Item>
                       <Nav.Item>
-                        <Nav.Link href="./about">Our Stories</Nav.Link>
+                        <Nav.Link href="./about">Our Story</Nav.Link>
                       </Nav.Item>
                       <Nav.Item>
                         <Nav.Link href="/home">Donate</Nav.Link>
@@ -196,7 +196,7 @@ function Header() {
                       <Nav.Link href="/Newuser">Get Involved</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                      <Nav.Link href="/Groups">Our Stories</Nav.Link>
+                      <Nav.Link href="/Groups">Our Story</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
                       <Nav.Link href="/Project">Contact Us</Nav.Link>

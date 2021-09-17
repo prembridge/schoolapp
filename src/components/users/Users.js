@@ -17,7 +17,7 @@ const Styles = styled.div`
   
 }
 .ourvision h3{
-  font-size: 8vw;
+  font-size: 5vw;
 font-family: 'Montserrat, sans-serif';
 margin-top: 4.5rem;
 left: 35vw !important;
@@ -41,18 +41,11 @@ left: 5vw;
   font-Style: italic,
   text-Align:center
   @media (max-width: ${bp.mobile}) {
-    
-    // .ourvision {
-    //   background-color: rgb(255, 200, 217);
-    //   height: 200px;
-    //   width: 908px;
-    //   padding-top: -20rem !important;
-    // }
     .ourvision h3{
       margin-top: -20vw !important;
       background-color: rgb(255, 200, 217);
       margin-left: -46px;
-      font-size: 30vw !important;
+      font-size: 90vw !important;
       font-family: 'Montserrat, sans-serif';
       top: 250vw !important;
       color: #000 !important;
@@ -73,10 +66,10 @@ export default function Users() {
 
   return (
     <Styles>
-      <div>
+      <div className="ourvision">
         <Grid >
-          <div className='ourvision'>     
-              <h3 style={{fontFamily: 'Raleway,sans-serif',fontWeight:'bold' }}>OUR VISION</h3>
+          <div>     
+              <h3>OUR VISION</h3>
               <h6 >Reaching the last, the least and the lost
                 for a better tomorrow </h6>
 
@@ -90,101 +83,3 @@ export default function Users() {
     </Styles>
   );
 }
-// import React from 'react';
-// import { makeStyles } from '@material-ui/core/styles';
-// import Paper from '@material-ui/core/Paper';
-// import Grid from '@material-ui/core/Grid';
-// import styled from "styled-components";
-// import { Carousel } from "react-bootstrap";
-// import img1 from '../assets/Testimony.jpg'
-
-// const Styles = styled.div`
-//    .carousel {
-//     top: 100px !important;
-//    }
-// `
-
-// export default function Home() {
-//   return (
-//     <div>
-//       <Styles>
-//         <div className="carousel" >
-//           <Carousel fade>
-//             <Carousel.Item>
-//               <img
-//                 className="d-block w-100"
-//                 src={img1}
-//                 alt="First slide"
-//               />
-//               <Carousel.Caption>
-//                 <h3></h3>
-//                 <p></p>
-
-//               </Carousel.Caption>
-//             </Carousel.Item>
-//             <Carousel.Item>
-//               <img
-//                 className="d-block w-100"
-//                 src={img1}
-//                 alt="Second slide"
-//               />
-
-//               <Carousel.Caption>
-//                 <h3></h3>
-
-//               </Carousel.Caption>
-//             </Carousel.Item>
-//             <Carousel.Item>
-//               <img
-//                 className="d-block w-100"
-//                 src={img1}
-//                 alt="Third slide"
-//               />
-
-//               <Carousel.Caption>
-//                 <h3></h3>
-
-//               </Carousel.Caption>
-//             </Carousel.Item>
-//             <Carousel.Item>
-//               <img
-//                 className="d-block w-100"
-//                 src={img1}
-//                 alt="Fourth slide"
-//               />
-
-//               <Carousel.Caption>
-//                 <h3></h3>
-
-//               </Carousel.Caption>
-//             </Carousel.Item>
-//             <Carousel.Item>
-//               <img
-//                 className="d-block w-100"
-//                 src=""
-//                 alt="Fifth slide"
-//               />
-
-//               <Carousel.Caption>
-//                 <h3></h3>
-
-//               </Carousel.Caption>
-//             </Carousel.Item>
-//             <Carousel.Item>
-//               <img
-//                 className="d-block w-100"
-//                 src={img1}
-//                 alt="Sixth slide"
-//               />
-
-//               <Carousel.Caption>
-//                 <h3></h3>
-
-//               </Carousel.Caption>
-//             </Carousel.Item>
-//           </Carousel>
-//         </div>
-//       </Styles>
-//     </div>
-//   );
-// }

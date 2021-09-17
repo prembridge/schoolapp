@@ -91,7 +91,7 @@ export default function CarouselUser() {
       <div className="carousel" >
       <div style={{ paddingTop: '7px' }}>
         <Carousel >
-          <Carousel.Item interval={1000}>
+          <Carousel.Item interval={2500}>
             <img style={{ height: '550px', width: '2030px' }}
               className="d-block w-0"
               src={require("../assets/Testimony.jpg")}
@@ -109,7 +109,7 @@ export default function CarouselUser() {
                 This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</h8>
             </Carousel.Caption>
           </Carousel.Item>
-          <Carousel.Item interval={1000}>
+          <Carousel.Item interval={2500}>
             <img style={{ height: '550px', width: '2030px' }}
               className="d-block w-0"
               src={require("../assets/Testimony.jpg")}
@@ -127,7 +127,7 @@ export default function CarouselUser() {
                 This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</h8>
             </Carousel.Caption>
           </Carousel.Item>
-          <Carousel.Item interval={1000}>
+          <Carousel.Item interval={2500}>
             <img style={{ height: '550px', width: '2030px' }}
               className="d-block w-0"
               src={require("../assets/Testimony.jpg")}

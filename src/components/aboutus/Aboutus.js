@@ -336,7 +336,7 @@ export default function Aboutus() {
                   </div>
                   <div>
                     <p>
-                      According to National Sample Seurvey, over 20% of children below the age of 15 years in India are deprived of access to basic education This is due to to various factors like poor financial background, lack of school in their region, social barriers towards girl child and physical disability. We are building a channel for such children to access a better tomorrow.
+                      According to National Sample Survey, over 20% of children below the age of 15 years in India are deprived of access to basic education This is due to to various factors like poor financial background, lack of school in their region, social barriers towards girl child and physical disability. We are building a channel for such children to access a better tomorrow.
                     </p>
                   </div>
                 </div>
@@ -393,7 +393,7 @@ export default function Aboutus() {
                 </div>
               </div>
               <div className='btnpartner'>
-    <button  onClick={() => history.push('/Newuser')}style={{backgroundColor:"#FFEDD9",width:150,height:50,borderRadius:50}}>Partner Now</button>
+    <button  onClick={() => history.push('/Newuser')}style={{backgroundColor:"#FFEDD9",width:180,height:50,borderRadius:50}}>Partner Now</button>
     </div>
             </div>
           </div>

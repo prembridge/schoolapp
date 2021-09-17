@@ -171,7 +171,7 @@ var requestOptions = {
   body: raw,
   redirect: 'follow'
 };
-fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/guest", requestOptions)
+fetch("https://gzacors.herokuapp.com/https://panaah-api.herokuapp.com/guest", requestOptions)
 .then(response => response.json())
 .then(json =>{ 
   var resdata =  json.otp;
@@ -266,10 +266,10 @@ fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/guest", requestO
       justify="center"
       style={{ minHeight: '80vh' }}>
         <div className='textmain'>
-          <h3 style={{paddingLeft:'58px',paddingTop:'50px'}}>Guest Information Page</h3>
+          <h3 style={{paddingLeft:'58px',paddingTop:'40px',    margintop: '-21px'}}>Guest Information Page</h3>
           </div>
          <MDBCard style={{maxWidth :'1100px',borderColor:"#1c1a14",paddingLeft:'25px'} } > 
-         <MDBCardBody className="mx-4 mt-4" style={{ maxWidth :'400',paddingTop:"80px"} }>
+         <MDBCardBody className="mx-4 mt-4" style={{ maxWidth :'400',paddingTop:"50px"} }>
         <form onSubmit={this.handleSubmit} noValidate>
         <div class="form-row">
         <div class=" col-md-6">
@@ -330,7 +330,7 @@ fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/guest", requestO
             <div>
             <MDBInput style={{borderColor: 'gray', borderWidth: 1,maxWidth:'450px' }}
               className={formErrors.mobileNo.length > 0 ? "error" : null}
-              hint="MobileNo"
+              hint="Mobile No"
               type="mobileNo"
               name="mobileNo"
               noValidate

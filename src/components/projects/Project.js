@@ -22,7 +22,7 @@ const Styles = styled.div`
     width: 800px;
     height: 700px;
     margin-left: 25.5rem;
-    // margin-top: 0rem;
+    margin-top: 10px;
   }
   @media all and (max-width: 768px) {
     .rcorners1{
@@ -67,15 +67,25 @@ var requestOptions = {
   body: raw,
   redirect: 'follow'
 };
-await fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/contact", requestOptions)
+await fetch("https://gzacors.herokuapp.com/https://panaah-api.herokuapp.com/contact", requestOptions)
   .then(response => response.text())
   .then(result => alert("Thank you for getting in touch. Our team will get in touch shortly."))
   .catch(error => console.log('error', error));
 
   }
   return (
+    <div
+    class="bg_image"
+    style={{
+      backgroundImage: `url(${bg})`,
+      backgroundSize: "cover",
+      height: "100vh",
+      width:'100%',
+      color: "#000000",
+    }}
+  >
     <Styles>
-      <div
+      {/* <div
           class="bg_image"
           style={{
             backgroundImage: `url(${bg})`,
@@ -83,7 +93,7 @@ await fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/contact", 
             height: "100vh",
             color: "#000000",
           }}
-        >
+        > */}
     <div className="rcorners1">
     <div class="container contact">
       <div  class="row" style={{marginRight:'-198px',marginLeft:'89px'}}>
@@ -137,8 +147,8 @@ await fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/contact", 
 
     </div>
     </div>
-    </div>
+    
      </Styles>
-   
+   </div>
   );
 }

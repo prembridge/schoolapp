@@ -18,8 +18,19 @@ const Styles = styled.div`
 
 .donation {
   
-    width: 350px;
-    margin-left: 400px;
+    width: 650px;
+    margin-left: 140px;
+    padding-top:40px
+    
+}
+.heading{
+  margin-left: 200px;
+  padding-top:40px;
+}
+.donationtext{
+  
+  margin-top: 250px;
+  margin-left:170px
 }
 .donation h1{
   
@@ -32,26 +43,34 @@ const Styles = styled.div`
        font-size:8px
     margin-top: -15px;
     width: 1217px;
-    margin-left: -200px;
+    margin-left: 60px;
     padding-top: 15px
    
    }
    
 }
 .cview{
-    margin-top: -820px;
+    margin-top: -920px;
    
     margin-left: 814px;
 }
 .cviewsecond{
-    margin-top: -800px;
+    margin-top: -850px;
    
-    margin-left: 868px; 
+    margin-left: 818px; 
 }
 @media all and (max-width: 768px) {
-      
+  .heading{
+    margin-left: 35px;
+    padding-top:7px;
+  }
+  .donationtext{
+  
+    margin-top: 610px;
+    margin-left:32px
+  }
     .donation{
-      margin-left: 20px;
+      margin-left: 5px;
     width: 100%;
      
       }
@@ -71,12 +90,12 @@ const Styles = styled.div`
       .cview{
         margin-left: 18px;
         width: 90%;
-        margin-top: 30px
+        margin-top: -390px
       }
       .cviewsecond{
         margin-left: 10px;
         width: 90%;
-        margin-top: 30px
+        margin-top: -1386px;
       }
   }`
 
@@ -339,7 +358,7 @@ export default function Donation() {
       method: 'GET',
       redirect: 'follow'
     };
-    fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/getplan/" + localStorage.getItem("id"), requestOptions)
+    fetch("https://gzacors.herokuapp.com/https://panaah-api.herokuapp.com/getplan/" + localStorage.getItem("id"), requestOptions)
       .then(response => response.json())
       .then(json => {
         console.log("jssssssssssssss", JSON.stringify(json))
@@ -417,7 +436,7 @@ export default function Donation() {
 
 
 
-    await fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/plans", requestOptions)
+    await fetch("https://gzacors.herokuapp.com/https://panaah-api.herokuapp.com/plans", requestOptions)
       .then(response => response.json())
       .then(json => {
 
@@ -491,7 +510,7 @@ export default function Donation() {
       body: raw,
       redirect: 'follow'
     };
-    const data = await fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/razorpay", requestOptions)
+    const data = await fetch("https://gzacors.herokuapp.com/https://panaah-api.herokuapp.com/razorpay", requestOptions)
       .then(response => response.json())
     //  .then(json =>{
     //   console.log("response",data)
@@ -589,7 +608,7 @@ export default function Donation() {
       body: raw,
       redirect: 'follow'
     };
-    const data = await fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/razorpay", requestOptions)
+    const data = await fetch("https://gzacors.herokuapp.com/https://panaah-api.herokuapp.com/razorpay", requestOptions)
       .then(response => response.json())
     //  .then(json =>{
     //   console.log("response",data)
@@ -678,30 +697,33 @@ export default function Donation() {
           }}>
        
           
-          <div>
+         
             {/* style={{ width: '50%',height:'950px',
     float: 'left',
     padding: '20px',
     border: '1px black',backgroundImage: `url(${process.env.PUBLIC_URL + "/images/p.png"})`, backgroundRepeat:'no-repeat',
     backgroundSize:'cover'}} */}
-            <div className="donation">
-               <div >
-
-             
+          
+            
+              <div className="heading">
                 <h1>Panaah: Adopt A Child</h1>
-                
-                <h4> By registering here you commit to partner with us in giving hope for tomorrow to young lives in hopeless homes today.  Panaah provides you a platform to give / contribute an amount of minimum INR 750 monthly or INR 2250 quarterly or 4500 Half Yearly or 9000 Annually towards the educational and developmental needs of children from poor families and rural communities. Select the number of children and the number of years you would like to support. </h4>
-                 <br></br>
-                <h6 > 1. Select the number of children and the number of years you would like to support the child/children.</h6>
-                 <h6> 2. Choose the sponsor/payment plan that suits you and submit to save your preferences</h6>
-                <h6>3. Once saved you can click on the pay now button to send you contributions according to your plan</h6>
-                 <h6> 4. For your convenience you can use the autopay/auto debit option by enabling the option in your profile page to send your contributions on time</h6>
-                 <h6>5. To change your plan or any other information check your profile page</h6>
-                 <h6> 6. Email id, Pan Number and Name cannot be edited. For more information on this contact our team.</h6>
+                </div>
+                <div className="donation">
              
+                <h4> By registering here you commit to partner with us in giving hope for tomorrow to young lives in hopeless homes today.  Panaah provides you a platform to give / contribute an amount of minimum INR 750 monthly or INR 2250 quarterly or 4500 Half Yearly or 9000 Annually towards the educational and developmental needs of children from poor families and rural communities. Select the number of children and the number of years you would like to support. </h4>
+                 </div>
+                 <br></br>
+                 <div className="donationtext">
+                <h4> 1. Select the number of children and the number of years you would like to support the child/children.</h4>
+                 <h4> 2. Choose the sponsor/payment plan that suits you and submit to save your preferences</h4>
+                <h4>3. Once saved you can click on the pay now button to send you contributions according to your plan</h4>
+                 <h4> 4. For your convenience you can use the autopay/auto debit option by enabling the option in your profile page to send your contributions on time</h4>
+                 <h4>5. To change your plan or any other information check your profile page</h4>
+                 <h4> 6. Email id, Pan Number and Name cannot be edited. For more information on this contact our team.</h4>
+             </div>
            </div>
-            </div>
-            </div>
+            
+          
             <div>
               <div className="cview" >
 
@@ -808,8 +830,7 @@ export default function Donation() {
                 </MDBContainer>
               </div>
             </div>
-           
-          </div>
+        
 
 
      
@@ -825,42 +846,31 @@ export default function Donation() {
             height: "130vh",
             color: "#000000",
           }}>
-        <div 
-        // class="float-container" style={{
-        //   border: '2px black',
-        //   padding: '20px',
-        //   backgroundImage: `url(${process.env.PUBLIC_URL + "/images/p.png"})`, backgroundRepeat: 'no-repeat',
-        //   backgroundSize: 'cover'
-        // }}
-        >
+      
+         
 
-          <div  className="donation"
-        //   class="float-child" style={{
-        //     width: '50%',
-        //     float: 'left',
-        //     padding: '20px',
-        //     border: '1px black', backgroundImage: `url(${process.env.PUBLIC_URL + "/images/p.png"})`, backgroundRepeat: 'no-repeat',
-        //     backgroundSize: 'cover'
-        //   }}
-          >
-
-            <div 
-            // stlye={{ display: 'flex', flexdirection: 'row' }}
-            >
+            
 
 
-              <h1 >Panaah: Adopt A Child</h1>
-
-              <h4> By registering here you commit to partner with us in giving hope for tomorrow to young lives in hopeless homes today.  Panaah provides you a platform to give / contribute an amount of minimum INR 750 monthly or INR 2250 quarterly or 4500 Half Yearly or 9000 Annually towards the educational and developmental needs of children from poor families and rural communities. Select the number of children and the number of years you would like to support. </h4>
+      <div className="heading">
+                <h1>Panaah: Adopt A Child</h1>
+                </div>
+                <div className="donation">
+             
+             <h4> By registering here you commit to partner with us in giving hope for tomorrow to young lives in hopeless homes today.  Panaah provides you a platform to give / contribute an amount of minimum INR 750 monthly or INR 2250 quarterly or 4500 Half Yearly or 9000 Annually towards the educational and developmental needs of children from poor families and rural communities. Select the number of children and the number of years you would like to support. </h4>
+              </div>
               <br></br>
-              <h6>1. Select the number of children and the number of years you would like to support the child/children.</h6>
-             <h6>2. Choose the sponsor/payment plan that suits you and submit to save your preferences</h6>
-              <h6> 3. Once saved you can click on the pay now button to send you contributions according to your plan</h6>
-              <h6>4. For your convenience you can use the autopay/auto debit option by enabling the option in your profile page to send your contributions on time</h6>
-              <h6>5. To change your plan or any other information check your profile page</h6>
-              <h6>6. Email id, Pan Number and Name cannot be edited. For more information on this contact our team.</h6>
-            </div>
+              <div className="donationtext">
+             <h4> 1. Select the number of children and the number of years you would like to support the child/children.</h4>
+              <h4> 2. Choose the sponsor/payment plan that suits you and submit to save your preferences</h4>
+             <h4>3. Once saved you can click on the pay now button to send you contributions according to your plan</h4>
+              <h4> 4. For your convenience you can use the autopay/auto debit option by enabling the option in your profile page to send your contributions on time</h4>
+              <h4>5. To change your plan or any other information check your profile page</h4>
+              <h4> 6. Email id, Pan Number and Name cannot be edited. For more information on this contact our team.</h4>
           </div>
+        
+         
+ 
 
           <div className="cviewsecond">
 
@@ -963,7 +973,7 @@ export default function Donation() {
           </div>
           {/* <button onClick={() => history.push('/Userprofile')}>Profile</button> */}
           {/* <button onClick={displayRazorpay}> pay now</button> */}
-        </div>
+      
         <div>
           {/* <button onClick={displayRazorpay}> pay now</button> */}
           {/* onClick={() => history.push('/Userprofile')} */}

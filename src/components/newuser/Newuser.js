@@ -25,8 +25,8 @@ import { breakpoints as bp } from "../../GlobalStyle";
 import bg from "../assets/boy2.jpg";
 const Styles = styled.div`
 .inform {
-  padding-top: 40px; 
-  padding-left: 18rem;
+  padding: 70px;
+    text-align: center;
 }
 .or p{
   margin-top: 150px;
@@ -68,8 +68,8 @@ const Styles = styled.div`
     padding-bottom: 20px;
     width: 550px;
     height: 260px;
-    margin-left: 25.5rem;
-    margin-top: 2.5rem;
+    margin-left: 35.5rem;
+    margin-top: -2rem;
   }
 
   @media all and (max-width: 768px) {
@@ -82,7 +82,7 @@ const Styles = styled.div`
     }
     .inform {
       
-      margin-left: -15rem 
+      margin-left: -1rem 
     }
     .rcorners1 {
       border-radius: 45px;
@@ -157,7 +157,7 @@ export default function Newuser() {
 
     if (emailRegex.test(email)) {
       setIsValid(true);
-      setMessage('Your email looks good!');
+     
 
 
 
@@ -174,7 +174,7 @@ export default function Newuser() {
         body: raw,
         redirect: 'follow'
       };
-      await fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/mailcheck", requestOptions)
+      await fetch("https://gzacors.herokuapp.com/https://panaah-api.herokuapp.com/mailcheck", requestOptions)
         .then(response => response.json())
         .then(json => {
           var message = json.message
@@ -208,7 +208,7 @@ export default function Newuser() {
                         body: raw,
                         redirect: 'follow'
                       };
-                      fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/otpcheck", requestOptions)
+                      fetch("https://gzacors.herokuapp.com/https://panaah-api.herokuapp.com/otpcheck", requestOptions)
                         .then(response => response.json())
                         .then(json => {
                           var message = json.message
@@ -262,7 +262,7 @@ export default function Newuser() {
     const email = GuestuserEmail
     if (emailRegex.test(email)) {
       setIsValid(true);
-      setMessageguest('Your email looks good!');
+     
       history.push('/Login')
     } else {
       setIsValid(false);
@@ -274,7 +274,7 @@ export default function Newuser() {
     const email = VolunteerEmail
     if (emailRegex.test(email)) {
       setIsValid(true);
-      setMessagevol('Your email looks good!');
+     
 
 
 
@@ -289,9 +289,9 @@ export default function Newuser() {
         body: raw,
         redirect: 'follow'
       };
-      fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/volunteer", requestOptions)
+      fetch("https://gzacors.herokuapp.com/https://panaah-api.herokuapp.com/volunteer", requestOptions)
         .then(response => response.text())
-        .then(result => alert(result))
+        .then(result => alert("Thank you so much for volunteering.With Us Our team will get back to you shortly "))
         .catch(error => console.log('error', error));
     } else {
       setIsValid(false);
@@ -405,7 +405,7 @@ export default function Newuser() {
 
       <div style={{ paddingTop: '50px' }}>
         <Carousel>
-          <Carousel.Item interval={1000}>
+          <Carousel.Item interval={2500}>
             <img style={{ height: '550px', width: '2030px' }}
               className="d-block w-0"
               src={require("../assets/Testimony.jpg")}
@@ -423,7 +423,7 @@ export default function Newuser() {
                 This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</p>
             </Carousel.Caption>
           </Carousel.Item>
-          <Carousel.Item interval={1000}>
+          <Carousel.Item interval={2500}>
             <img style={{ height: '550px', width: '2030px' }}
               className="d-block w-0"
               src={require("../assets/Testimony.jpg")}
@@ -441,7 +441,7 @@ export default function Newuser() {
                 This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</p>
             </Carousel.Caption>
           </Carousel.Item>
-          <Carousel.Item interval={1000}>
+          <Carousel.Item interval={2500}>
             <img style={{ height: '550px', width: '2030px' }}
               className="d-block w-0"
               src={require("../assets/Testimony.jpg")}
