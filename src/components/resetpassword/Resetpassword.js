@@ -117,7 +117,7 @@ const Resetpassword = () => {
   return (
     <Styles>
     <div className="rcorners1">
-   <h2 style={{paddingLeft:'70px',fontFamily: 'Fuggles, cursive',marginLeft:'-28px' }}> Reset Password </h2>
+   <h2 style={{paddingLeft:'70px',  fontFamily: 'Montserrat,sans-serif',marginLeft:'-28px' }}> Reset Password </h2>
 <br></br>
  
     <MDBContainer  style ={{marginTop:'-30px'}}>
@@ -130,7 +130,7 @@ const Resetpassword = () => {
          <MDBCardBody className="mx-4 mt-4" style={{ maxWidth :'400',} }>
         
          <div  className="password">
-              <label style={{fontFamily: 'Fuggles, cursive'}} htmlFor="password"> Password </label>
+              <label style={{  fontFamily: 'Montserrat,sans-serif'}} htmlFor="password"> Password </label>
               </div>
         
              <div>
@@ -143,7 +143,7 @@ const Resetpassword = () => {
            <br></br>
         
            <div  className="password">
-              <label style={{fontFamily: 'Fuggles, cursive'}} htmlFor="password"> ConfirmPassword </label>
+              <label style={{  fontFamily: 'Montserrat,sans-serif'}} htmlFor="password"> ConfirmPassword </label>
               </div>
             
            <div>

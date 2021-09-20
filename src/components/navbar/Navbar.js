@@ -155,7 +155,7 @@ function Header() {
                         <Nav.Link href="./about">Our Story</Nav.Link>
                       </Nav.Item>
                       <Nav.Item>
-                        <Nav.Link href="/home">Donate</Nav.Link>
+                        <Nav.Link href="/Donation">Donate</Nav.Link>
                       </Nav.Item>
                       <Nav.Item>
                         <Nav.Link href="/contact">Contact Us</Nav.Link>

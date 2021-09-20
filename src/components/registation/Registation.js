@@ -208,7 +208,7 @@ export default class Registation extends Component {
             } else {
              
              resolve()
-             alert("please enter a valid  OTP..");
+             alert("please enter a Valid  OTP..");
             }
           }, 2000)
         })
