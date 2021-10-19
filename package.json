@@ -2,7 +2,7 @@
   "name": "panaah",
   "version": "0.1.0",
   "private": true,
-  "homepage":"https://panaah.org",
+  "homepage": "https://panaah.org",
   "dependencies": {
     "@hookform/error-message": "^2.0.0",
     "@material-ui/core": "^4.11.0",
@@ -23,6 +23,7 @@
     "react": "^16.13.1",
     "react-animated-text": "^0.1.4",
     "react-bootstrap": "^1.4.0",
+    "react-break": "^1.3.2",
     "react-confetti": "^6.0.1",
     "react-datepicker": "^4.1.1",
     "react-dom": "^16.13.1",

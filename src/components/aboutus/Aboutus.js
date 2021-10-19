@@ -152,7 +152,7 @@ font-family: 'Raleway';
 }
 .second img {
   margin-top: 3.5rem !important;
-  margin-left: -100.5rem; !important;
+  margin-left: -110.5rem; !important;
   width: 30% !important;
   height: 30% !important;
 }
@@ -393,7 +393,7 @@ export default function Aboutus() {
                 </div>
               </div>
               <div className='btnpartner'>
-    <button  onClick={() => history.push('/Newuser')}style={{backgroundColor:"#FFEDD9",width:180,height:50,borderRadius:50, fontSize: '20px'}}>Partner Now</button>
+    <button  onClick={() => history.push('/Newuser')}style={{backgroundColor:"#FFEDD9",width:180,height:50,borderRadius:50}}>Partner Now</button>
     </div>
             </div>
           </div>

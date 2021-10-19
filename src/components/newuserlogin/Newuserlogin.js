@@ -37,7 +37,7 @@ const Styles = styled.div`
 
     @media all and (max-width: 768px) {
       .rcorners1{
-       
+        font-family: Raleway;
         border: 2px solid #000000;
         padding-right: 1.0rem;
         padding-left: 0.5rem ! important;
@@ -206,7 +206,7 @@ export default function Newuserlogin() {
       <div className="rcorners1">
     
         
-        <h2 style={{ paddingLeft: '70px', fontFamily: 'Fuggles, cursive', marginLeft: '-28px',marginTop:'30px' }}> Sign In</h2>
+        <h2 style={{ paddingLeft: '70px', fontFamily: 'Raleway', marginLeft: '-28px',marginTop:'30px' }}> Sign In</h2>
         <MDBContainer style={{ marginTop: '-30px' }}>
 
 
@@ -218,7 +218,7 @@ export default function Newuserlogin() {
 
 
               <div className="email">
-                <label style={{ fontFamily: 'Fuggles, cursive' }} htmlFor="email">Email ID </label>
+                <label style={{ fontFamily:  'Raleway' }} htmlFor="email">Email ID </label>
               </div>
               <div>
                 <MDBInput
@@ -234,7 +234,7 @@ export default function Newuserlogin() {
               )} */}
               </div>
               <div className="password">
-                <label style={{ fontFamily: 'Fuggles, cursive' }} htmlFor="password">Password </label>
+                <label style={{ fontFamily: ' Raleway' }} htmlFor="password">Password </label>
               </div>
               <div>
                 <MDBInput
@@ -251,7 +251,7 @@ export default function Newuserlogin() {
               </div>
 
               <div className="text-center mb-4 mt-5">
-                <button style={{ marginTop: '-49px', backgroundColor: "#FFEDD9", width: 150, height: 50, borderRadius: 50, fontFamily: 'Fuggles, cursive' }}
+                <button style={{ marginTop: '-49px', backgroundColor: "#FFEDD9", width: 150, height: 50, borderRadius: 50, fontFamily: ' Raleway' }}
 
                   type="button"
                   className="btn-block z-depth-2"

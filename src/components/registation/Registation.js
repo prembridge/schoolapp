@@ -32,10 +32,13 @@ const Styles = styled.div`
     
     .textmain {
       width: 908px;
-      margin-left: -215px
+      margin-left: -580px;
+     
      
     }
-    
+    .cardm{
+      margin-left: -371px;
+    }
     
   }`
 const emailRegex = RegExp(
@@ -331,11 +334,14 @@ export default class Registation extends Component {
       alignItems="center"
       justify="center"
       style={{ minHeight: '100vh' }}>
+        <div class="container-fluid">
         <div className='textmain'>
-          <h3 style={{paddingLeft:'250px',}}>New Partner Registation</h3>
-          </div>
-      <MDBCard variant="outlined" className={styles.card}  style={{ maxWidth :'1100px',borderColor:"#1c1a14",paddingLeft:'25px'} }>
+          <h3 style={{paddingLeft:'590px', alignItems:"center"}}>New Partner Registation</h3>
+          </div> 
+          <div className ='cardm'>
+      <MDBCard variant="outlined" className={styles.card}  style={{ maxWidth :'1100px',borderColor:"#1c1a14",paddingLeft:'25px',marginLeft:'350px',} }>
         <CardContent align-items-center>
+      
       <div className="wrapper">
       <div className="form-wrapper">
       
@@ -577,6 +583,8 @@ export default class Registation extends Component {
     </div>
     </CardContent>
     </MDBCard>
+    </div>
+    </div>
     </Grid>
     </div>
     </Styles>
@@ -589,6 +597,7 @@ const styles =
    maxWidth: 500,
    margin: "top",
    transition: "0.3s",
+  
    boxShadow: "0 8px 40px -12px rgba(0,0,0,0.3)",
    "&:hover": {
      boxShadow: "0 16px 70px -12.125px rgba(0,0,0,0.3)"

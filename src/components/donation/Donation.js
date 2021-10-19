@@ -14,7 +14,53 @@ import img from "./p.png"
 import { breakpoints as bp } from "../../GlobalStyle";
 import bg from "../assets/boy2.jpg";
 import styled from "styled-components";
+import { layoutGenerator } from 'react-break';
+
+
 const Styles = styled.div`
+
+@media (min-width: 1536px) and (max-width: 1920px){
+  .donation {
+  
+    width: 650px;
+    margin-left: 140px;
+    padding-top:40px
+    
+}
+.heading{
+  margin-left: 200px;
+  padding-top:40px;
+}
+.donationtext{
+  
+  margin-top: 250px;
+  margin-left:170px
+}
+.donation h1{
+  
+    width: 490px;
+    margin-left: -15px;
+    margin-top:20px
+}
+
+   .donation h6{
+       font-size:8px
+    margin-top: -15px;
+    width: 1217px;
+    margin-left: 60px;
+    padding-top: 15px
+   
+   }
+   
+
+  .cview{
+    margin-top: -840px;
+    margin-left: 400px;
+}
+
+}
+@media (min-width:768px) and (max-width:1536px){
+
 
 .donation {
   
@@ -50,7 +96,7 @@ const Styles = styled.div`
    
 }
 .cview{
-    margin-top: -920px;
+    margin-top: -840px;
    
     margin-left: 814px;
 }
@@ -58,6 +104,7 @@ const Styles = styled.div`
     margin-top: -850px;
    
     margin-left: 818px; 
+}
 }
 @media all and (max-width: 768px) {
   .heading{
@@ -90,7 +137,7 @@ const Styles = styled.div`
       .cview{
         margin-left: 18px;
         width: 90%;
-        margin-top: -390px
+        margin-top: -1395px;
       }
       .cviewsecond{
         margin-left: 10px;
@@ -352,6 +399,7 @@ export default function Donation() {
     setValue(dis)
   }
   useEffect(() => {
+    console.log(window.innerWidth)
     var val = localStorage.getItem("value")
     console.log(val, "bbbbbbbbbbbbbbbbbbbbbbbb")
     var requestOptions = {
@@ -703,10 +751,10 @@ export default function Donation() {
     padding: '20px',
     border: '1px black',backgroundImage: `url(${process.env.PUBLIC_URL + "/images/p.png"})`, backgroundRepeat:'no-repeat',
     backgroundSize:'cover'}} */}
-          
+          <div  class="container-fluid">
             
               <div className="heading">
-                <h1>Panaah: Adopt A Child</h1>
+                <h1>Panaah: Adopt A Child</h1> 
                 </div>
                 <div className="donation">
              
@@ -725,8 +773,11 @@ export default function Donation() {
             
           
             <div>
+          
+     
+   
               <div className="cview" >
-
+              
                 <MDBContainer fluid class="d-flex justify-content-cente"  >
 
                   <div>
@@ -828,10 +879,11 @@ export default function Donation() {
                   </div>
 
                 </MDBContainer>
+               </div>
               </div>
-            </div>
-        
-
+           
+           
+           </div>
 
      
       </Styles>
@@ -850,7 +902,7 @@ export default function Donation() {
          
 
             
-
+      <div  class="container-fluid">
 
       <div className="heading">
                 <h1>Panaah: Adopt A Child</h1>
@@ -980,8 +1032,13 @@ export default function Donation() {
         </div>
 
       </div>
+    
+        
+       </div>
       </Styles>
+      
       </div>
+      
   );
 };
 

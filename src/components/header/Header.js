@@ -29,6 +29,7 @@ import Newuserlogin from '../newuserlogin/Newuserlogin'
 import Userprofile from '../userprofile/Userprofile'
 import viewtransaction from '../ViewTransactions/viewtransaction'
 import resetpassword from '../resetpassword/Resetpassword'
+import terms from '../Terms/terms';
 import {
   BrowserRouter as Router,
   Switch, Route, Link
@@ -126,7 +127,8 @@ function Header() {
        path="/Userprofile" component={Userprofile}></Route>
          <Route 
        path="/Viewtransaction" component={viewtransaction}></Route>
-
+  <Route 
+       path="/terms" component={terms}></Route>
         <Route 
        path="/" component={Home}></Route>
         

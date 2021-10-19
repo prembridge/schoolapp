@@ -59,7 +59,7 @@ const Resetpassword = () => {
     } = useForm({
       criteriaMode: "all"
     });
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,10}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,20}$/;
 
  
 
@@ -108,7 +108,7 @@ const Resetpassword = () => {
       
   } } else {
     setIsValid(false);
-    setMessage('Minimum eight and maximum 10 characters, at least one uppercase letter, one lowercase letter, one number and one special character');
+    setMessage('Minimum eight and maximum 20 characters, at least one uppercase letter, one lowercase letter, one number and one special character');
   }
 }
 
@@ -157,7 +157,7 @@ const Resetpassword = () => {
            <br></br>
            
                <div className="text-center mb-4 mt-5">
-                <button disabled={!password ||!confirmpass}  style={{marginTop:'-49px',backgroundColor:"#FFEDD9",width:150,height:50,borderRadius:50,fontFamily: 'Fuggles, cursive'}}
+                <button disabled={!password ||!confirmpass}  style={{marginTop:'-49px',backgroundColor:"#FFEDD9",width:150,height:50,borderRadius:50, fontFamily: 'Montserrat,sans-serif'}}
                   
                  type="button"
                  className="btn-block z-depth-2"

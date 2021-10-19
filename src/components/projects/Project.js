@@ -46,7 +46,7 @@ const WhiteTextTypography = withStyles({
 
 
 
-export default function Groups() {
+export default function Contactus() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [subject, setSubject] = useState("");
@@ -100,7 +100,7 @@ await fetch("https://gzacors.herokuapp.com/https://panaah-api.herokuapp.com/cont
         <div>
         <div class="contact-info">
 				{/* <img src="https://image.ibb.co/kUASdV/contact-image.png" alt="image"/> */}
-				<h2 style={{paddingLeft:"20px"}}>Contact Us</h2>
+			
 				<h4 style={{paddingLeft:"20px",paddingTop:"15px"}}>We would love to hear from you !</h4>
         
 			</div>
