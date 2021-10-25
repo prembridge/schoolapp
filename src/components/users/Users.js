@@ -46,21 +46,16 @@ left: 5vw;
   text-Align:center
   @media (max-width: ${bp.mobile}) {
     .ourvision h3{
-      margin-top: -20vw !important;
-      background-color: rgb(255, 200, 217);
-      margin-left: -46px;
-      font-size: 10vw !important;
+     
+      font-size: 12vw !important;
       font-family: 'Montserrat, sans-serif';
-      top: 250vw !important;
-      color: #000 !important;
+   
     }
     .ourvision h6{
-      font-size: 4vw !important;
+      font-size: 8vw !important ;
       font-family: "Fira Sans sans-serif", 'monospace';
-      // margin-top: 5.5rem !important;
-      left: 25vw !important;
-      top: 560vw !important;
-      color: #000 !important;
+   
+    
       
     }
   }`
@@ -88,10 +83,10 @@ export default function Users() {
           <footer class="page-footer font-small blue">
 
 
-<div class="footer-copyright text-center py-3">© 2021 Copyright:
-  <a href="https://panaah.org/"> panaah.org</a>
+<div class="footer-copyright text-center py-3"> <h7 style={{color:'black' ,fontSize:'15px'}}>© 2021 Copyright</h7>
+  <a style={{marginLeft:'10px',color:'black'}} href="https://panaah.org/"> panaah.org</a>
   <br></br>
-  <Link  onClick={forgot}> Terms and conditions</Link>
+  <Link style={{color:'black'}} onClick={forgot}> Terms and conditions</Link>
   {/* <a href="https://panaah.org/"> Terms and conditions</a> */}
 </div>
 

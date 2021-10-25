@@ -155,7 +155,10 @@ componentDidMount(){
 }
 getdata =()=>{
   localStorage.setItem("statename",this.state.firstName)
+  localStorage.setItem("mobileN",this.state.mobileNo)
+  
    console.log(localStorage.getItem("statename"),"valiyyyyyyyyyyyyy")
+   console.log(localStorage.getItem("mobileN"),"mmmmmmm")
   var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 var raw = JSON.stringify({

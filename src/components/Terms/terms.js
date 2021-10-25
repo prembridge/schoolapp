@@ -39,17 +39,17 @@ const Styles = styled.div`
 
   @media (max-width: ${bp.mobile}) {
     .ourvision h3{
-      margin-top: -20vw !important;
-      background-color: rgb(255, 200, 217);
+      margin-top: 4vw !important;
+      text-align: center;
       margin-left: -46px;
-      font-size: 90vw !important;
-      font-family: 'Montserrat, sans-serif';
+      font-size: 7vw !important;
+      font-family: 'Raleway,sans-serif';
       top: 250vw !important;
       color: #000 !important;
     }
     .ourvision h6{
       font-size: 4vw !important;
-      font-family: "Fira Sans sans-serif", 'monospace';
+      font-family: 'Raleway,sans-serif';
       // margin-top: 5.5rem !important;
       left: 25vw !important;
       top: 560vw !important;

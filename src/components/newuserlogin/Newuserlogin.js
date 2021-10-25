@@ -28,7 +28,7 @@ const Styles = styled.div`
     width: 550px;
     height: 450px;
     margin-left: 30.5rem;
-    margin-top: 8.5rem;
+    margin-top: 5.5rem;
 }
 .forgot{
   padding-left: 9rem
@@ -46,6 +46,7 @@ const Styles = styled.div`
         height: 400px;
         margin-left: 0.5rem;
         margin-right:2.5rem;
+        margin-top:50px
         
       }
       .forgot{
@@ -74,6 +75,9 @@ const formValid = ({ formErrors, ...rest }) => {
 };
 
 export default function Newuserlogin() {
+  function forgot() {
+    history.push("./terms")
+  }
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [err, seterr] = useState("");
@@ -226,7 +230,7 @@ export default function Newuserlogin() {
                   placeholder="Email"
                   type="email"
                   name="email"
-                  noValidate
+                  noValidate 
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 {/* {formErrors.email.length > 0 && (
@@ -261,6 +265,7 @@ export default function Newuserlogin() {
                 <div className="forgot">
                 <Link  onClick={forgot}> Forgot password</Link>
                 </div>
+              
               </div>
               {/* <div>
             <Link style={{paddingLeft:'220px',marginTop:'-990px'}} onClick={forgot}> Forgot password</Link>
@@ -273,7 +278,20 @@ export default function Newuserlogin() {
           </MDBRow>
         </MDBContainer>
       </div>
-    
+      <br></br>
+      <div>
+      <footer style ={{backgroundColor:' #FFEDD9'}}  class="page-footer font-small blue">
+
+
+<div class="footer-copyright text-center py-3"> <h7 style={{color:'black' ,fontSize:'15px'}}>© 2021 Copyright</h7>
+  <a style={{marginLeft:'10px' ,color:'black'}} href="https://panaah.org/"> panaah.org</a>
+  <br></br>
+  <Link style={{color:'black'}} onClick={forgot}> Terms and conditions</Link>
+  {/* <a href="https://panaah.org/"> Terms and conditions</a> */}
+</div>
+
+</footer>
+  </div>
     </Styles>
 
 

@@ -8,11 +8,15 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown'
 import Carousel from 'react-bootstrap/Carousel'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { useHistory } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import Swal from 'sweetalert2'
 import { breakpoints as bp } from "../../GlobalStyle";
 import styled from "styled-components";
+import {
+  Link,
+
+} from "react-router-dom";
 const Styles = styled.div`
 
 .guestview {
@@ -32,8 +36,8 @@ const Styles = styled.div`
   padding-Top:10px;
   padding-Left:190px
 }
-.labtext{
-
+.carous{
+  margin-top:-182px
 }
 @media all and (max-width: 768px) {
       
@@ -91,6 +95,10 @@ function loadScript(src) {
 	})
 }
 export default function Guestprofile() {
+  const history = useHistory();
+  function forgot() {
+    history.push("./terms")
+  }
   const [Nchild,setNchild] = useState('');
     const [Nyear, setNyear] = useState('');
   var tot = 0;
@@ -399,9 +407,9 @@ console.log(data ,"data of data")
             alert(response.razorpay_signature)
         },
         "prefill": {
-            "name": "Gaurav Kumar",
-            "email": "gaurav.kumar@example.com",
-            "contact": "9999999999"
+            "name": localStorage.getItem("statename"),
+            "email": localStorage.getItem("GuestuserEmail"),
+            "contact":localStorage.getItem("mobileN")
         },
         "notes": {
             "address": "Razorpay Corporate Office"
@@ -493,9 +501,9 @@ console.log(data ,"data of data")
          })
      },
         "prefill": {
-            "name": "Gaurav Kumar",
-            "email": "gaurav.kumar@example.com",
-            "contact": "9999999999"
+            "name":  localStorage.getItem("statename"),
+            "email":  localStorage.getItem("GuestuserEmail"),
+            "contact": localStorage.getItem("mobileN")
         },
         "notes": {
             "address": "Razorpay Corporate Office"
@@ -672,38 +680,48 @@ Tell customers more about you. Add a few words and a stunning pic to grab their 
 
 ​This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</p>
     </Carousel.Caption>
-    {/* <Carousel.Caption> */}
+    
+    
+   </Carousel.Item>
+   <Carousel.Item interval={1000}>
+  <img style={{ height: '550px',width:'2030px'}}
+      className="d-block w-0"
+      src={require("../assets/Testimony.jpg")}
+      alt="First slide"
+    
+    />
+    <Carousel.Caption>
       {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
+      <h6 style={{paddingLeft:'850px',fontFamily: 'Montserrat, sans-serif',fontWeight:'bold',fontSize:'50px',paddingTop:'50px'}}>My Story</h6>
+      <p style={{paddingLeft:'790px',paddingTop:"90px",fontFamily: 'Raleway,sans-serif',fontSize:'20px',color:"white",fontStyle: 'italic',textAlign:'center',width:'1250px',paddingLeft:'875px'}}>
+This is a great place to add a tagline.
+
+Tell customers more about you. Add a few words and a stunning pic to grab their attention and get them to click.
+
+​This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</p>
+    </Carousel.Caption>
     
-    {/* </Carousel.Caption> */}
-  {/* </Carousel.Item> */}
-  {/* <Carousel.Item interval={500}> */}
-     {/* <img style={{width: '550px', height: '450px'}}
-      className="d-block w-100"
-      src={require("../assets/pc1.jpg")}
-     alt="Third slide"
-    /> */}
-     {/* <Carousel.Caption> */}
-       {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
     
-    {/* </Carousel.Caption> */}
-   {/* </Carousel.Item> */}
-   {/* <Carousel.Item interval={500}> */}
-     {/* <img style={{width: '550px', height: '450px'}}
-      className="d-block w-100"
-      src={require("../assets/pc1.jpg")}
-     alt="Third slide"
-    /> */}
-     {/* <Carousel.Caption> */}
-       {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
-    
-    {/* </Carousel.Caption> */}
    </Carousel.Item>
   </Carousel>
   </div>
+  <footer style ={{backgroundColor:' #FFEDD9'}}  class="page-footer font-small blue">
+
+
+<div class="footer-copyright text-center py-3"> <h7 style={{color:'black' ,fontSize:'15px'}}>© 2021 Copyright</h7>
+  <a style={{marginLeft:'10px' ,color:'black'}} href="https://panaah.org/"> panaah.org</a>
+  <br></br>
+  <Link style={{color:'black'}} onClick={forgot}> Terms and conditions</Link>
+  {/* <a href="https://panaah.org/"> Terms and conditions</a> */}
+</div>
+
+</footer>
     </div>
+    
     </div>
+   
     </Styles>
+    
     );
    };
 

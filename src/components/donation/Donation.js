@@ -15,7 +15,10 @@ import { breakpoints as bp } from "../../GlobalStyle";
 import bg from "../assets/boy2.jpg";
 import styled from "styled-components";
 import { layoutGenerator } from 'react-break';
+import {
+  Link,
 
+} from "react-router-dom";
 
 const Styles = styled.div`
 
@@ -183,6 +186,9 @@ function loadScript(src) {
 // const __DEV__ = document.domain === 'localhost'
 
 export default function Donation() {
+  function forgot() {
+    history.push("./terms")
+  }
   const [Nchild, setNchild] = useState('');
   const [Nyear, setNyear] = useState('');
   const [NMonth, setNMonth] = useState('');
@@ -885,7 +891,18 @@ export default function Donation() {
            
            </div>
 
-     
+           <footer style ={{backgroundColor:' #FFEDD9'}}  class="page-footer font-small blue">
+
+
+<div class="footer-copyright text-center py-3"> <h7 style={{color:'black' ,fontSize:'15px'}}>© 2021 Copyright</h7>
+  <a style={{marginLeft:'10px' ,color:'black'}} href="https://panaah.org/"> panaah.org</a>
+  <br></br>
+  <Link style={{color:'black'}} onClick={forgot}> Terms and conditions</Link>
+  {/* <a href="https://panaah.org/"> Terms and conditions</a> */}
+</div>
+
+</footer>
+       
       </Styles>
 
       : 
@@ -1033,7 +1050,17 @@ export default function Donation() {
 
       </div>
     
-        
+      <footer style ={{backgroundColor:' #FFEDD9'}}  class="page-footer font-small blue">
+
+
+<div class="footer-copyright text-center py-3"> <h7 style={{color:'black' ,fontSize:'15px'}}>© 2021 Copyright</h7>
+  <a style={{marginLeft:'10px' ,color:'black'}} href="https://panaah.org/"> panaah.org</a>
+  <br></br>
+  <Link style={{color:'black'}} onClick={forgot}> Terms and conditions</Link>
+  {/* <a href="https://panaah.org/"> Terms and conditions</a> */}
+</div>
+
+</footer>
        </div>
       </Styles>
       

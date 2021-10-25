@@ -23,6 +23,10 @@ import Swal from 'sweetalert2'
 import { useForm } from 'react-hook-form';
 import { breakpoints as bp } from "../../GlobalStyle";
 import bg from "../assets/boy2.jpg";
+import {
+  Link,
+
+} from "react-router-dom";
 const Styles = styled.div`
 .inform {
   padding: 70px;
@@ -123,6 +127,11 @@ const Styles = styled.div`
   
 }`
 export default function Newuser() {
+  
+  function forgot() {
+    history.push("./terms")
+  }
+
   const { register, handleSubmit, errors } = useForm();
   const [NewuserEmail, setFirstName] = useState('');
   const [GuestuserEmail, setGuestuserEmail] = useState('');
@@ -461,6 +470,17 @@ export default function Newuser() {
           </Carousel.Item>
         </Carousel>
       </div>
+      <footer style ={{backgroundColor:' #FFEDD9'}}  class="page-footer font-small blue">
+
+
+<div class="footer-copyright text-center py-3"> <h7 style={{color:'black' ,fontSize:'15px'}}>© 2021 Copyright</h7>
+  <a style={{marginLeft:'10px' ,color:'black'}} href="https://panaah.org/"> panaah.org</a>
+  <br></br>
+  <Link style={{color:'black'}} onClick={forgot}> Terms and conditions</Link>
+  {/* <a href="https://panaah.org/"> Terms and conditions</a> */}
+</div>
+
+</footer>
       </div>
     </Styles>
 

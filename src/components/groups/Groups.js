@@ -7,6 +7,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from "styled-components";
 import { breakpoints as bp } from "../../GlobalStyle";
 import bg from "../assets/boy2.jpg";
+import { useHistory } from "react-router-dom";
+import {
+  Link,
+
+} from "react-router-dom";
 const Styles = styled.div`
 .App{
   padding-top: 20px; 
@@ -42,6 +47,10 @@ const WhiteTextTypography = withStyles({
 })(Typography);
 
 export default function Groups() {
+  const history = useHistory();
+  function forgot() {
+    history.push("./terms")
+  }
   return (
     <Styles>
         <div
@@ -205,7 +214,17 @@ Tell customers more about you. Add a few words and a stunning pic to grab their 
   {/* </Carousel.Item> */}
 </Carousel> 
         </div>
-      
+        <footer style ={{backgroundColor:' #FFEDD9'}}  class="page-footer font-small blue">
+
+
+<div class="footer-copyright text-center py-3"> <h7 style={{color:'black' ,fontSize:'15px'}}>© 2021 Copyright</h7>
+  <a style={{marginLeft:'10px',color:'black'}} href="https://panaah.org/"> panaah.org</a>
+  <br></br>
+  <Link style={{color:'black'}} onClick={forgot}> Terms and conditions</Link>
+  {/* <a href="https://panaah.org/"> Terms and conditions</a> */}
+</div>
+
+</footer>
      </div>
     
      </Styles>
