@@ -75,7 +75,7 @@ const Forgotpassword = () => {
   return (
     <Styles>
     <div className="rcorners1">
-   <h2 style={{paddingLeft:'70px',fontFamily: 'Fuggles, cursive',marginLeft:'-28px' }}> Forgot Password?</h2>
+   <h2 style={{paddingLeft:'70px',fontFamily: ' Raleway',marginLeft:'-28px' }}> Forgot Password?</h2>
 <br></br>
    <h8 style={{marginLeft:'45px'}}>Enter your email address</h8>
     <MDBContainer  style ={{marginTop:'-30px'}}>
@@ -96,7 +96,7 @@ const Forgotpassword = () => {
            <br></br>
            
                <div className="text-center mb-4 mt-5">
-                <button style={{marginTop:'-49px',backgroundColor:"#FFEDD9",width:150,height:50,borderRadius:50,fontFamily: 'Fuggles, cursive'}}
+                <button style={{marginTop:'-49px',backgroundColor:"#FFEDD9",width:150,height:50,borderRadius:50,fontFamily: ' Raleway'}}
                   
                  type="button"
                  className="btn-block z-depth-2"

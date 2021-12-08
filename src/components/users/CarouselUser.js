@@ -3,8 +3,10 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import Carousel from 'react-bootstrap/Carousel'
+// import Carousel from 'react-bootstrap/Carousel'
 import img1 from "../assets/Testimony.jpg";
+import { Carousel } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.css";
 import { breakpoints as bp } from "../../GlobalStyle";
 
 import styled from "styled-components";
@@ -41,13 +43,17 @@ const Styles = styled.div`
   //   margin-left: 398vw !important;
   // }
   @media (max-width: ${bp.mobile}) {
-    .carousel  h3{
-     font-size: 18px !important;
-  
-      margin-top: 72vw !important;
-      margin-left: 50vw !important;
-      
-    }
+    // .carousel {
+     
+   
+    //   height: 380 px;
+    //  margin-left: 5vw!important;
+    // width: 311px;
+       
+    //  }
+    .imgcar img{
+      min-width: 100%;
+      }
     .carousel  h8{
       font-size: 10px !important;
       margin-top: 20vw !important;
@@ -87,68 +93,34 @@ export default function CarouselUser() {
 
 
   return (
-    <Styles>
-      <div className="carousel" >
-      <div style={{ paddingTop: '7px' }}>
-        <Carousel >
-          <Carousel.Item interval={2500}>
-            <img style={{ height: '550px', width: '2030px' }}
-              className="d-block w-0"
-              src={require("../assets/Testimony.jpg")}
-              alt="First slide"
+    
+  <Carousel>
+  <Carousel.Item>
+    <img 
+      className="d-block w-100"
+      src={require("../assets/fi.png")}
+      alt="First slide"
+    />
+  
+  </Carousel.Item>
+  <Carousel.Item>
+    <img 
+      className="d-block w-100"
+      src={require("../assets/second.png")}
+      alt="Third slide"
+    />
 
-            />
-            <Carousel.Caption className="textcar">
-              {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
-              <h4>My Story</h4>
-              <h8 >
-                This is a great place to add a tagline.
+   
+  </Carousel.Item>
+  <Carousel.Item>
+    <img 
+      className="d-block w-100"
+      src={require("../assets/th.png")}
+      alt="Third slide"
+    />
 
-                Tell customers more about you. Add a few words and a stunning pic to grab their attention and get them to click.
-
-                This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</h8>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item interval={2500}>
-            <img style={{ height: '550px', width: '2030px' }}
-              className="d-block w-0"
-              src={require("../assets/Testimony.jpg")}
-              alt="First slide"
-
-            />
-            <Carousel.Caption className="textcar">
-              {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
-              <h4>My Story</h4>
-              <h8 >
-                This is a great place to add a tagline.
-
-                Tell customers more about you. Add a few words and a stunning pic to grab their attention and get them to click.
-
-                This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</h8>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item interval={2500}>
-            <img style={{ height: '550px', width: '2030px' }}
-              className="d-block w-0"
-              src={require("../assets/Testimony.jpg")}
-              alt="First slide"
-
-            />
-            <Carousel.Caption className="textcar">
-              {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
-              <h4>My Story</h4>
-              <h8 >
-                This is a great place to add a tagline.
-
-                Tell customers more about you. Add a few words and a stunning pic to grab their attention and get them to click.
-
-                This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</h8>
-            </Carousel.Caption>
-          </Carousel.Item>
-        
-        </Carousel>
-      </div>
-      </div>
-    </Styles>
+   
+  </Carousel.Item>
+</Carousel>
   );
 }

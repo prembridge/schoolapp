@@ -76,6 +76,9 @@ const formValid = ({ formErrors, ...rest }) => {
 
 export default function Newuserlogin() {
   function forgot() {
+    history.push("./Forgotpassword")
+  }
+  function terms() {
     history.push("./terms")
   }
   const [email, setEmail] = useState("");
@@ -263,7 +266,7 @@ export default function Newuserlogin() {
                   Sign In
                 </button>
                 <div className="forgot">
-                <Link  onClick={forgot}> Forgot password</Link>
+                <Link style={{color:'black'}} onClick={forgot}> Forgot password</Link>
                 </div>
               
               </div>
@@ -286,7 +289,7 @@ export default function Newuserlogin() {
 <div class="footer-copyright text-center py-3"> <h7 style={{color:'black' ,fontSize:'15px'}}>© 2021 Copyright</h7>
   <a style={{marginLeft:'10px' ,color:'black'}} href="https://panaah.org/"> panaah.org</a>
   <br></br>
-  <Link style={{color:'black'}} onClick={forgot}> Terms and conditions</Link>
+  <Link style={{color:'black'}} onClick={terms}> Terms and conditions</Link>
   {/* <a href="https://panaah.org/"> Terms and conditions</a> */}
 </div>
 

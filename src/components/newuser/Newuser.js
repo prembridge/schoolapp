@@ -78,7 +78,10 @@ const Styles = styled.div`
 
   @media all and (max-width: 768px) {
     .or p{
-      margin-top: 50px;
+      text-align: center;
+      margin-top: 24px;
+      /* margin-right: 15px; */
+      padding-right: 47px
     }
     .bun button{
       
@@ -413,62 +416,34 @@ export default function Newuser() {
       </div>
 
       <div style={{ paddingTop: '50px' }}>
-        <Carousel>
-          <Carousel.Item interval={2500}>
-            <img style={{ height: '550px', width: '2030px' }}
-              className="d-block w-0"
-              src={require("../assets/Testimony.jpg")}
-              alt="First slide"
+      <Carousel>
+  <Carousel.Item>
+    <img
+      className="d-block w-100"
+      src={require("../assets/fi.png")}
+      alt="First slide"
+    />
+  
+  </Carousel.Item>
+  <Carousel.Item>
+    <img
+      className="d-block w-100"
+      src={require("../assets/second.png")}
+      alt="Third slide"
+    />
 
-            />
-            <Carousel.Caption>
-              {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
-              <h6 style={{ paddingLeft: '850px', fontFamily: 'Montserrat, sans-serif', fontWeight: 'bold', fontSize: '50px', paddingTop: '50px' }}>My Story</h6>
-              <p style={{ paddingLeft: '790px', paddingTop: "90px", fontFamily: 'Raleway,sans-serif', fontSize: '20px', color: "white", fontStyle: 'italic', textAlign: 'center', width: '1250px', paddingLeft: '875px' }}>
-                This is a great place to add a tagline.
+   
+  </Carousel.Item>
+  <Carousel.Item>
+    <img
+      className="d-block w-100"
+      src={require("../assets/th.png")}
+      alt="Third slide"
+    />
 
-                Tell customers more about you. Add a few words and a stunning pic to grab their attention and get them to click.
-
-                This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item interval={2500}>
-            <img style={{ height: '550px', width: '2030px' }}
-              className="d-block w-0"
-              src={require("../assets/Testimony.jpg")}
-              alt="First slide"
-
-            />
-            <Carousel.Caption>
-              {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
-              <h6 style={{ paddingLeft: '850px', fontFamily: 'Montserrat, sans-serif', fontWeight: 'bold', fontSize: '50px', paddingTop: '50px' }}>My Story</h6>
-              <p style={{ paddingLeft: '790px', paddingTop: "90px", fontFamily: 'Raleway,sans-serif', fontSize: '20px', color: "white", fontStyle: 'italic', textAlign: 'center', width: '1250px', paddingLeft: '875px' }}>
-                This is a great place to add a tagline.
-
-                Tell customers more about you. Add a few words and a stunning pic to grab their attention and get them to click.
-
-                This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item interval={2500}>
-            <img style={{ height: '550px', width: '2030px' }}
-              className="d-block w-0"
-              src={require("../assets/Testimony.jpg")}
-              alt="First slide"
-
-            />
-            <Carousel.Caption>
-              {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
-              <h6 style={{ paddingLeft: '850px', fontFamily: 'Montserrat, sans-serif', fontWeight: 'bold', fontSize: '50px', paddingTop: '50px' }}>My Story</h6>
-              <p style={{ paddingLeft: '790px', paddingTop: "90px", fontFamily: 'Raleway,sans-serif', fontSize: '20px', color: "white", fontStyle: 'italic', textAlign: 'center', width: '1250px', paddingLeft: '875px' }}>
-                This is a great place to add a tagline.
-
-                Tell customers more about you. Add a few words and a stunning pic to grab their attention and get them to click.
-
-                This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-        </Carousel>
+   
+  </Carousel.Item>
+</Carousel>
       </div>
       <footer style ={{backgroundColor:' #FFEDD9'}}  class="page-footer font-small blue">
 

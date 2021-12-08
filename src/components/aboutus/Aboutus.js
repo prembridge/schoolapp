@@ -18,11 +18,9 @@ const Button = styled.div`
   border-radius: 50
   z-index: 5
   color: #FFEDD9
-
 `
 
 const Styles = styled.div`
-
 body{
    background: #392f28;
 }
@@ -34,7 +32,7 @@ main{
 .hero2{
   width: 100%;
   
-  height: 200vh;
+  height: 220vh;
   text-align: center;
   margin: 0 auto;
   background-color: #000;
@@ -45,7 +43,6 @@ main{
   margin-top: 10px !important;
   margin-left: 733px
 }
-
 .hero2 h1{
   font-size: 4.2rem;
   color: #fff !important;
@@ -90,8 +87,6 @@ font-family: 'Raleway';
   width: 100% !important;
   height: 300% !important;
 }
-
-
 .heading1 h3 {
   font-size: 1.5;
   color: #FFEDD9 !important;
@@ -143,7 +138,6 @@ font-family: 'Raleway';
   left: 45.5rem !important; 
   text-aline: Justfiy
   position: relative !important;
-
   // top: 9.5rem !important;
   // left: 2.5rem !important;
   // text-align: center !important
@@ -191,7 +185,6 @@ font-family: 'Raleway';
 //   border-radius: 50;
 //   z-index: 5;
 // }
-
 @media (max-width: ${bp.mobile}) {
   .hero2{
     width: 100%;
@@ -200,7 +193,6 @@ font-family: 'Raleway';
     overflow: hidden;
     
   }
-
   .hero2 h1{
     font-size: 8vw;
     font-family: 'Raleway';
@@ -257,7 +249,8 @@ font-family: 'Raleway';
     left: 2vw;
   }
   .heading2 p {
-    font-family: Raleway;
+    font-family: 'Raleway';
+    text-aline:'Justfiy'
     margin-top: 500.5rem;
     margin-left: -47rem !important;
     margin-right: -5rem;
@@ -267,15 +260,8 @@ font-family: 'Raleway';
     position: relative !important;
     font-size: 5vw;
     left: 5vw;
-    text-aline:Justfiy
-    // font-family: "Fira Sans sans-serif" ;
-    // margin-top: 492.5rem;
-    // margin-left: 0rem;
-    // margin-right: -5rem;
-    // padding-left: 10px;
-    // padding-right: 20px;
-    // top: 65vw !important;
-    // left: 5vw;
+   
+   
   }
   .second img {
     width: 100%;
@@ -334,7 +320,7 @@ export default function Aboutus() {
                   <div>
                     <h3>1. IMPACTING YOUNG LIVES</h3>
                   </div>
-                  <div>
+                  <div className="heading1">
                     <p>
                       According to National Sample Survey, over 20% of children below the age of 15 years in India are deprived of access to basic education This is due to to various factors like poor financial background, lack of school in their region, social barriers towards girl child and physical disability. We are building a channel for such children to access a better tomorrow.
                     </p>
@@ -380,7 +366,8 @@ export default function Aboutus() {
                   <div>
                     <h3>3. GIVING A HOPE FOR TOMORROW</h3>
                   </div>
-                  <div >
+                  <div  class="col-md-12">
+                    
                     <p>
                       Working together with you, we provide these children a platform to dream big. Pannah opens a gateway for a better quality life through higher education scholarships and employment guidance.
                     </p>
@@ -402,14 +389,3 @@ export default function Aboutus() {
     </div>
   )
 }
-
-
-
-
-
-
-
-
-
-
-

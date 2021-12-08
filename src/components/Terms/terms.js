@@ -16,11 +16,12 @@ const Styles = styled.div`
     top: 530vw !important;
    
     left: 5vw;
-    text-align: center;
+   // text-align: center;
+   text-aline:'Justfiy';
   
 }
 .ourvision h3{
-   
+  text-align: center;
     
     font-size: 3vw !important;
     font-family: 'Montserrat, sans-serif';
@@ -34,13 +35,15 @@ const Styles = styled.div`
     left: 25vw !important;
     top: 560vw !important;
     color: #000 !important;
+    margin-left:15px;
     
   }
 
   @media (max-width: ${bp.mobile}) {
     .ourvision h3{
       margin-top: 4vw !important;
-      text-align: center;
+     // text-align: center;
+     text-aline:'Justfiy'
       margin-left: -46px;
       font-size: 7vw !important;
       font-family: 'Raleway,sans-serif';

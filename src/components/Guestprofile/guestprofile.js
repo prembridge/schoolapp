@@ -71,7 +71,12 @@ const Styles = styled.div`
     margin-top: 24px;
       }
       .carous{
-        margin-top:-182px
+        margin-top:-182px;
+        margin-left: 494px;
+      }
+      .foot{
+        margin-left: 522px;
+}
       }
   }`
 const useStyles = makeStyles((theme) => ({
@@ -663,58 +668,45 @@ console.log(data ,"data of data")
     </div>
     <div className="carous">
     <Carousel>
-  <Carousel.Item interval={1000}>
-  <img style={{ height: '550px',width:'2030px'}}
-      className="d-block w-0"
-      src={require("../assets/Testimony.jpg")}
+  <Carousel.Item>
+    <img
+      className="d-block w-100"
+      src={require("../assets/fi.png")}
       alt="First slide"
-    
     />
-    <Carousel.Caption>
-      {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
-      <h6 style={{paddingLeft:'850px',fontFamily: 'Montserrat, sans-serif',fontWeight:'bold',fontSize:'50px',paddingTop:'50px'}}>My Story</h6>
-      <p style={{paddingLeft:'790px',paddingTop:"90px",fontFamily: 'Raleway,sans-serif',fontSize:'20px',color:"white",fontStyle: 'italic',textAlign:'center',width:'1250px',paddingLeft:'875px'}}>
-This is a great place to add a tagline.
-
-Tell customers more about you. Add a few words and a stunning pic to grab their attention and get them to click.
-
-​This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</p>
-    </Carousel.Caption>
-    
-    
-   </Carousel.Item>
-   <Carousel.Item interval={1000}>
-  <img style={{ height: '550px',width:'2030px'}}
-      className="d-block w-0"
-      src={require("../assets/Testimony.jpg")}
-      alt="First slide"
-    
+  
+  </Carousel.Item>
+  <Carousel.Item>
+    <img
+      className="d-block w-100"
+      src={require("../assets/second.png")}
+      alt="Third slide"
     />
-    <Carousel.Caption>
-      {/* <h1 onClick={() => history.push('/Newuser')} style={STYLE.errorColor}>I want to support</h1> */}
-      <h6 style={{paddingLeft:'850px',fontFamily: 'Montserrat, sans-serif',fontWeight:'bold',fontSize:'50px',paddingTop:'50px'}}>My Story</h6>
-      <p style={{paddingLeft:'790px',paddingTop:"90px",fontFamily: 'Raleway,sans-serif',fontSize:'20px',color:"white",fontStyle: 'italic',textAlign:'center',width:'1250px',paddingLeft:'875px'}}>
-This is a great place to add a tagline.
 
-Tell customers more about you. Add a few words and a stunning pic to grab their attention and get them to click.
+   
+  </Carousel.Item>
+  <Carousel.Item>
+    <img
+      className="d-block w-100"
+      src={require("../assets/th.png")}
+      alt="Third slide"
+    />
 
-​This space is ideal for writing a detailed description of your business and the types of services that you provide. Talk about your team and your areas of expertise</p>
-    </Carousel.Caption>
-    
-    
-   </Carousel.Item>
-  </Carousel>
+   
+  </Carousel.Item>
+</Carousel>
+      
   </div>
   <footer style ={{backgroundColor:' #FFEDD9'}}  class="page-footer font-small blue">
 
-
+<div className="foot">
 <div class="footer-copyright text-center py-3"> <h7 style={{color:'black' ,fontSize:'15px'}}>© 2021 Copyright</h7>
   <a style={{marginLeft:'10px' ,color:'black'}} href="https://panaah.org/"> panaah.org</a>
   <br></br>
   <Link style={{color:'black'}} onClick={forgot}> Terms and conditions</Link>
   {/* <a href="https://panaah.org/"> Terms and conditions</a> */}
 </div>
-
+</div>
 </footer>
     </div>
     

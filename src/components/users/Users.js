@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -20,8 +19,8 @@ const Styles = styled.div`
   width: 100%;
   
 }
-.ourvision h3{
-  font-size: 5vw;
+.ourvision h4{
+  font-size: 4vw;
 font-family: 'Montserrat, sans-serif';
 margin-top: 4.5rem;
 left: 35vw !important;
@@ -29,7 +28,6 @@ top: 225vw !important;
 text-align: center ;
 color: #000 !important;
 left: 5vw;
-
 }
 .ourvision h6{
   font-size: 36px;
@@ -44,20 +42,18 @@ left: 5vw;
   
   font-Style: italic,
   text-Align:center
-  @media (max-width: ${bp.mobile}) {
-    .ourvision h3{
-     
-      font-size: 12vw !important;
-      font-family: 'Montserrat, sans-serif';
+}
+  @media (max-width: ${bp.mobile}){
+    .ourvision h4{
+     font-size: 8vw !important;
+     font-family: "Raleway,sans-serif";
    
     }
     .ourvision h6{
-      font-size: 8vw !important ;
-      font-family: "Fira Sans sans-serif", 'monospace';
+      font-size: 25px;
+      font-family: "Raleway,sans-serif";
    
-    
-      
-    }
+     }
   }`
 
 
@@ -68,11 +64,12 @@ export default function Users() {
   }
 
   return (
+    <div>
     <Styles>
       <div className="ourvision">
         <Grid >
-          <div>     
-              <h3>OUR VISION</h3>
+          <div >     
+              <h4>OUR VISION</h4>
               <h6 >"Reaching the last, the least and the lost
                 for a better tomorrow" </h6>
 
@@ -84,7 +81,7 @@ export default function Users() {
 
 
 <div class="footer-copyright text-center py-3"> <h7 style={{color:'black' ,fontSize:'15px'}}>© 2021 Copyright</h7>
-  <a style={{marginLeft:'10px',color:'black'}} href="https://panaah.org/"> panaah.org</a>
+  <a style={{marginLeft:'10px',color:'black'}} href="https://panaah.org/"> www.panaah.org</a>
   <br></br>
   <Link style={{color:'black'}} onClick={forgot}> Terms and conditions</Link>
   {/* <a href="https://panaah.org/"> Terms and conditions</a> */}
@@ -94,5 +91,6 @@ export default function Users() {
         </Grid>
       </div>
     </Styles>
+    </div>
   );
 }

@@ -26,14 +26,14 @@ const Styles = styled.div`
     padding-top: 0px;
     padding-bottom: 20px;
     width: 800px;
-    height: 700px;
+    height: 640px;
     margin-left: 25.5rem;
     margin-top: 10px;
   }
   @media (max-width: ${bp.mobile}) {
     .rcorners1{
-      border-radius: 45px;
-    border: 2px solid #000000;
+    //   border-radius: 45px;
+    // border: 2px solid #000000;
     padding-left: 40px;
     padding-right: 20px;
     padding-top: 0px;
@@ -43,6 +43,11 @@ const Styles = styled.div`
     margin-left: 0.5rem;
     margin-top: 10px;
       
+    }
+    .contact-info{
+     
+    margin-left: -46px;
+    width: 355px;
     }
   
   `

@@ -362,7 +362,7 @@ font-family: Raleway;
     margin-top: -50px;
     // font-family: "Lucida Console", "Courier New", monospace;
     top: 28vw;
-    left: 10vw;
+    left: 6vw;
     right: -25vw !important;
   }
 
