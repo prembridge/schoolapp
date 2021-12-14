@@ -152,13 +152,13 @@ function Header() {
                         <Nav.Link href="/Home">Home</Nav.Link>
                       </Nav.Item>
                       <Nav.Item>
-                        <Nav.Link href="./about">Our Story</Nav.Link>
+                      <Nav.Link href="/Groups">Our Story</Nav.Link>
                       </Nav.Item>
                       <Nav.Item>
                         <Nav.Link href="/Donation">Donate</Nav.Link>
                       </Nav.Item>
                       <Nav.Item>
-                        <Nav.Link href="/contact">Contact Us</Nav.Link>
+                      <Nav.Link href="/Project">Contact Us</Nav.Link>
                       </Nav.Item>
                       <Button
                         ref={anchorRef}

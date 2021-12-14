@@ -386,9 +386,9 @@ var requestOptions = {
   body: raw,
   redirect: 'follow'
 };
-fetch("https://gzacors.herokuapp.com/http://122.185.13.163:3013/putuser/ "+localStorage.getItem("id"), requestOptions)
+fetch("https://gzacors.herokuapp.com/http://panaah-api.herokuapp.com/putuser/ "+localStorage.getItem("id"), requestOptions)
   .then(response => response.text())
-  .then(result => console.log(result))
+  .then(result => alert("successfully updated"))
   .catch(error => console.log('error', error));
       // const frmdetails = {
       //     'First Name' : fName,
