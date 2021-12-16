@@ -119,35 +119,17 @@ export default class Registation extends Component {
   saypay =()=> {
     this.props.history.push("./Donation");
   }
-// checkvaild=()=>{
-//   var password = this.state.password;
-//   var confirmpassword = this .state.confirmpassword
-//   if(password===confirmpassword){
-//     console.log("ok")
-//   }else{
-//     console.log('invaild')
-//   }
-//  console.log(this.state.password,"ccccccccccccccccccc")
-// }
+
  
   handleSubmit = e => {
   
-    // this.setState({disable: e.target.value === ''})
-    // this.setState({disable: e.target.value === ''})
-
+    localStorage.setItem("Fname",this.state.firstName)
+     
+    
     e.preventDefault();
 
      if (formValid(this.state)) {
-       
-      // ( this.state.firstName);
-    //   // console.log(JSON.stringify(`
-    //   //   --SUBMITTING--
-    //   //   userName:${this.state.UserName}
-    //   //   First Name: ${this.state.firstName}
-    //   //   Last Name: ${this.state.lastName}
-    //   //   Email: ${this.state.email}
-    //   //   Password: ${this.state.password}
-    //`));
+      
      } else {
       // alert("FORM INVALID - DISPLAY ERROR MESSAGE");
      }
@@ -162,6 +144,8 @@ export default class Registation extends Component {
         message: "Incorrect Username or Password!"
       });
     }
+    
+   
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     var raw = JSON.stringify({

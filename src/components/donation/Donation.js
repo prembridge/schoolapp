@@ -589,7 +589,7 @@ export default function Donation() {
       "key": 'rzp_live_6GpVhmnXaxwEmB', // Enter the Key ID generated from the Dashboard
       "amount": data.amount.toString() + "00",// Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
       "currency": "INR",
-      "name": 'Donation',
+      "name": localStorage.getItem("Fname"),
 
       "image": `${require("../assets/Panaah3.png")}`,
       "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
@@ -682,7 +682,7 @@ export default function Donation() {
       "key": 'rzp_live_6GpVhmnXaxwEmB', // Enter the Key ID generated from the Dashboard
       "amount": data.amount.toString() + "00",// Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
       "currency": "INR",
-      "name": 'Donation',
+      "name": localStorage.getItem("Fname"),
 
       "image": `${require("../assets/Panaah3.png")}`,
       "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
@@ -895,7 +895,7 @@ export default function Donation() {
 
 
 <div class="footer-copyright text-center py-3"> <h7 style={{color:'black' ,fontSize:'15px'}}>© 2021 Copyright</h7>
-  <a style={{marginLeft:'10px' ,color:'black'}} href="https://panaah.org/"> panaah.org</a>
+  <a style={{marginLeft:'10px' ,color:'black'}} href="https://panaah.org/"> www.panaah.org</a>
   <br></br>
   <Link style={{color:'black'}} onClick={forgot}> Terms and conditions</Link>
   {/* <a href="https://panaah.org/"> Terms and conditions</a> */}
@@ -1054,7 +1054,7 @@ export default function Donation() {
 
 
 <div class="footer-copyright text-center py-3"> <h7 style={{color:'black' ,fontSize:'15px'}}>© 2021 Copyright</h7>
-  <a style={{marginLeft:'10px' ,color:'black'}} href="https://panaah.org/"> panaah.org</a>
+  <a style={{marginLeft:'10px' ,color:'black'}} href="https://panaah.org/"> www.panaah.org</a>
   <br></br>
   <Link style={{color:'black'}} onClick={forgot}> Terms and conditions</Link>
   {/* <a href="https://panaah.org/"> Terms and conditions</a> */}

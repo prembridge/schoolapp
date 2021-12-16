@@ -449,7 +449,7 @@ export default function Newuser() {
 
 
 <div class="footer-copyright text-center py-3"> <h7 style={{color:'black' ,fontSize:'15px'}}>© 2021 Copyright</h7>
-  <a style={{marginLeft:'10px' ,color:'black'}} href="https://panaah.org/"> panaah.org</a>
+  <a style={{marginLeft:'10px' ,color:'black'}} href="https://panaah.org/"> www.panaah.org</a>
   <br></br>
   <Link style={{color:'black'}} onClick={forgot}> Terms and conditions</Link>
   {/* <a href="https://panaah.org/"> Terms and conditions</a> */}
